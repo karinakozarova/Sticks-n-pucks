@@ -87,6 +87,14 @@ public class FakeDataStore {
         }
         return null;
     }
+
+    public Penalty getPenalty(String name) {
+        for (Penalty penalty : penalties) {
+            if (penalty.getName().equals(name))
+                return penalty;
+        }
+        return null;
+    }
     public List<Team> getTeams() { return teams; }
     public List<Penalty> getAllPenalties() { return penalties; }
     public List<Account> getUsers() {

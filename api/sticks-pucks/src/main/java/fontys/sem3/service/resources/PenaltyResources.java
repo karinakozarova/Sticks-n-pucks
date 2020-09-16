@@ -28,5 +28,17 @@ public class PenaltyResources {
         GenericEntity<List<Penalty>> entity = new GenericEntity<>(penalties) {  };
         return Response.ok(entity).build();
     }
+
+    @GET //GET at http://localhost:XXXX/team
+    @Path("{name}/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPlayersPath(@PathParam("name") String name) {
+        Penalty penalty = fakeDataStore.getPenalty(name);
+        if (penalty == null) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid penalty name.").build();
+        } else {
+            return Response.ok(penalty).build();
+        }
+    }
 }
 
