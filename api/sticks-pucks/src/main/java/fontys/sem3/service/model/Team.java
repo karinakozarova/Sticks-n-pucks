@@ -47,6 +47,12 @@ public class Team {
         return assistants;
     }
 
+    public List<Player> getLeadPlayers() {
+        List<Player> leads = assistants;
+        leads.add(captain);
+        return leads;
+    }
+
     public void setAssistants(List<Player> assistants) {
         this.assistants = assistants;
     }

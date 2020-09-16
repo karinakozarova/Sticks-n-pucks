@@ -3,32 +3,33 @@ package fontys.sem3.service.model;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @SuppressWarnings("WeakerAccess")
 @XmlRootElement
 public class Game {
     private int id;
-    private int host_id;
-    private int guest_id;
+    private Team host;
+    private Team guest;
     private LocalDateTime start;
     private LocalDateTime end;
     private String rinkLocation; // the address of the ice rink used for home games
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Game game = (Game) object;
-        return id == game.id &&
-                host_id == game.host_id &&
-                guest_id == game.guest_id &&
-                java.util.Objects.equals(start, game.start) &&
-                java.util.Objects.equals(end, game.end) &&
-                java.util.Objects.equals(rinkLocation, game.rinkLocation);
-    }
+    private List<Player> guestsRoster;
+    private List<Player> homeRoster;
 
-    public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), id, host_id, guest_id, start, end, rinkLocation);
+    private List<Goal> goals;
+    private List<Penalty> penalties;
+
+    public Game(int id, Team host, Team guest, LocalDateTime start, LocalDateTime end, String rinkLocation, List<Player> guestsRoster, List<Player> homeRoster) {
+        this.id = id;
+        this.host = host;
+        this.guest = guest;
+        this.start = start;
+        this.end = end;
+        this.rinkLocation = rinkLocation;
+        this.guestsRoster = guestsRoster;
+        this.homeRoster = homeRoster;
     }
 
     public int getId() {
@@ -37,22 +38,6 @@ public class Game {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getHost_id() {
-        return host_id;
-    }
-
-    public void setHost_id(int host_id) {
-        this.host_id = host_id;
-    }
-
-    public int getGuest_id() {
-        return guest_id;
-    }
-
-    public void setGuest_id(int guest_id) {
-        this.guest_id = guest_id;
     }
 
     public LocalDateTime getStart() {
@@ -79,12 +64,55 @@ public class Game {
         this.rinkLocation = rinkLocation;
     }
 
-    public Game(int id, int host_id, int guest_id, LocalDateTime start, LocalDateTime end, String rinkLocation) {
-        this.id = id;
-        this.host_id = host_id;
-        this.guest_id = guest_id;
-        this.start = start;
-        this.end = end;
-        this.rinkLocation = rinkLocation;
+    public List<Player> getGuestsRoster() {
+        return guestsRoster;
+    }
+
+    public void setGuestsRoster(List<Player> guestsRoster) {
+        this.guestsRoster = guestsRoster;
+    }
+
+    public List<Player> getHomeRoster() {
+        return homeRoster;
+    }
+
+    public void setHomeRoster(List<Player> homeRoster) {
+        this.homeRoster = homeRoster;
+    }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
+    }
+
+    public List<Penalty> getPenalties() {
+        return penalties;
+    }
+
+    public void setPenalties(List<Penalty> penalties) {
+        this.penalties = penalties;
+    }
+
+    public Team getHost() {
+        return host;
+    }
+
+    public void setHost(Team host) {
+        this.host = host;
+    }
+
+    public Team getGuest() {
+        return guest;
+    }
+
+    public void setGuest(Team guest) {
+        this.guest = guest;
+    }
+
+    public boolean teamPlays(String teamName){
+        return host.getName().equals(teamName) || guest.getName().equals(teamName);
     }
 }

@@ -5,13 +5,16 @@ import fontys.sem3.service.model.Account;
 import fontys.sem3.service.model.Penalty;
 import fontys.sem3.service.model.Manager;
 import fontys.sem3.service.model.Player;
+import fontys.sem3.service.model.Game;
 import fontys.sem3.service.model.Player.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class FakeDataStore {
+    private final List<Game> games = new ArrayList<>();
     private final List<Team> teams = new ArrayList<>();
     private final List<Account> users = new ArrayList<>();
     private final List<Manager> managers = new ArrayList<>();
@@ -34,6 +37,7 @@ public class FakeDataStore {
         penalties.add(new Penalty( "Fighting", "The player started a fight on the ice", Penalty.Length.fiveminutes));
 
         Team hawks = new Team(1, "Icehawks", "server/pics/1", "IJssportcentrum Eindhoven");
+        Team hanen = new Team(2, "Kemphanen", "server/pics/2", "IJssportcentrum Eindhoven");
         Position center = Player.Position.RW;
         Shoots left = Player.Shoots.L;
         Player player = new Player(1, 150, 55, center, left);
@@ -41,11 +45,13 @@ public class FakeDataStore {
         hawks.addAssistant(player);
         hawks.addPlayerToRoster(player);
         teams.add(hawks);
-        teams.add(new Team(2, "Kemphanen", "server/pics/2", "IJssportcentrum Eindhoven"));
+        teams.add(hanen);
 
         players.add(player);
         players.add(new Player(2, 180, 80, center, left));
         players.add(new Player(3, 123, 55, center, left));
+
+        games.add(new Game(1, hanen, hawks, LocalDateTime.now(),  LocalDateTime.now(), "",null, null));
     }
 
     public Account getUser(int id) {
@@ -95,6 +101,17 @@ public class FakeDataStore {
         }
         return null;
     }
+    public List<Game> getGames(String teamName) {
+        List<Game> playedGames = new ArrayList<Game>();
+        for (Game game : games) {
+            if (game.teamPlays(teamName))
+                playedGames.add(game);
+        }
+        return playedGames;
+    }
+
+
+    public List<Game> getGames() { return games; }
     public List<Team> getTeams() { return teams; }
     public List<Penalty> getAllPenalties() { return penalties; }
     public List<Account> getUsers() {
