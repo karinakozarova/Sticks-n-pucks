@@ -2,6 +2,7 @@ package fontys.sem3.service.repository;
 
 import fontys.sem3.service.model.Team;
 import fontys.sem3.service.model.Account;
+import fontys.sem3.service.model.Penalty;
 import fontys.sem3.service.model.Manager;
 import fontys.sem3.service.model.Player;
 import fontys.sem3.service.model.Player.*;
@@ -15,6 +16,7 @@ public class FakeDataStore {
     private final List<Account> users = new ArrayList<>();
     private final List<Manager> managers = new ArrayList<>();
     private final List<Player> players = new ArrayList<>();
+    private final List<Penalty> penalties = new ArrayList<>();
 
     public FakeDataStore() {
         LocalDate date = LocalDate.now(); // Create a date object
@@ -27,6 +29,9 @@ public class FakeDataStore {
 
         managers.add(new Manager(2, "Kemphanen Owner"));
         managers.add(new Manager(1, "Icehawks GM"));
+
+        penalties.add(new Penalty( "Roughing", "Roughing shall be considered any act where a player uses unnecessary force to push or shove an opponent or makes avoidable physical contact with an opponent after the whistle.", Penalty.Length.tenminutes));
+        penalties.add(new Penalty( "Fighting", "The player started a fight on the ice", Penalty.Length.fiveminutes));
 
         Team hawks = new Team(1, "Icehawks", "server/pics/1", "IJssportcentrum Eindhoven");
         Position center = Player.Position.RW;
@@ -83,6 +88,7 @@ public class FakeDataStore {
         return null;
     }
     public List<Team> getTeams() { return teams; }
+    public List<Penalty> getAllPenalties() { return penalties; }
     public List<Account> getUsers() {
         return users;
     }
