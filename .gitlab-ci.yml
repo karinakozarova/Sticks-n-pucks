@@ -1,10 +1,3 @@
-image: lorisleiva/laravel-docker:latest
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - vendor/
-
 codestyle:
   stage: test
   cache: {}
