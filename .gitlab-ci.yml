@@ -20,5 +20,5 @@ phpunit:
 
 deploy:
   stage: deploy
-    script:
-      - echo "Deployment to the server is happening here"
+  script:
+    - echo "Deployment to the server is happening here"
