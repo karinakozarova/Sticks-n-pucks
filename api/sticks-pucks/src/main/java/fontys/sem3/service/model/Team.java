@@ -57,6 +57,10 @@ public class Team {
         this.assistants = assistants;
     }
 
+    public void deleteAssistants() {
+        this.assistants.clear();
+    }
+
     public void changeCaptain(Player player) {
         this.captain = player;
     }

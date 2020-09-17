@@ -53,6 +53,30 @@ public class TeamResources {
         }
     }
 
+    @DELETE //DELETE at http://localhost:XXXX/team/3/captain
+    @Path("{id}/captain")
+    public Response deleteCaptain(@PathParam("id") int id) {
+        Team team = fakeDataStore.getTeam(id);
+        fakeDataStore.deleteCaptain(team);
+        return Response.noContent().build();
+    }
+
+    @DELETE //DELETE at http://localhost:XXXX/team/3/captain
+    @Path("{id}/assistants")
+    public Response deleteAsssistants(@PathParam("id") int id) {
+        Team team = fakeDataStore.getTeam(id);
+        fakeDataStore.deleteAssistants(team);
+        return Response.noContent().build();
+    }
+
+    @DELETE //DELETE at http://localhost:XXXX/team/3/captain
+    @Path("{id}/leadplayers")
+    public Response deleteLeadPlayers(@PathParam("id") int id) {
+        Team team = fakeDataStore.getTeam(id);
+        fakeDataStore.deleteLeadPlayers(team);
+        return Response.noContent().build();
+    }
+
     @GET //GET at http://localhost:XXXX/team
     @Path("{id}/asistants")
     @Produces(MediaType.APPLICATION_JSON)

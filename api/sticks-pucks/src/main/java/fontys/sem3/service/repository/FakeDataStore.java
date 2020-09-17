@@ -131,6 +131,19 @@ public class FakeDataStore {
         return users.remove(account);
     }
 
+    public void deleteCaptain(Team team) {
+        team.setCaptain(null);
+    }
+
+    public void deleteAssistants(Team team) {
+        team.deleteAssistants();
+    }
+
+    public void deleteLeadPlayers(Team team) {
+        team.deleteAssistants();
+        team.setCaptain(null);
+    }
+
     public boolean deleteManager(int id) {
         Manager manager = getManager(id);
         if (manager == null){
