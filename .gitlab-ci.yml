@@ -17,3 +17,8 @@ phpunit:
   stage: test
   script:
     - echo "Tests"
+
+deploy:
+  stage: deploy
+    script:
+      - echo "Deployment to the server is happening here"
