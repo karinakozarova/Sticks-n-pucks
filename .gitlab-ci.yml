@@ -2,9 +2,9 @@ codestyle:
   stage: test
   cache: {}
   script:
-    - composer require overtrue/phplint --dev -vvv -n
-    - echo "Started linting with phplint"
-    - ./vendor/bin/phplint ./ --exclude=vendor
+    # - composer require overtrue/phplint --dev -vvv -n
+    - echo "Started linting"
+    # - ./vendor/bin/phplint ./ --exclude=vendor
 
 phpunit:
   stage: test
