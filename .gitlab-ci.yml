@@ -1,17 +1,30 @@
-codestyle:
+image: gradle:alpine
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+before_script:
+  - set GRADLE_USER_HOME=`pwd`/.gradle
+stages:
+  - build
+  - test
+build:
+  tags:
+    - ci
+  stage: build
+  script: gradle build
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+test:
+  tags:
+    - ci
   stage: test
-  cache: {}
-  script:
-    # - composer require overtrue/phplint --dev -vvv -n
-    - echo "Started linting"
-    # - ./vendor/bin/phplint ./ --exclude=vendor
-
-phpunit:
-  stage: test
-  script:
-    - echo "Tests"
-
-deploy:
-  stage: deploy
-  script:
-    - echo "Deployment to the server is happening here"
+  script: gradle test
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
