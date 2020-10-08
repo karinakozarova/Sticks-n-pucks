@@ -10,22 +10,21 @@ public class UsersController {
         return ApiController.DeleteFromAPI(ApiController.GetBaseAPICallUrl() + "/account/" + id);
     }
 
-    @PutMapping("/user")
-    public int updateAUser(@RequestParam(name="id", required=true) int id, @RequestParam(name="name", required=true) String name) {
+    @PutMapping("/user/{id}")
+    public int updateAUser(@PathVariable (name="id", required=true) int id, @RequestParam(name="name", required=true) String name) {
         return ApiController.PutToAPI(ApiController.GetBaseAPICallUrl() + "/account/" + id + "/" + name);
     }
 
-    @PutMapping("/user")
-    public int updateAUser(@RequestParam(name="name", required=true) String name) {
-        return ApiController.PutToAPI(ApiController.GetBaseAPICallUrl() + "/account/" + "/" + name);
+    @PostMapping("/user")
+    public int createAUser(@RequestParam(name="name", required=true) String name, @RequestParam(name="email", required=true) String email) {
+        return ApiController.PostToAPI(ApiController.GetBaseAPICallUrl() + "/account/" + name + "/" + email);
     }
-//    @GetMapping("/users")
-//    public String getAllUsers() throws IOException {
-//        return ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/account");
-//    }
 
     @GetMapping("/users")
-    public String getAUser(@RequestParam(name="id", required=true) int id) throws IOException {
+    public String getAUser(@RequestParam(name="id", required=false) Integer id) throws IOException {
+        if(id == null) {
+            return ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/account");
+        }
         return ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/account/" + id);
     }
 }
