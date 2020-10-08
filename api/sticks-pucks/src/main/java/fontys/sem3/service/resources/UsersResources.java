@@ -45,7 +45,6 @@ public class UsersResources {
         return Response.noContent().build();
     }
 
-    // TODO: test that
     @POST //POST at http://localhost:XXXX/account/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Account account) {
@@ -57,6 +56,14 @@ public class UsersResources {
             URI uri = URI.create(url);
             return Response.created(uri).build();
         }
+    }
+
+    @POST
+    @Path("{name}/{email}")
+    public Response updateUser(@PathParam("name") String name, @PathParam("email") String email) {
+        Account account = new Account(name, email);
+        fakeDataStore.add(account);
+        return Response.noContent().build();
     }
 
     // TODO: test that
@@ -71,11 +78,10 @@ public class UsersResources {
         }
     }
 
-    // TODO: test that
-    @PUT //PUT at http://localhost:XXXX/account/{id}
+    @PUT
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-    @Path("{id}")
-    public Response updateUser(@PathParam("id") int id,  @FormParam("name") String name) {
+    @Path("{id}/{name}")
+    public Response updateUser(@PathParam("id") int id,  @PathParam("name") String name) {
         Account account = fakeDataStore.getUser(id);
         if (account == null){
             return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
