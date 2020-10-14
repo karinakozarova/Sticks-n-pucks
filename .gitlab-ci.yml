@@ -16,8 +16,6 @@ build:
       - build
       - .gradle
 test:
-  tags:
-    - ci
   stage: test
   script: gradle test
   cache:
