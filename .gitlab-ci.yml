@@ -21,6 +21,11 @@ checkstyle:
   script:
     - gradle validate
   allow_failure: true
+staticanalysis:
+  stage: validate
+  script:
+    - gradle validate
+  allow_failure: true
 test:
   stage: test
   script: gradle test
