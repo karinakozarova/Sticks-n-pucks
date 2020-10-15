@@ -14,14 +14,12 @@ build:
     policy: push
     paths:
       - build
-      - .gradle
-      
+      - .gradle   
 checkstyle:
   stage: validate
   script:
     - gradle validate
   allow_failure: true
-
 test:
   stage: test
   script: gradle test
