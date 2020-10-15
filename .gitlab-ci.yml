@@ -15,6 +15,13 @@ build:
     paths:
       - build
       - .gradle
+      
+checkstyle:
+  stage: validate
+  script:
+    - gradle validate
+  allow_failure: true
+
 test:
   stage: test
   script: gradle test
