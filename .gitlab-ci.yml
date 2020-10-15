@@ -4,6 +4,7 @@ variables:
 before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
 stages:
+  - validate
   - build
   - test
 build:
