@@ -198,3 +198,5 @@ gradle-app.setting
 .gradletasknamecache
 
 build/reports*
+
+.idea/
