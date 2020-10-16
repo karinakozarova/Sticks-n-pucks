@@ -20,7 +20,6 @@ checkstyle:
   stage: validate
   script:
     -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
-    -  java -jar checkstyle-8.36.2-all.jar -c sun_checks.xml .
   allow_failure: true
 staticanalysis:
   stage: validate
