@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ApiController {
-    public static String baseAPIURL = "http://localhost:9090";
-    public static String apiVersion = "v1";
+    public static final String BASE_APIURL = "http://localhost:9090";
+    public static final String API_VERSION = "v1";
 
+    // to hide the default public constructor
+    private ApiController(){ }
     public static String GetBaseAPICallUrl(){
-        return ApiController.baseAPIURL + "/" + ApiController.apiVersion;
+        return ApiController.BASE_APIURL + "/" + ApiController.API_VERSION;
     }
 
     public static String GetAPIResult(String urlPath) throws IOException {
@@ -28,7 +30,7 @@ public class ApiController {
         return result.toString();
     }
 
-    public static int DeleteFromAPI(String urlPath){
+    public static int deleteFromAPI(String urlPath){
         int code = 200;
         URL url = null;
         try {
@@ -50,11 +52,11 @@ public class ApiController {
             if (httpURLConnection != null) {
                 httpURLConnection.disconnect();
             }
-            return code;
         }
+        return code;
     }
 
-    public static int PutToAPI(String urlPath){
+    public static int putToAPI(String urlPath){
         int code = 200;
         URL url = null;
         try {
@@ -76,18 +78,18 @@ public class ApiController {
             if (httpURLConnection != null) {
                 httpURLConnection.disconnect();
             }
-            return code;
         }
+        return code;
     }
 
-    public static int PostToAPI(String urlPath){
+    public static int postToAPI(String urlPath){
         int code = 200;
         URL url = null;
         try {
             url = new URL(urlPath);
         } catch (MalformedURLException exception) {
             exception.printStackTrace();
-            code = 404;
+            return 404;
         }
         HttpURLConnection httpURLConnection = null;
         try {
@@ -97,12 +99,12 @@ public class ApiController {
             code = httpURLConnection.getResponseCode();
         } catch (IOException exception) {
             exception.printStackTrace();
-            code = 404;
+            return 404;
         } finally {
             if (httpURLConnection != null) {
                 httpURLConnection.disconnect();
             }
-            return code;
         }
+        return code;
     }
 }
