@@ -19,7 +19,7 @@ build:
 checkstyle:
   stage: validate
   script:
-    - gradle validate
+    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
   allow_failure: true
 staticanalysis:
   stage: validate
