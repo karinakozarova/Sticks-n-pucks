@@ -11,6 +11,7 @@ import java.util.List;
 
 @Path("/account")
 public class UsersResources {
+    private static final String DEFAULT_ERROR_MESSAGE = "Please provide a valid id.";
 
     @Context
     private UriInfo uriInfo;
@@ -23,7 +24,7 @@ public class UsersResources {
     public Response getUserPath(@PathParam("id") int id) {
         Account account = fakeDataStore.getUser(id);
         if (account == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(DEFAULT_ERROR_MESSAGE).build();
         } else {
             return Response.ok(account).build();
         }
@@ -66,25 +67,13 @@ public class UsersResources {
         return Response.noContent().build();
     }
 
-    // TODO: test that
-    @PUT //PUT at http://localhost:XXXX/account/
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Response updateAccount(Account account) {
-        if (fakeDataStore.update(account)) {
-            return Response.noContent().build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
-        }
-    }
-
     @PUT
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}/{name}")
     public Response updateUser(@PathParam("id") int id,  @PathParam("name") String name) {
         Account account = fakeDataStore.getUser(id);
         if (account == null){
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.NOT_FOUND).entity(DEFAULT_ERROR_MESSAGE).build();
         }
 
         account.setName(name);
