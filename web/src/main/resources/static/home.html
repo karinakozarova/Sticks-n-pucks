@@ -40,10 +40,14 @@
         #sidebar:hover span {
             opacity: 1;
         }
+
+        .gradient {
+            background: linear-gradient(90deg, #87d530 20%, #05aada 60%);
+        }
     </style>
 </head>
 
-<body class="flex h-screen">
+<body class="flex h-screen gradient">
 <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center fixed shadow">
     <ul class="list-reset ">
         <li class="my-2 md:my-0">
@@ -66,7 +70,7 @@
     </ul>
 </div>
 
-<div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
+<div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16 gradient">
     <div class="h-40 lg:h-20 w-full flex flex-wrap">
         <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
             <div class="flex h-full justify-between items-center">
