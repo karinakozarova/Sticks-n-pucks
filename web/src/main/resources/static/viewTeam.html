@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>View team</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -47,7 +47,7 @@
     </style>
 </head>
 
-<body class="flex h-screen">
+<body class="flex h-screen gradient">
 <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center fixed shadow">
     <ul class="list-reset ">
         <li class="my-2 md:my-0">
@@ -70,10 +70,10 @@
     </ul>
 </div>
 
-<div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16 gradient">
+<div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
     <div class="h-40 lg:h-20 w-full flex flex-wrap">
         <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
-            <div class="flex h-full justify-between items-center gradient">
+            <div class="flex h-full justify-between items-center">
                 <div class="relative w-full max-w-3xl px-6">
                     <div class="absolute h-10 mt-1 left-0 top-0 flex items-center pl-10">
                         <svg class="h-4 w-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg"
@@ -111,6 +111,23 @@
                 </div>
             </div>
         </nav>
+    </div>
+    <div class="max-w-sm w-full lg:max-w-full lg:flex" style="padding-left: 20%; margin-top: 5rem; max-width: 80%;">
+        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/pics/Sticks\'n\'pucks.png')" title="Woman holding a mug">
+        </div>
+        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+            <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2">Team name</div>
+                <p class="text-gray-700 text-base"> Team description goes here Team description goes here Team description goes here Team description goes here Team description goes here </p>
+            </div>
+            <div class="flex items-center">
+                <img class="w-10 h-10 rounded-full mr-4" src="/pics/Sticks'n'pucks.png" alt="Manager picture">
+                <div class="text-sm">
+                    <p class="text-gray-900 leading-none">Manager name</p>
+                    <p class="text-gray-600">Member since 10-10-2000</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
