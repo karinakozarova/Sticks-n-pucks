@@ -39,6 +39,8 @@ testapi:
       - .gradle
 testweb:
   stage: test
+  script: 
+    - cd web
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
