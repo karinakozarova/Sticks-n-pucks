@@ -28,7 +28,9 @@ staticanalysis:
   allow_failure: true
 testapi:
   stage: test
-  script: cd api/sticks-pucks && gradle clean test
+  script: 
+    - cd api/sticks-pucks
+    - gradle clean test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
@@ -37,7 +39,9 @@ testapi:
       - .gradle
 testweb:
   stage: test
-  script: cd web/ && gradle clean test
+  script:
+    - cd web
+    - gradle clean test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
