@@ -40,7 +40,8 @@ testapi:
 testweb:
   stage: test
   script: 
-    - cd web
+    - cd webapplication/Sticks-n-pucks
+    - gradle clean test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
