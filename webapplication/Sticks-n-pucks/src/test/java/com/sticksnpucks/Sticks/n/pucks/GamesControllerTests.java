@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.*;
 import java.io.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class GamesControllerTests {
@@ -21,6 +22,6 @@ class GamesControllerTests {
 
 	@Test
 	public void AllGamesCanBeRetrieved() throws IOException {
-		assertThat(!controller.getAllGames().isEmpty());
+		assertTrue(!controller.getAllGames().isEmpty());
 	}
 }

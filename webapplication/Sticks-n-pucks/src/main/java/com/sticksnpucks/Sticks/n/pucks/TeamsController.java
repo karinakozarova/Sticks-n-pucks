@@ -8,6 +8,6 @@ import java.io.*;
 public class TeamsController {
     @GetMapping("/teams")
     public String getAllTeams() throws IOException {
-        return ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/team");
+        return ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/team");
     }
 }
