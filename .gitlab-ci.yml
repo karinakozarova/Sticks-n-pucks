@@ -26,6 +26,10 @@ staticanalysis:
   script:
     - gradle validate
   allow_failure: true
+sonarqube_master_job:
+  stage: validate
+  script:
+    - gradle sonarqube -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_LOGIN -Dsonar.analysis.mode=preview -Dsonar.gitlab.commit_sha=$CI_COMMIT_SHA -Dsonar.gitlab.ref_name=$CI_COMMIT_REF_NAME -Dsonar.gitlab.project_id=$CI_PROJECT_ID
 testapi:
   stage: test
   script: 
