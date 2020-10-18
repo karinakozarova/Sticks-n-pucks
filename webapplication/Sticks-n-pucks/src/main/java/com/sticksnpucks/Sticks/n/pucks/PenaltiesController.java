@@ -10,10 +10,10 @@ public class PenaltiesController {
     public String getAllPenaltiesOrSpecificPenalty(@RequestParam(name="name", required=false) String name) throws IOException {
         try {
             return name.isBlank() ?
-                    ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/penalty"):
-                    ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/penalty/" + name);
+                    ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty"):
+                    ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty/" + name);
         } catch (NullPointerException a){
-            return ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/penalty");
+            return ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty");
         }
     }
 }

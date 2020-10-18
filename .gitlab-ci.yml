@@ -4,9 +4,15 @@ variables:
 before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
 stages:
-  - validate
   - build
   - test
+  - sonar
+  - validate
+checkstyle:
+  stage: validate
+  script:
+    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
+  allow_failure: true
 build:
   stage: build
   script: gradle build
@@ -16,16 +22,6 @@ build:
     paths:
       - build
       - .gradle   
-checkstyle:
-  stage: validate
-  script:
-    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
-  allow_failure: true
-staticanalysis:
-  stage: validate
-  script:
-    - gradle validate
-  allow_failure: true
 testapi:
   stage: test
   script: 
@@ -48,3 +44,15 @@ testweb:
     paths:
       - build
       - .gradle
+sonarqube-web:
+  stage: sonar
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle sonarqube
+  allow_failure: true
+sonarqube-api:
+  stage: sonar
+  script:
+    - cd api/sticks-pucks
+    - gradle sonarqube
+  allow_failure: true

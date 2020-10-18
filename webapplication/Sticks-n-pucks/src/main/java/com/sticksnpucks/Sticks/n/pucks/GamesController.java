@@ -8,6 +8,6 @@ import java.io.*;
 public class GamesController {
     @GetMapping("/games")
     public String getAllGames() throws IOException {
-        return ApiController.GetAPIResult(ApiController.GetBaseAPICallUrl() + "/game");
+        return ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/games");
     }
 }
