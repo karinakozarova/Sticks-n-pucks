@@ -28,17 +28,11 @@ sonarqube-web:
     - cd webapplication/Sticks-n-pucks
     - gradle sonarqube
   allow_failure: true
-  only:
-    - merge_requests
-    - branches
 sonarqube-api:
   stage: sonar
   script:
     - cd api/sticks-pucks
     - gradle sonarqube
-  only:
-    - merge_requests
-    - branches
   allow_failure: true
 testapi:
   stage: test
