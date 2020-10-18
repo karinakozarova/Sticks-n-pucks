@@ -27,11 +27,18 @@ staticanalysis:
   script:
     - gradle validate
   allow_failure: true
-sonarqube:
+sonarqube-web:
   stage: sonar
   script:
     - cd webapplication/Sticks-n-pucks
     - gradle sonarqube -Dsonar.projectKey=sticksnpucks -Dsonar.host.url=http://localhost:9000 -Dsonar.login=c14d731517eb24eef16d09d41d5f9791df9791af
+  allow_failure: true
+sonarqube-api:
+  stage: sonar
+  script:
+    - cd api/sticks-pucks
+    - gradle sonarqube   -Dsonar.projectKey=SticksAPI -Dsonar.host.url=http://localhost:9000   -Dsonar.login=78f0ee16ea081c8f7c39ac891d7b929467c53d32
+  allow_failure: true
 testapi:
   stage: test
   script: 
