@@ -80,7 +80,7 @@ public class FakeDataStore {
 
     public Team getTeam(String name) {
         for (Team team : teams) {
-            if (team.getName() == name)
+            if (team.getName().equals(name))
                 return team;
         }
         return null;
