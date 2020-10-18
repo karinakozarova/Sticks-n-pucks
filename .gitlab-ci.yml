@@ -44,15 +44,15 @@ testweb:
     paths:
       - build
       - .gradle
-sonarqube-api:
-  stage: sonar
-  script:
-    - cd api/sticks-pucks
-    - gradle sonarqube
-  allow_failure: true
 sonarqube-web:
   stage: sonar
   script:
     - cd webapplication/Sticks-n-pucks
+    - gradle sonarqube
+  allow_failure: true
+sonarqube-api:
+  stage: sonar
+  script:
+    - cd api/sticks-pucks
     - gradle sonarqube
   allow_failure: true
