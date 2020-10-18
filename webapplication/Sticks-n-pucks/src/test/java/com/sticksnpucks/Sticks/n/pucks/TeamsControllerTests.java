@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.*;
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
-class UsersControllerTests {
+class TeamsControllerTests {
 
 	@Autowired
-	private UsersController controller;
+	private TeamsController controller;
 
 	@Test
 	public void contextLoads() {
