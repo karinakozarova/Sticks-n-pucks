@@ -34,6 +34,18 @@ public class ApiController {
         return result.toString();
     }
 
+    public static int deleteFromAPI(String urlPath) {
+        return ApiController.doRequestAction("DELETE", urlPath);
+    }
+
+    public static int putToAPI(String urlPath) {
+        return ApiController.doRequestAction("PUT", urlPath);
+    }
+
+    public static int postToAPI(String urlPath) {
+        return ApiController.doRequestAction("POST", urlPath);
+    }
+
     private static int doRequestAction(String actionName, String urlPath){
         HttpURLConnection httpURLConnection = null;
         try {
@@ -49,16 +61,5 @@ public class ApiController {
                 httpURLConnection.disconnect();
             }
         }
-    }
-    public static int deleteFromAPI(String urlPath) {
-        return ApiController.doRequestAction("DELETE", urlPath);
-    }
-
-    public static int putToAPI(String urlPath) {
-        return ApiController.doRequestAction("PUT", urlPath);
-    }
-
-    public static int postToAPI(String urlPath) {
-        return ApiController.doRequestAction("POST", urlPath);
     }
 }
