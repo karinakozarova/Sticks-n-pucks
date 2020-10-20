@@ -1,4 +1,4 @@
-package com.sticksnpucks.Sticks.n.pucks;
+package com.sticksnpucks.Sticksnpucks;
 
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.*;

@@ -1,4 +1,4 @@
-package com.sticksnpucks.Sticks.n.pucks;
+package com.sticksnpucks.Sticksnpucks;
 
 import static org.junit.jupiter.api.Assertions.*;
 
