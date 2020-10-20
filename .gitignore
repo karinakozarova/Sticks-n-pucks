@@ -200,3 +200,7 @@ gradle-app.setting
 build/reports*
 
 .idea/
+
+# gradle folders
+api/sticks-pucks/.gradle
+webapplication/Sticks-n-pucks/.gradle
