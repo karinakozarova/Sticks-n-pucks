@@ -20,12 +20,14 @@ javadocapi:
   script:
     - cd api/sticks-pucks
     - gradle javadoc
+  allow_failure: true
 
 javadocweb:
   stage: codequality
   script:
     - cd webapplication/Sticks-n-pucks
     - gradle javadoc
+  allow_failure: true
 
 build:
   stage: build
