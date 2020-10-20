@@ -1,4 +1,4 @@
-package com.sticksnpucks.Sticks.n.pucks;
+package com.sticksnpucks.Sticksnpucks;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -34,22 +34,6 @@ public class ApiController {
         return result.toString();
     }
 
-    private static int doRequestAction(String actionName, String urlPath){
-        HttpURLConnection httpURLConnection = null;
-        try {
-            URL url = new URL(urlPath);
-            httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestProperty(REQUEST_CONTENT_TYPE, URL_ENCODED_FORM);
-            httpURLConnection.setRequestMethod(actionName);
-            return httpURLConnection.getResponseCode();
-        } catch (IOException exception) {
-            return 404;
-        } finally {
-            if (httpURLConnection != null) {
-                httpURLConnection.disconnect();
-            }
-        }
-    }
     public static int deleteFromAPI(String urlPath) {
         return ApiController.doRequestAction("DELETE", urlPath);
     }
@@ -60,5 +44,22 @@ public class ApiController {
 
     public static int postToAPI(String urlPath) {
         return ApiController.doRequestAction("POST", urlPath);
+    }
+
+    private static int doRequestAction(String actionName, String urlPath){
+        HttpURLConnection httpURLConnection = null;
+        try {
+            URL url = new URL(urlPath);
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestProperty(REQUEST_CONTENT_TYPE, URL_ENCODED_FORM);
+            httpURLConnection.setRequestMethod(actionName);
+            return httpURLConnection.getResponseCode();
+        } catch (Exception exception) {
+            return 404;
+        } finally {
+            if (httpURLConnection != null) {
+                httpURLConnection.disconnect();
+            }
+        }
     }
 }
