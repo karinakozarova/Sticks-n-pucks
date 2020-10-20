@@ -13,15 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GamesControllerTests {
 
     @Autowired
-    private GamesController controller;
+    protected GamesController controller;
 
     @Test
-    public void contextLoads() {
+    protected void contextLoads() {
         assertThat(controller).isNotNull();
     }
 
     @Test
-    public void AllGamesCanBeRetrieved() throws IOException {
+    protected void AllGamesCanBeRetrieved() throws IOException {
         assertTrue(!controller.getAllGames().isEmpty());
     }
 }

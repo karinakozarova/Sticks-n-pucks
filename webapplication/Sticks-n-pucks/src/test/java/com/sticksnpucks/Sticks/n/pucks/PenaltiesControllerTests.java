@@ -16,12 +16,12 @@ public class PenaltiesControllerTests {
     private MockMvc mockMvc;
 
     @BeforeEach
-    public void setup() {
+    protected void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(new PenaltiesController()).build();
     }
 
     @Test
-    public void getGreeting_shouldReturn200_whenNameIsValid() throws Exception {
+    protected void getGreeting_shouldReturn200_whenNameIsValid() throws Exception {
         mockMvc.perform(
                 get("/penalties")
                         .param("name", "Roughing")
@@ -33,7 +33,7 @@ public class PenaltiesControllerTests {
     }
 
     @Test
-    public void getAllGreetings_shouldReturn200() throws Exception {
+    protected void getAllGreetings_shouldReturn200() throws Exception {
         mockMvc.perform(
                 get("/penalties")
                         .accept(MediaType.APPLICATION_JSON))

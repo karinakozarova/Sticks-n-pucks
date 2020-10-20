@@ -15,12 +15,12 @@ public class TeamsControllerTests {
     private MockMvc mockMvc;
 
     @BeforeEach
-    public void setup() {
+    protected void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(new TeamsController()).build();
     }
 
     @Test
-    public void getAllTeams_shouldReturn200_whenNameIsValid() throws Exception {
+    protected void getAllTeams_shouldReturn200_whenNameIsValid() throws Exception {
         mockMvc.perform(
                 get("/teams")
                         .accept(MediaType.APPLICATION_JSON))

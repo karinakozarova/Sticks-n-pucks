@@ -22,7 +22,7 @@ public class UsersControllerTests {
     }
 
     @Test
-    public void getAllUsers_shouldReturn200_whenNameIsValid() throws Exception {
+	protected void getAllUsers_shouldReturn200_whenNameIsValid() throws Exception {
         mockMvc.perform(
                 get("/users")
                         .accept(MediaType.APPLICATION_JSON))
@@ -32,7 +32,7 @@ public class UsersControllerTests {
     }
 
     @Test
-    public void getUser_shouldReturn200_WhenIdIsValid() throws Exception {
+	protected void getUser_shouldReturn200_WhenIdIsValid() throws Exception {
         mockMvc.perform(
                 get("/users")
                         .param("id", "2")
@@ -43,7 +43,7 @@ public class UsersControllerTests {
     }
 
     @Test
-    public void deleteUser_ShouldReturn200_WhenIdIsValid() throws Exception {
+	protected void deleteUser_ShouldReturn200_WhenIdIsValid() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                 .delete("/user")
                 .param("id", "1")
@@ -52,7 +52,7 @@ public class UsersControllerTests {
     }
 
     @Test
-    public void deleteUser_ShouldReturn404_WhenUrlIsNotValid() throws Exception {
+	protected void deleteUser_ShouldReturn404_WhenUrlIsNotValid() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                 .delete("/unknownurlunittests")
                 .accept(MediaType.APPLICATION_JSON))
@@ -60,7 +60,7 @@ public class UsersControllerTests {
     }
 
     @Test
-    public void putUser_ShouldReturn200_WhenIdIsValid() throws Exception {
+	protected void putUser_ShouldReturn200_WhenIdIsValid() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                 .put("/user/1")
                 .param("name", "Added by unit test"))
@@ -68,7 +68,7 @@ public class UsersControllerTests {
     }
 
     @Test
-    public void postUser_ShouldReturn200_WhenIdIsValid() throws Exception {
+	protected void postUser_ShouldReturn200_WhenIdIsValid() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders
                 .post("/user")
                 .param("name", "Added by unit test")
