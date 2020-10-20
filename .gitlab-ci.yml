@@ -8,21 +8,25 @@ stages:
   - test
   - codequality
   - sonar
+
 checkstyle:
   stage: codequality
   script:
     -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
   allow_failure: true
+
 javadocapi:
   stage: codequality
   script:
     - cd api/sticks-pucks
     - gradle javadoc
+
 javadocweb:
   stage: codequality
   script:
     - cd webapplication/Sticks-n-pucks
     - gradle javadoc
+
 build:
   stage: build
   script: gradle build
@@ -31,7 +35,8 @@ build:
     policy: push
     paths:
       - build
-      - .gradle   
+      - .gradle
+
 testapi:
   stage: test
   script: 
@@ -43,6 +48,7 @@ testapi:
     paths:
       - build
       - .gradle
+
 testweb:
   stage: test
   script: 
@@ -54,15 +60,20 @@ testweb:
     paths:
       - build
       - .gradle
+
 sonarqube-web:
   stage: sonar
   script:
     - cd webapplication/Sticks-n-pucks
     - gradle sonarqube
   allow_failure: true
+
 sonarqube-api:
   stage: sonar
   script:
     - cd api/sticks-pucks
     - gradle sonarqube
   allow_failure: true
+
+after_script:
+  - echo "The pipeline ended"
