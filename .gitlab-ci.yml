@@ -6,13 +6,23 @@ before_script:
 stages:
   - build
   - test
+  - codequality
   - sonar
-  - validate
 checkstyle:
-  stage: validate
+  stage: codequality
   script:
     -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
   allow_failure: true
+javadocapi:
+  stage: codequality
+  script:
+    - cd api/sticks-pucks
+    - gradle javadoc
+javadocweb:
+  stage: codequality
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle javadoc
 build:
   stage: build
   script: gradle build
