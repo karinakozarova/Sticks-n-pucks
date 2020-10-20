@@ -1,13 +1,11 @@
 package com.sticksnpucks.Sticks.n.pucks;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.*;
 
-@SpringBootTest
-class ApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
+// Test class added ONLY to cover main() invocation not covered by application tests.
+public class ApplicationTests {
+    @Test
+    public void main() {
+        Application.main(new String[]{});
+    }
 }

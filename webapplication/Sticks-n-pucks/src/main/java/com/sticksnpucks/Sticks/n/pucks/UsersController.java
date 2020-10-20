@@ -25,9 +25,8 @@ public class UsersController {
 
     @GetMapping("/users")
     public String getAUser(@RequestParam(name = "id", required = false) Integer id) throws IOException {
-        if (id == null) {
-            return ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + submodule);
-        }
-        return ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + submodule + id);
+        return id == null
+                ? ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + submodule)
+                : ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + submodule + id);
     }
 }

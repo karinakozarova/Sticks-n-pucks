@@ -8,12 +8,8 @@ import java.io.*;
 public class PenaltiesController {
     @GetMapping("/penalties")
     public String getAllPenaltiesOrSpecificPenalty(@RequestParam(name="name", required=false) String name) throws IOException {
-        try {
-            return name.isBlank() ?
-                    ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty"):
-                    ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty/" + name);
-        } catch (NullPointerException a){
-            return ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty");
-        }
+        return name == null ?
+            ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty"):
+            ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty/" + name);
     }
 }

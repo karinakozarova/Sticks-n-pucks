@@ -54,7 +54,7 @@ public class ApiController {
             httpURLConnection.setRequestProperty(REQUEST_CONTENT_TYPE, URL_ENCODED_FORM);
             httpURLConnection.setRequestMethod(actionName);
             return httpURLConnection.getResponseCode();
-        } catch (IOException exception) {
+        } catch (Exception exception) {
             return 404;
         } finally {
             if (httpURLConnection != null) {

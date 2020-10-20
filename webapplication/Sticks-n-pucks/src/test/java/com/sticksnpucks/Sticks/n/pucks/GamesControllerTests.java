@@ -12,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class GamesControllerTests {
 
-	@Autowired
-	private GamesController controller;
+    @Autowired
+    private GamesController controller;
 
-	@Test
-	public void contextLoads() {
-		assertThat(controller).isNotNull();
-	}
+    @Test
+    public void contextLoads() {
+        assertThat(controller).isNotNull();
+    }
 
-	@Test
-	public void AllGamesCanBeRetrieved() throws IOException {
-		assertTrue(!controller.getAllGames().isEmpty());
-	}
+    @Test
+    public void AllGamesCanBeRetrieved() throws IOException {
+        assertTrue(!controller.getAllGames().isEmpty());
+    }
 }
