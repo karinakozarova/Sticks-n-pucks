@@ -21,13 +21,15 @@ class Publisher {
 
     private static final URI BASE_URI = URI.create("http://localhost:9090/v1/");
 
+    private static String dbPassword = "1234";
+
     public static void main(String[] args) {
         ResultSet result = null;
         Connection connection = null;
         PreparedStatement query = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection (Publisher.dbUrl, "dbi426146", "1234");
+            connection = DriverManager.getConnection (Publisher.dbUrl, "dbi426146", dbPassword);
             System.out.println("Successfully connected to the db");
             query = connection.prepareStatement("SELECT email FROM account");
             result = query.executeQuery();
@@ -38,7 +40,7 @@ class Publisher {
         } catch(Exception e){
             System.err.println(e.toString());
         } finally {
-            try { result.close(); } catch (Exception e) { /* ignored */ }
+            if (result != null ) try { result.close(); } catch (Exception e) { /* ignored */ }
             try { query.close(); } catch (Exception e) { /* ignored */ }
             try { connection.close(); } catch (Exception e) { /* ignored */ }
         }
