@@ -17,31 +17,30 @@ import java.sql.*;
  * This class deploys CustomApplicationConfig on a Grizzly server
  */
 class Publisher {
+    private static String dbUrl = "jdbc:mysql://studmysql01.fhict.local/dbi426146";
 
     private static final URI BASE_URI = URI.create("http://localhost:9090/v1/");
 
     public static void main(String[] args) {
-
-        try{
-            String dbUrl = "jdbc:mysql://studmysql01.fhict.local/dbi426146";
+        ResultSet result = null;
+        Connection connection = null;
+        PreparedStatement query = null;
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection (dbUrl, "dbi426146", "1234");
-            System.out.println("Success");
-//            Statement stmt = con.createStatement();
-//            ResultSet rs = stmt.executeQuery(query);
-            ResultSet result;
-            try {
-                PreparedStatement query = connection.prepareStatement("SELECT email FROM account");
-                result = query.executeQuery();
-                while( result.next() ) {
-                    String name = result.getString("email");
-                    System.out.println(name);
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.toString());
+            connection = DriverManager.getConnection (Publisher.dbUrl, "dbi426146", "1234");
+            System.out.println("Successfully connected to the db");
+            query = connection.prepareStatement("SELECT email FROM account");
+            result = query.executeQuery();
+            while( result.next() ) {
+                String name = result.getString("email");
+                System.out.println(name);
             }
         } catch(Exception e){
-            System.out.println(e.toString());
+            System.err.println(e.toString());
+        } finally {
+            try { result.close(); } catch (Exception e) { /* ignored */ }
+            try { query.close(); } catch (Exception e) { /* ignored */ }
+            try { connection.close(); } catch (Exception e) { /* ignored */ }
         }
 
         try {
