@@ -41,8 +41,8 @@ class Publisher {
             System.err.println(e.toString());
         } finally {
             if (result != null ) try { result.close(); } catch (Exception e) { /* ignored */ }
-            try { query.close(); } catch (Exception e) { /* ignored */ }
-            try { connection.close(); } catch (Exception e) { /* ignored */ }
+            if (query != null ) try { query.close(); } catch (Exception e) { /* ignored */ }
+            if (connection != null ) try { connection.close(); } catch (Exception e) { /* ignored */ }
         }
 
         try {
