@@ -14,12 +14,12 @@ public class PenaltyResources {
     @Context
     private UriInfo uriInfo;
     // this has to be static because the service is stateless:
-    private static final FakeDataStore fakeDataStore = new FakeDataStore();
+    private static final DataStore dataStore = new DataStore();
 
     @GET //GET at http://localhost:XXXX/penalty
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPenalties() {
-        List<Penalty> penalties = fakeDataStore.getAllPenalties();
+        List<Penalty> penalties = dataStore.getAllPenalties();
         GenericEntity<List<Penalty>> entity = new GenericEntity<>(penalties) {  };
         return Response.ok(entity).build();
     }
@@ -28,7 +28,7 @@ public class PenaltyResources {
     @Path("{name}/")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPlayersPath(@PathParam("name") String name) {
-        Penalty penalty = fakeDataStore.getPenalty(name);
+        Penalty penalty = dataStore.getPenalty(name);
         if (penalty == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid penalty name.").build();
         } else {

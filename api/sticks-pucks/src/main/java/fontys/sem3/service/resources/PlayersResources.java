@@ -14,12 +14,12 @@ public class PlayersResources {
     @Context
     private UriInfo uriInfo;
     // this has to be static because the service is stateless:
-    private static final FakeDataStore fakeDataStore = new FakeDataStore();
+    private static final DataStore dataStore = new DataStore();
 
     @GET //GET at http://localhost:XXXX/account/player
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPlayers() {
-        List<Player> players = fakeDataStore.getPlayers();
+        List<Player> players = dataStore.getPlayers();
         GenericEntity<List<Player>> entity = new GenericEntity<>(players) {
         };
         return Response.ok(entity).build();
@@ -29,7 +29,7 @@ public class PlayersResources {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPlayerPath(@PathParam("id") int id) {
-        Player account = fakeDataStore.getPlayer(id);
+        Player account = dataStore.getPlayer(id);
         if (account == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
         } else {
@@ -41,7 +41,7 @@ public class PlayersResources {
     @POST //POST at http://localhost:XXXX/account/player/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Player account) {
-        if (!fakeDataStore.add(account)) {
+        if (!dataStore.add(account)) {
             String entity = "Account with id " + account.getAccount_id() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
         } else {
@@ -56,7 +56,7 @@ public class PlayersResources {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateAccount(Player account) {
-        if (fakeDataStore.update(account)) {
+        if (dataStore.update(account)) {
             return Response.noContent().build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
@@ -68,7 +68,7 @@ public class PlayersResources {
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}")
     public Response updateUser(@PathParam("id") int id, @FormParam("name") String name) {
-        Player account = fakeDataStore.getPlayer(id);
+        Player account = dataStore.getPlayer(id);
         if (account == null) {
             return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
         }

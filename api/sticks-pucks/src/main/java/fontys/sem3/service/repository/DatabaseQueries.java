@@ -9,8 +9,8 @@ import fontys.sem3.service.model.Account;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DatabaseDataStore {
-    private DatabaseDataStore() {
+public class DatabaseQueries {
+    private DatabaseQueries() {
         // To hide the default contructor
     }
 

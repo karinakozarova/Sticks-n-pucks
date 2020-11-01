@@ -14,7 +14,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 import java.sql.*;
 
-public class FakeDataStore {
+public class DataStore {
     private final List<Game> games = new ArrayList<>();
     private final List<Team> teams = new ArrayList<>();
     private final List<Account> users = new ArrayList<>();
@@ -22,7 +22,7 @@ public class FakeDataStore {
     private final List<Player> players = new ArrayList<>();
     private final List<Penalty> penalties = new ArrayList<>();
 
-    public FakeDataStore() {
+    public DataStore() {
         Date date = new Date(System.currentTimeMillis());
 
         users.add(new Account(1, "Ron Berteling", "test@test.test", date));
@@ -116,7 +116,7 @@ public class FakeDataStore {
     public List<Team> getTeams() { return teams; }
     public List<Penalty> getAllPenalties() { return penalties; }
     public List<Account> getUsers() {
-        return DatabaseDataStore.getUsers();
+        return DatabaseQueries.getUsers();
     }
     public List<Manager> getManagers() {
         return managers;

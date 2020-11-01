@@ -16,12 +16,12 @@ public class GameResources {
     @Context
     private UriInfo uriInfo;
     // this has to be static because the service is stateless:
-    private static final FakeDataStore fakeDataStore = new FakeDataStore();
+    private static final DataStore dataStore = new DataStore();
 
     @GET //GET at http://localhost:XXXX/team
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllGames() {
-        List<Game> games = fakeDataStore.getGames();
+        List<Game> games = dataStore.getGames();
         GenericEntity<List<Game>> entity = new GenericEntity<>(games) {
         };
         return Response.ok(entity).build();
@@ -31,7 +31,7 @@ public class GameResources {
     @Path("/team/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getTeamGames(@PathParam("name") String teamName) {
-        List<Game> games = fakeDataStore.getGames(teamName);
+        List<Game> games = dataStore.getGames(teamName);
         if (games == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid team name.").build();
         } else {
@@ -44,7 +44,7 @@ public class GameResources {
     @Path("{id}/captain")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCaptainPath(@PathParam("id") int id) {
-        Team team = fakeDataStore.getTeam(id);
+        Team team = dataStore.getTeam(id);
         if (team == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
         } else {
@@ -57,7 +57,7 @@ public class GameResources {
     @Path("{id}/asistants")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAsistantsPath(@PathParam("id") int id) {
-        Team team = fakeDataStore.getTeam(id);
+        Team team = dataStore.getTeam(id);
         if (team == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
         } else {
@@ -70,7 +70,7 @@ public class GameResources {
     @Path("{id}/roster")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPlayersPath(@PathParam("id") int id) {
-        Team team = fakeDataStore.getTeam(id);
+        Team team = dataStore.getTeam(id);
         if (team == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
         } else {
@@ -83,7 +83,7 @@ public class GameResources {
     @POST //POST at http://localhost:XXXX/team/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Team team) {
-        if (!fakeDataStore.add(team)) {
+        if (!dataStore.add(team)) {
             String entity = "Team with id " + team.getId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
         } else {
@@ -98,7 +98,7 @@ public class GameResources {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public Response updateAccount(Team team) {
-        if (fakeDataStore.update(team)) {
+        if (dataStore.update(team)) {
             return Response.noContent().build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
