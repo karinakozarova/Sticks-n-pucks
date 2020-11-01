@@ -10,7 +10,7 @@ import fontys.sem3.service.model.Player.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
+import java.util.Date;
 import java.time.LocalDateTime;
 import java.sql.*;
 
@@ -23,7 +23,7 @@ public class FakeDataStore {
     private final List<Penalty> penalties = new ArrayList<>();
 
     public FakeDataStore() {
-        LocalDate date = LocalDate.now(); // Create a date object
+        Date date = new Date(System.currentTimeMillis());
 
         users.add(new Account(1, "Ron Berteling", "test@test.test", date));
         users.add(new Account(2, "NiCo", "test1@test.test", date));
@@ -116,7 +116,7 @@ public class FakeDataStore {
     public List<Team> getTeams() { return teams; }
     public List<Penalty> getAllPenalties() { return penalties; }
     public List<Account> getUsers() {
-        return users;
+        return DatabaseDataStore.getUsers();
     }
     public List<Manager> getManagers() {
         return managers;

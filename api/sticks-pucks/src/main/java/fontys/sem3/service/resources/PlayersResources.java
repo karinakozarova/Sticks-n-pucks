@@ -64,8 +64,7 @@ public class PlayersResources {
     }
 
     // TODO: test that
-    // TODO: fix the parameters here
-    @PUT //PUT at http://localhost:XXXX/account/player/{id}
+    @PUT //PUT at http://localhost:XXXX/account/player/id
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}")
     public Response updateUser(@PathParam("id") int id, @FormParam("name") String name) {
@@ -74,7 +73,7 @@ public class PlayersResources {
             return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
         }
 
-        // TODO: set the things account.setName(name);
+        // TODO: set the things
         return Response.noContent().build();
     }
 }
