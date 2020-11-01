@@ -2,8 +2,6 @@ package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.*;
-import fontys.sem3.service.model.Penalty;
-import fontys.sem3.service.model.Player;
 import java.time.LocalDateTime;
 
 @SuppressWarnings("WeakerAccess")

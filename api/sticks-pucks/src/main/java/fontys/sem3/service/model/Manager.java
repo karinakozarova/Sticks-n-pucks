@@ -1,7 +1,6 @@
 package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 
 @SuppressWarnings("WeakerAccess")
 @XmlRootElement

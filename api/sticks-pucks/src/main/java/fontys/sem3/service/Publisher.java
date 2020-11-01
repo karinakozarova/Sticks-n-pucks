@@ -3,12 +3,8 @@ package fontys.sem3.service;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.grizzly.http.server.HttpServer;
 
-import javax.ws.rs.core.UriBuilder;
-import java.awt.event.KeyEvent;
-import java.io.Console;
 import java.io.IOException;
 import java.net.URI;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
@@ -48,8 +44,7 @@ class Publisher {
         try {
             CustomApplicationConfig customApplicationConfig = new CustomApplicationConfig();
             // create and start a grizzly server
-            HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, customApplicationConfig, true);
-
+            GrizzlyHttpServerFactory.createHttpServer(BASE_URI, customApplicationConfig, true);
             System.out.println("Hosting resources at " + BASE_URI.toURL());
 
         } catch (IOException ex) {

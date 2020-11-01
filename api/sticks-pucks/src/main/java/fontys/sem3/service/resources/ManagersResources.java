@@ -1,7 +1,5 @@
 package fontys.sem3.service.resources;
 
-
-import fontys.sem3.service.model.Account;
 import fontys.sem3.service.model.Manager;
 import fontys.sem3.service.repository.*;
 

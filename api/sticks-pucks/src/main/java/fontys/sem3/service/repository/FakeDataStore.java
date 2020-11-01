@@ -25,11 +25,11 @@ public class FakeDataStore {
     public FakeDataStore() {
         LocalDate date = LocalDate.now(); // Create a date object
 
-        users.add(new Account(1, "Ron Berteling", "test@test.test", LocalDate.now()));
-        users.add(new Account(2, "NiCo", "test@test.test", LocalDate.now()));
-        users.add(new Account(3, "Roger", "test@test.test", LocalDate.now()));
-        users.add(new Account(4, "Rebecca", "test@test.test", LocalDate.now()));
-        users.add(new Account(5, "Karina", "test@test.test", LocalDate.now()));
+        users.add(new Account(1, "Ron Berteling", "test@test.test", date));
+        users.add(new Account(2, "NiCo", "test1@test.test", date));
+        users.add(new Account(3, "Roger", "test2@test.test", date));
+        users.add(new Account(4, "Rebecca", "test3@test.test", date));
+        users.add(new Account(5, "Karina", "test4@test.test", date));
 
         managers.add(new Manager(2, "Kemphanen Owner"));
         managers.add(new Manager(1, "Icehawks GM"));
@@ -103,7 +103,7 @@ public class FakeDataStore {
         return null;
     }
     public List<Game> getGames(String teamName) {
-        List<Game> playedGames = new ArrayList<Game>();
+        List<Game> playedGames = new ArrayList<>();
         for (Game game : games) {
             if (game.teamPlays(teamName))
                 playedGames.add(game);
