@@ -16,12 +16,12 @@ class GamesControllerTests {
     protected GamesController controller;
 
     @Test
-    protected void contextLoads() {
+    void contextLoads() {
         assertThat(controller).isNotNull();
     }
 
     @Test
-    protected void AllGamesCanBeRetrieved() throws IOException {
+    void AllGamesCanBeRetrieved() throws IOException {
         assertTrue(!controller.getAllGames().isEmpty());
     }
 }

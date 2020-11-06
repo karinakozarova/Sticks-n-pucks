@@ -21,34 +21,34 @@ public class ApiControllerTests {
     private MockMvc mockMvc;
 
     @Test
-    protected void getBaseAPICallUrlReturnsAString() throws MalformedURLException, URISyntaxException {
+    void getBaseAPICallUrlReturnsAString() throws MalformedURLException, URISyntaxException {
         String url = ApiController.getBaseAPICallUrl();
         assertFalse(Strings.isNullOrEmpty(String.valueOf(new URL(url).toURI())));
     }
 
     @Test
-    protected void postAPIResult_ReturnsSuccess() throws IOException {
+    void postAPIResult_ReturnsSuccess() throws IOException {
         String urlPath = "https://reqbin.com/sample/post/json";
         int result = ApiController.postToAPI(urlPath);
         assertEquals(200, result);
     }
 
     @Test
-    protected void postAPIResult_ReturnsSuccessAmaNe() throws IOException {
+    void postAPIResult_ReturnsSuccessAmaNe() throws IOException {
         String urlPath = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka";
         int result = ApiController.postToAPI(urlPath);
         assertEquals(411, result);
     }
 
     @Test
-    protected void putAPIResult_ReturnsSuccess() throws IOException {
+    void putAPIResult_ReturnsSuccess() throws IOException {
         String urlPath = "https://reqbin.com/sample/put/json";
         int result = ApiController.putToAPI(urlPath);
         assertEquals(200, result);
     }
 
     @Test
-    protected void deleteAPIResult_ReturnsSuccess() throws IOException {
+    void deleteAPIResult_ReturnsSuccess() throws IOException {
         String urlPath = "https://reqbin.com/sample/delete/json";
         int result = ApiController.deleteFromAPI(urlPath);
         assertEquals(200, result);
