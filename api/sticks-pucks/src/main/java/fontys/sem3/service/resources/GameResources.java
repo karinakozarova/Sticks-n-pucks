@@ -46,7 +46,7 @@ public class GameResources {
     public Response getCaptainPath(@PathParam("id") int id) {
         Team team = dataStore.getTeam(id);
         if (team == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
         } else {
             Player captain = team.getCaptain();
             return Response.ok(captain).build();
@@ -59,7 +59,7 @@ public class GameResources {
     public Response getAsistantsPath(@PathParam("id") int id) {
         Team team = dataStore.getTeam(id);
         if (team == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
         } else {
             List<Player> assistants = team.getAssistants();
             return Response.ok(assistants).build();
@@ -72,14 +72,13 @@ public class GameResources {
     public Response getPlayersPath(@PathParam("id") int id) {
         Team team = dataStore.getTeam(id);
         if (team == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
         } else {
             List<Player> players = team.getPlayers();
             return Response.ok(players).build();
         }
     }
 
-    // TODO: test that
     @POST //POST at http://localhost:XXXX/team/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Team team) {
@@ -93,7 +92,6 @@ public class GameResources {
         }
     }
 
-    // TODO: test that
     @PUT //PUT at http://localhost:XXXX/account/
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
@@ -101,7 +99,7 @@ public class GameResources {
         if (dataStore.update(team)) {
             return Response.noContent().build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.NOT_FOUND).entity(Constants.VALID_ID_MESSAGE).build();
         }
     }
 }

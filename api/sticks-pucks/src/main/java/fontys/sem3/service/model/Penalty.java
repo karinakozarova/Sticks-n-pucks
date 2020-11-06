@@ -7,11 +7,11 @@ import java.util.*;
 @XmlRootElement
 public class Penalty {
     public enum Length {
-        life,
-        match,
-        tenminutes,
-        fiveminutes,
-        twominutes,
+        LIFE,
+        MATCH,
+        TENMINUTES,
+        FIVEMINUTES,
+        TWOMINUTES,
     }
 
     private String name;

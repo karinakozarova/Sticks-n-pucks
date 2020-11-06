@@ -19,14 +19,14 @@ public class Player{
         L,
         R
     }
-    private int account_id;
+    private int accountId;
     private int height;
     private int weight;
     private Position position;
     private Shoots shoots;
 
     public Player(int id, int height, int weight, Position position, Shoots shoots) {
-        this.account_id = id;
+        this.accountId = id;
         this.height = height;
         this.weight = weight;
         this.position = position;
@@ -38,7 +38,7 @@ public class Player{
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         Player player = (Player) object;
-        return account_id == player.account_id &&
+        return accountId == player.accountId &&
                 height == player.height &&
                 weight == player.weight &&
                 position == player.position &&
@@ -46,15 +46,15 @@ public class Player{
     }
 
     public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), account_id, height, weight, position, shoots);
+        return java.util.Objects.hash(super.hashCode(), accountId, height, weight, position, shoots);
     }
 
-    public int getAccount_id() {
-        return account_id;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public int getHeight() {

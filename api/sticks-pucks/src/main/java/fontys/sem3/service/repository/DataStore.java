@@ -65,7 +65,7 @@ public class DataStore {
 
     public Player getPlayer(int id) {
         for (Player account : players) {
-            if (account.getAccount_id() == id)
+            if (account.getAccountId() == id)
                 return account;
         }
         return null;
@@ -73,7 +73,7 @@ public class DataStore {
 
     public Manager getManager(int id) {
         for (Manager account : managers) {
-            if (account.getAccount_id() == id)
+            if (account.getAccountId() == id)
                 return account;
         }
         return null;
@@ -191,20 +191,20 @@ public class DataStore {
     }
 
     public boolean update(Manager account) {
-        Manager old = this.getManager(account.getAccount_id());
+        Manager old = this.getManager(account.getAccountId());
         if (old == null) {
             return false;
         }
-       // TODO: set the fields here
+       // set the fields here
         return true;
     }
 
     public boolean update(Player account) {
-        Player old = this.getPlayer(account.getAccount_id());
+        Player old = this.getPlayer(account.getAccountId());
         if (old == null) {
             return false;
         }
-        // TODO: set the fields here
+        // set the fields here
         return true;
     }
 
@@ -214,7 +214,7 @@ public class DataStore {
         if (old == null) {
             return false;
         }
-        // TODO: set the fields here
+        // set the fields here
         return true;
     }
 }

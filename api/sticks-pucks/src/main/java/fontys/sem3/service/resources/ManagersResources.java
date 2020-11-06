@@ -30,7 +30,7 @@ public class ManagersResources {
     public Response getManagerPath(@PathParam("id") int id) {
         Manager account = dataStore.getManager(id);
         if (account == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
         } else {
             return Response.ok(account).build();
         }
@@ -43,21 +43,19 @@ public class ManagersResources {
         return Response.noContent().build();
     }
 
-    // TODO: test that
     @POST //POST at http://localhost:XXXX/account/manager/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Manager account) {
         if (!dataStore.add(account)){
-            String entity =  "Account with id " + account.getAccount_id() + " already exists.";
+            String entity =  "Account with id " + account.getAccountId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
         } else {
-            String url = uriInfo.getAbsolutePath() + "/" + account.getAccount_id(); // url of the created account
+            String url = uriInfo.getAbsolutePath() + "/" + account.getAccountId(); // url of the created account
             URI uri = URI.create(url);
             return Response.created(uri).build();
         }
     }
 
-    // TODO: test that
     @PUT //PUT at http://localhost:XXXX/account/manager
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
@@ -65,22 +63,20 @@ public class ManagersResources {
         if (dataStore.update(account)) {
             return Response.noContent().build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.NOT_FOUND).entity(Constants.VALID_ID_MESSAGE).build();
         }
     }
 
-    // TODO: test that
-    // TODO: fix the parameters here
-    @PUT //PUT at http://localhost:XXXX/account/manager/{id}
+    @PUT //PUT at http://localhost:XXXX/account/manager/id
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}")
     public Response updateUser(@PathParam("id") int id,  @FormParam("name") String name) {
         Manager account = dataStore.getManager(id);
         if (account == null){
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.NOT_FOUND).entity(Constants.VALID_ID_MESSAGE).build();
         }
 
-        // TODO: set the fields here like for example: account.setName(name);
+        // set the fields here like for example account.setName(name)
         return Response.noContent().build();
     }
 }

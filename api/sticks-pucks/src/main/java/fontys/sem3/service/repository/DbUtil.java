@@ -17,19 +17,19 @@ public class DbUtil {
         // hide the default constructor
     }
 
-    public static Connection GetConnection() throws SQLException, ClassNotFoundException {
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(dbUrl, dbUsername, "1234");
     }
 
-    public static List<Account> GetUsers() {
+    public static List<Account> getUsers() {
         ResultSet result = null;
         Connection connection = null;
         PreparedStatement query = null;
         List<Account> users = new ArrayList<>();
 
         try {
-            connection = DbUtil.GetConnection();
+            connection = DbUtil.getConnection();
             query = connection.prepareStatement("SELECT * FROM account");
             result = query.executeQuery();
             while (result.next()) {

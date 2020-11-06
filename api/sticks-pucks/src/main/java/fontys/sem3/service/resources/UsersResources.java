@@ -11,7 +11,7 @@ import java.util.List;
 
 @Path("/account")
 public class UsersResources {
-    private static final String DEFAULT_ERROR_MESSAGE = "Please provide a valid id.";
+    private static final String DEFAULT_ERROR_MESSAGE = Constants.VALID_ID_MESSAGE;
 
     @Context
     private UriInfo uriInfo;

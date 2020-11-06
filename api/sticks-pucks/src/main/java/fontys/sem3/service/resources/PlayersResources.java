@@ -31,27 +31,25 @@ public class PlayersResources {
     public Response getPlayerPath(@PathParam("id") int id) {
         Player account = dataStore.getPlayer(id);
         if (account == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
         } else {
             return Response.ok(account).build();
         }
     }
 
-    // TODO: test that
     @POST //POST at http://localhost:XXXX/account/player/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Player account) {
         if (!dataStore.add(account)) {
-            String entity = "Account with id " + account.getAccount_id() + " already exists.";
+            String entity = "Account with id " + account.getAccountId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
         } else {
-            String url = uriInfo.getAbsolutePath() + "/" + account.getAccount_id(); // url of the created account
+            String url = uriInfo.getAbsolutePath() + "/" + account.getAccountId(); // url of the created account
             URI uri = URI.create(url);
             return Response.created(uri).build();
         }
     }
 
-    // TODO: test that
     @PUT //PUT at http://localhost:XXXX/account/player
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
@@ -59,21 +57,20 @@ public class PlayersResources {
         if (dataStore.update(account)) {
             return Response.noContent().build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.NOT_FOUND).entity(Constants.VALID_ID_MESSAGE).build();
         }
     }
 
-    // TODO: test that
     @PUT //PUT at http://localhost:XXXX/account/player/id
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}")
     public Response updateUser(@PathParam("id") int id, @FormParam("name") String name) {
         Player account = dataStore.getPlayer(id);
         if (account == null) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Please provide a valid id.").build();
+            return Response.status(Response.Status.NOT_FOUND).entity(Constants.VALID_ID_MESSAGE).build();
         }
 
-        // TODO: set the things
+        // set the things here
         return Response.noContent().build();
     }
 }

@@ -3,10 +3,7 @@ package fontys.sem3.service;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import fontys.sem3.service.repository.*;
 
-import java.io.IOException;
 import java.net.URI;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.sql.*;
 
 /**

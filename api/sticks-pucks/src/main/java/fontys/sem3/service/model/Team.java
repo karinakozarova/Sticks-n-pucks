@@ -67,7 +67,7 @@ public class Team {
     }
 
     public void addAssistant(Player player) {
-        // TODO: add check - part of the team
+        // add check - part of the team
         this.assistants.add(player);
     }
 
