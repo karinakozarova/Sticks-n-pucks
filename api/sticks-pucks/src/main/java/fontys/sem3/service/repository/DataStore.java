@@ -51,8 +51,6 @@ public class DataStore {
         players.add(player);
         players.add(new Player(2, 180, 80, center, left));
         players.add(new Player(3, 123, 55, center, left));
-
-        games.add(new Game(1, hanen, hawks, LocalDateTime.now(),  LocalDateTime.now(), "",null, null));
     }
 
     public Account getUser(int id) {

@@ -21,10 +21,6 @@ public class DatabaseQueries {
     }
 
     public static List<Account> getUsers() {
-       return getUsers(Constants.EMPTY_STRING);
-    }
-
-    public static List<Account> getUsers(String whereClause) {
         ResultSet result = null;
         Connection connection = null;
         PreparedStatement query = null;
@@ -32,7 +28,7 @@ public class DatabaseQueries {
 
         try {
             connection = DbUtil.getConnection();
-            query = connection.prepareStatement("SELECT * FROM account" + whereClause);
+            query = connection.prepareStatement("SELECT * FROM account");
             result = query.executeQuery();
             while (result.next()) {
                 String dob = result.getString("date_of_birth");

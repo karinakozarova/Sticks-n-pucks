@@ -10,9 +10,8 @@ public class Game {
     private int id;
     private Team host;
     private Team guest;
-    private LocalDateTime start;
-    private LocalDateTime end;
-    private String rinkLocation; // the address of the ice rink used for home games
+
+    private GameInformation gameInformation;
 
     private List<Player> guestsRoster;
     private List<Player> homeRoster;
@@ -23,13 +22,14 @@ public class Game {
     /**
      * Constructor
      */
-    public Game(int id, Team host, Team guest, LocalDateTime start, LocalDateTime end, String rinkLocation, List<Player> guestsRoster, List<Player> homeRoster) {
+    public Game(int id, Team host, Team guest, GameInformation gameInformation, List<Player> guestsRoster, List<Player> homeRoster) {
         this.id = id;
+
         this.host = host;
         this.guest = guest;
-        this.start = start;
-        this.end = end;
-        this.rinkLocation = rinkLocation;
+
+        this.gameInformation = gameInformation;
+
         this.guestsRoster = guestsRoster;
         this.homeRoster = homeRoster;
     }
@@ -40,30 +40,6 @@ public class Game {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public LocalDateTime getStart() {
-        return start;
-    }
-
-    public void setStart(LocalDateTime start) {
-        this.start = start;
-    }
-
-    public LocalDateTime getEnd() {
-        return end;
-    }
-
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
-    }
-
-    public String getRinkLocation() {
-        return rinkLocation;
-    }
-
-    public void setRinkLocation(String rinkLocation) {
-        this.rinkLocation = rinkLocation;
     }
 
     public List<Player> getGuestsRoster() {
@@ -114,7 +90,44 @@ public class Game {
         this.guest = guest;
     }
 
-    public boolean teamPlays(String teamName){
+    public GameInformation getGameInformation() {
+        return gameInformation;
+    }
+
+    public void setGameInformation(GameInformation gameInformation) {
+        this.gameInformation = gameInformation;
+    }
+
+    public boolean teamPlays(String teamName) {
         return host.getName().equals(teamName) || guest.getName().equals(teamName);
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Game game = (Game) object;
+        return id == game.id &&
+                java.util.Objects.equals(host, game.host) &&
+                java.util.Objects.equals(guest, game.guest) &&
+                java.util.Objects.equals(gameInformation, game.gameInformation) &&
+                java.util.Objects.equals(guestsRoster, game.guestsRoster) &&
+                java.util.Objects.equals(homeRoster, game.homeRoster) &&
+                java.util.Objects.equals(goals, game.goals) &&
+                java.util.Objects.equals(penalties, game.penalties);
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", host=" + host +
+                ", guest=" + guest +
+                ", gameInformation=" + gameInformation +
+                ", guestsRoster=" + guestsRoster +
+                ", homeRoster=" + homeRoster +
+                ", goals=" + goals +
+                ", penalties=" + penalties +
+                '}';
     }
 }
