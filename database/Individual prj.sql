@@ -2,7 +2,7 @@ CREATE TABLE `Account` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
-  `date_of_birth` dateTime,
+  `date_of_birth` date,
   `email` varchar(255)
 );
 
