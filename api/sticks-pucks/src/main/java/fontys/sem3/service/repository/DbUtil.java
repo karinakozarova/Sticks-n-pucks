@@ -12,7 +12,6 @@ import java.util.Date;
 public class DbUtil {
     private static String dbUrl = "jdbc:mysql://studmysql01.fhict.local/dbi426146";
     private static String dbUsername = "dbi426146";
-    private static String dbPassword = "1234";
 
     private DbUtil() {
         // hide the default constructor
@@ -20,7 +19,7 @@ public class DbUtil {
 
     public static Connection GetConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        return DriverManager.getConnection(dbUrl, dbUsername, "1234");
     }
 
     public static List<Account> GetUsers() {
@@ -38,9 +37,8 @@ public class DbUtil {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
                 users.add(new Account(result.getInt("id"), result.getString("first_name") + result.getString("last_name"), result.getString("email"), date));
             }
-            // System.out.println(users); // for debugging only
         } catch (Exception e) {
-            System.err.println(e.toString());
+            // empty
         } finally {
             if (result != null) try {
                 result.close();

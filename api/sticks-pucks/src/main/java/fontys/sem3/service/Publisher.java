@@ -1,7 +1,6 @@
 package fontys.sem3.service;
 
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.grizzly.http.server.HttpServer;
 import fontys.sem3.service.repository.*;
 
 import java.io.IOException;
@@ -21,7 +20,7 @@ class Publisher {
             CustomApplicationConfig customApplicationConfig = new CustomApplicationConfig();
             // create and start a grizzly server
             GrizzlyHttpServerFactory.createHttpServer(BASE_URI, customApplicationConfig, true);
-            System.out.println("Hosting resources at " + BASE_URI.toURL());
+            // System.out.println("Hosting resources at " + BASE_URI.toURL());
         } catch (IOException ex) {
             Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
         }

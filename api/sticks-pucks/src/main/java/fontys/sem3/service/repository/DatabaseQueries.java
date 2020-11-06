@@ -35,7 +35,6 @@ public class DatabaseQueries {
             }
         } catch (Exception e) {
             // Do nothing
-            // e.printStackTrace();
         } finally {
             if (result != null) try {
                 result.close();
