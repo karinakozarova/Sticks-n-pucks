@@ -1,7 +1,6 @@
 package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @SuppressWarnings("WeakerAccess")
@@ -100,21 +99,6 @@ public class Game {
 
     public boolean teamPlays(String teamName) {
         return host.getName().equals(teamName) || guest.getName().equals(teamName);
-    }
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Game game = (Game) object;
-        return id == game.id &&
-                java.util.Objects.equals(host, game.host) &&
-                java.util.Objects.equals(guest, game.guest) &&
-                java.util.Objects.equals(gameInformation, game.gameInformation) &&
-                java.util.Objects.equals(guestsRoster, game.guestsRoster) &&
-                java.util.Objects.equals(homeRoster, game.homeRoster) &&
-                java.util.Objects.equals(goals, game.goals) &&
-                java.util.Objects.equals(penalties, game.penalties);
     }
 
     @java.lang.Override

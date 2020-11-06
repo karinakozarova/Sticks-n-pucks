@@ -20,6 +20,10 @@ public class DatabaseQueries {
         // To hide the default contructor
     }
 
+    /***
+     *  Get all registered users
+     * @return list of users
+     */
     public static List<Account> getUsers() {
         ResultSet result = null;
         Connection connection = null;

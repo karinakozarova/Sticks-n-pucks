@@ -43,16 +43,6 @@ public class GameInformation {
         this.rinkLocation = rinkLocation;
     }
 
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        GameInformation that = (GameInformation) object;
-        return start.equals(that.start) &&
-                end.equals(that.end) &&
-                rinkLocation.equals(that.rinkLocation);
-    }
-
     @java.lang.Override
     public java.lang.String toString() {
         return "GameInformation{" +
