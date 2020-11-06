@@ -2,7 +2,6 @@ package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.*;
-import fontys.sem3.service.model.Player;
 import java.time.LocalDateTime;
 
 @SuppressWarnings("WeakerAccess")
@@ -12,6 +11,9 @@ public class Goal {
     private List<Player> assists;
     private LocalDateTime receivedAt;
 
+    /**
+     * Constructor
+     */
     public Goal(Player player, List<Player> assists, LocalDateTime receivedAt) {
         this.player = player;
         this.assists = assists;

@@ -11,18 +11,18 @@ import java.util.List;
 
 @Path("/account")
 public class UsersResources {
-    private static final String DEFAULT_ERROR_MESSAGE = "Please provide a valid id.";
+    private static final String DEFAULT_ERROR_MESSAGE = Constants.VALID_ID_MESSAGE;
 
     @Context
     private UriInfo uriInfo;
     // this has to be static because the service is stateless:
-    private static final FakeDataStore fakeDataStore = new FakeDataStore();
+    private static final DataStore dataStore = new DataStore();
 
     @GET //GET at http://localhost:XXXX/account/3
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserPath(@PathParam("id") int id) {
-        Account account = fakeDataStore.getUser(id);
+        Account account = dataStore.getUser(id);
         if (account == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity(DEFAULT_ERROR_MESSAGE).build();
         } else {
@@ -33,7 +33,7 @@ public class UsersResources {
     @GET //GET at http://localhost:XXXX/account
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUsers() {
-        List<Account> users = fakeDataStore.getUsers();
+        List<Account> users = dataStore.getUsers();
         GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
         return Response.ok(entity).build();
     }
@@ -41,7 +41,7 @@ public class UsersResources {
     @DELETE //DELETE at http://localhost:XXXX/account/3
     @Path("{id}")
     public Response deleteUser(@PathParam("id") int stNr) {
-        fakeDataStore.deleteUser(stNr);
+        dataStore.deleteUser(stNr);
         // Idempotent method. Always return the same response (even if the resource has already been deleted before).
         return Response.noContent().build();
     }
@@ -49,7 +49,7 @@ public class UsersResources {
     @POST //POST at http://localhost:XXXX/account/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Account account) {
-        if (!fakeDataStore.add(account)){
+        if (!dataStore.add(account)){
             String entity =  "Account with id " + account.getId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
         } else {
@@ -63,7 +63,7 @@ public class UsersResources {
     @Path("{name}/{email}")
     public Response updateUser(@PathParam("name") String name, @PathParam("email") String email) {
         Account account = new Account(name, email);
-        fakeDataStore.add(account);
+        dataStore.add(account);
         return Response.noContent().build();
     }
 
@@ -71,7 +71,7 @@ public class UsersResources {
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}/{name}")
     public Response updateUser(@PathParam("id") int id,  @PathParam("name") String name) {
-        Account account = fakeDataStore.getUser(id);
+        Account account = dataStore.getUser(id);
         if (account == null){
             return Response.status(Response.Status.NOT_FOUND).entity(DEFAULT_ERROR_MESSAGE).build();
         }

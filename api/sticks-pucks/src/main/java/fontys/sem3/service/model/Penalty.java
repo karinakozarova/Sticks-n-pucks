@@ -7,17 +7,20 @@ import java.util.*;
 @XmlRootElement
 public class Penalty {
     public enum Length {
-        life,
-        match,
-        tenminutes,
-        fiveminutes,
-        twominutes,
+        LIFE,
+        MATCH,
+        TENMINUTES,
+        FIVEMINUTES,
+        TWOMINUTES,
     }
 
     private String name;
     private String description;
     private Length length;
 
+    /**
+     * Constructor
+     */
     public Penalty(String name, String description, fontys.sem3.service.model.Penalty.Length length) {
         this.name = name;
         this.description = description;

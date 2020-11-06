@@ -2,7 +2,7 @@ package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
-import java.time.LocalDate;
+import java.util.Date;
 
 @SuppressWarnings("WeakerAccess")
 @XmlRootElement
@@ -10,7 +10,7 @@ public class Account {
     private int id;
     private String name;
     private String email;
-    private LocalDate birtdate;
+    private Date birtdate;
 
     public String getEmail() {
         return email;
@@ -20,13 +20,19 @@ public class Account {
         this.email = email;
     }
 
-    public Account(int id, String name, String email, LocalDate birtdate) {
+    /**
+     * Constructor
+     */
+    public Account(int id, String name, String email, Date birtdate) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.birtdate = birtdate;
     }
 
+    /**
+     * Constructor
+     */
     public Account(String name, String email) {
         this.name = name;
         this.email = email;
@@ -40,11 +46,11 @@ public class Account {
         this.id = id;
     }
 
-    public LocalDate getBirtdate() {
+    public Date getBirtdate() {
         return birtdate;
     }
 
-    public void setBirtdate(LocalDate birtdate) {
+    public void setBirtdate(Date birtdate) {
         this.birtdate = birtdate;
     }
 
@@ -73,6 +79,7 @@ public class Account {
     public java.lang.String toString() {
         return "Account{" +
                 "name='" + name + '\'' +
+                ", email=" + email +
                 ", birtdate=" + birtdate +
                 '}';
     }

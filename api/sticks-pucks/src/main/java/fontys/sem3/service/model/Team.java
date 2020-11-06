@@ -1,9 +1,6 @@
 package fontys.sem3.service.model;
 
-import fontys.sem3.service.model.Player;
-
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +15,16 @@ public class Team {
     private List<Player> assistants;
     private List<Player> players;
 
+    /**
+     * Constructor
+     */
     public Team(int id, String name, String logoResourceLocation, String rinkLocation) {
         this.id = id;
         this.name = name;
         this.logoResourceLocation = logoResourceLocation;
         this.rinkLocation = rinkLocation;
-        this.assistants = new ArrayList<Player>();
-        this.players = new ArrayList<Player>();
+        this.assistants = new ArrayList<>();
+        this.players = new ArrayList<>();
     }
 
     public List<Player> getPlayers() {
@@ -70,7 +70,7 @@ public class Team {
     }
 
     public void addAssistant(Player player) {
-        // TODO: add check - part of the team
+        // add check - part of the team
         this.assistants.add(player);
     }
 

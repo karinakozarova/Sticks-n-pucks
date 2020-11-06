@@ -1,30 +1,35 @@
 package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 
 @SuppressWarnings("WeakerAccess")
 @XmlRootElement
 public class Manager {
-    private int account_id;
+    private int accountId;
     private String role;
 
+    /**
+     * Constructor
+     */
     public Manager(int id) {
-        this.account_id = id;
+        this.accountId = id;
         this.role = "Manager";
     }
 
+    /**
+     * Constructor
+     */
     public Manager(int id, String role) {
-        this.account_id = id;
+        this.accountId = id;
         this.role = role;
     }
 
-    public int getAccount_id() {
-        return account_id;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public String getRole() {
@@ -40,18 +45,18 @@ public class Manager {
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
         Manager manager = (Manager) object;
-        return account_id == manager.account_id &&
+        return accountId == manager.accountId &&
                 role.equals(manager.role);
     }
 
     public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), account_id, role);
+        return java.util.Objects.hash(super.hashCode(), accountId, role);
     }
 
     @java.lang.Override
     public java.lang.String toString() {
         return "Manager{" +
-                "account_id=" + account_id +
+                "account_id=" + accountId +
                 ", role='" + role + '\'' +
                 '}';
     }

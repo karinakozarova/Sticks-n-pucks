@@ -10,10 +10,11 @@ import fontys.sem3.service.model.Player.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
+import java.util.Date;
 import java.time.LocalDateTime;
+import java.sql.*;
 
-public class FakeDataStore {
+public class DataStore {
     private final List<Game> games = new ArrayList<>();
     private final List<Team> teams = new ArrayList<>();
     private final List<Account> users = new ArrayList<>();
@@ -21,20 +22,20 @@ public class FakeDataStore {
     private final List<Player> players = new ArrayList<>();
     private final List<Penalty> penalties = new ArrayList<>();
 
-    public FakeDataStore() {
-        LocalDate date = LocalDate.now(); // Create a date object
+    public DataStore() {
+        Date date = new Date(System.currentTimeMillis());
 
-        users.add(new Account(1, "Ron Berteling", "test@test.test", LocalDate.now()));
-        users.add(new Account(2, "NiCo", "test@test.test", LocalDate.now()));
-        users.add(new Account(3, "Roger", "test@test.test", LocalDate.now()));
-        users.add(new Account(4, "Rebecca", "test@test.test", LocalDate.now()));
-        users.add(new Account(5, "Karina", "test@test.test", LocalDate.now()));
+        users.add(new Account(1, "Ron Berteling", "test@test.test", date));
+        users.add(new Account(2, "NiCo", "test1@test.test", date));
+        users.add(new Account(3, "Roger", "test2@test.test", date));
+        users.add(new Account(4, "Rebecca", "test3@test.test", date));
+        users.add(new Account(5, "Karina", "test4@test.test", date));
 
         managers.add(new Manager(2, "Kemphanen Owner"));
         managers.add(new Manager(1, "Icehawks GM"));
 
-        penalties.add(new Penalty( "Roughing", "Roughing shall be considered any act where a player uses unnecessary force to push or shove an opponent or makes avoidable physical contact with an opponent after the whistle.", Penalty.Length.tenminutes));
-        penalties.add(new Penalty( "Fighting", "The player started a fight on the ice", Penalty.Length.fiveminutes));
+        penalties.add(new Penalty( "Roughing", "Roughing shall be considered any act where a player uses unnecessary force to push or shove an opponent or makes avoidable physical contact with an opponent after the whistle.", Penalty.Length.TENMINUTES));
+        penalties.add(new Penalty( "Fighting", "The player started a fight on the ice", Penalty.Length.FIVEMINUTES));
 
         Team hawks = new Team(1, "Icehawks", "server/pics/1", "IJssportcentrum Eindhoven");
         Team hanen = new Team(2, "Kemphanen", "server/pics/2", "IJssportcentrum Eindhoven");
@@ -64,7 +65,7 @@ public class FakeDataStore {
 
     public Player getPlayer(int id) {
         for (Player account : players) {
-            if (account.getAccount_id() == id)
+            if (account.getAccountId() == id)
                 return account;
         }
         return null;
@@ -72,7 +73,7 @@ public class FakeDataStore {
 
     public Manager getManager(int id) {
         for (Manager account : managers) {
-            if (account.getAccount_id() == id)
+            if (account.getAccountId() == id)
                 return account;
         }
         return null;
@@ -102,7 +103,7 @@ public class FakeDataStore {
         return null;
     }
     public List<Game> getGames(String teamName) {
-        List<Game> playedGames = new ArrayList<Game>();
+        List<Game> playedGames = new ArrayList<>();
         for (Game game : games) {
             if (game.teamPlays(teamName))
                 playedGames.add(game);
@@ -115,7 +116,7 @@ public class FakeDataStore {
     public List<Team> getTeams() { return teams; }
     public List<Penalty> getAllPenalties() { return penalties; }
     public List<Account> getUsers() {
-        return users;
+        return DatabaseQueries.getUsers();
     }
     public List<Manager> getManagers() {
         return managers;
@@ -190,20 +191,20 @@ public class FakeDataStore {
     }
 
     public boolean update(Manager account) {
-        Manager old = this.getManager(account.getAccount_id());
+        Manager old = this.getManager(account.getAccountId());
         if (old == null) {
             return false;
         }
-       // TODO: set the fields here
+       // set the fields here
         return true;
     }
 
     public boolean update(Player account) {
-        Player old = this.getPlayer(account.getAccount_id());
+        Player old = this.getPlayer(account.getAccountId());
         if (old == null) {
             return false;
         }
-        // TODO: set the fields here
+        // set the fields here
         return true;
     }
 
@@ -213,7 +214,7 @@ public class FakeDataStore {
         if (old == null) {
             return false;
         }
-        // TODO: set the fields here
+        // set the fields here
         return true;
     }
 }

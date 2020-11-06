@@ -1,7 +1,6 @@
 package fontys.sem3.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Objects;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,6 +20,9 @@ public class Game {
     private List<Goal> goals;
     private List<Penalty> penalties;
 
+    /**
+     * Constructor
+     */
     public Game(int id, Team host, Team guest, LocalDateTime start, LocalDateTime end, String rinkLocation, List<Player> guestsRoster, List<Player> homeRoster) {
         this.id = id;
         this.host = host;
