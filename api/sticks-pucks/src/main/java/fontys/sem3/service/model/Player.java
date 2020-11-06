@@ -25,6 +25,9 @@ public class Player{
     private Position position;
     private Shoots shoots;
 
+    /**
+     * Constructor
+     */
     public Player(int id, int height, int weight, Position position, Shoots shoots) {
         this.accountId = id;
         this.height = height;

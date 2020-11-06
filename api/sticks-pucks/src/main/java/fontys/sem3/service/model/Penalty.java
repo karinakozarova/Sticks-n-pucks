@@ -18,6 +18,9 @@ public class Penalty {
     private String description;
     private Length length;
 
+    /**
+     * Constructor
+     */
     public Penalty(String name, String description, fontys.sem3.service.model.Penalty.Length length) {
         this.name = name;
         this.description = description;

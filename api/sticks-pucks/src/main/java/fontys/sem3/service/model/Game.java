@@ -20,6 +20,9 @@ public class Game {
     private List<Goal> goals;
     private List<Penalty> penalties;
 
+    /**
+     * Constructor
+     */
     public Game(int id, Team host, Team guest, LocalDateTime start, LocalDateTime end, String rinkLocation, List<Player> guestsRoster, List<Player> homeRoster) {
         this.id = id;
         this.host = host;

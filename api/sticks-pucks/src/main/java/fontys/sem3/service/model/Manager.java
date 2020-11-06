@@ -8,11 +8,17 @@ public class Manager {
     private int accountId;
     private String role;
 
+    /**
+     * Constructor
+     */
     public Manager(int id) {
         this.accountId = id;
         this.role = "Manager";
     }
 
+    /**
+     * Constructor
+     */
     public Manager(int id, String role) {
         this.accountId = id;
         this.role = role;

@@ -9,7 +9,13 @@ import fontys.sem3.service.model.Account;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Class for handling the queries to the database
+ */
 public class DatabaseQueries {
+    /**
+     * Constructor
+     */
     private DatabaseQueries() {
         // To hide the default contructor
     }

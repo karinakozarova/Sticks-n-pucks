@@ -20,6 +20,9 @@ public class Account {
         this.email = email;
     }
 
+    /**
+     * Constructor
+     */
     public Account(int id, String name, String email, Date birtdate) {
         this.id = id;
         this.name = name;
@@ -27,6 +30,9 @@ public class Account {
         this.birtdate = birtdate;
     }
 
+    /**
+     * Constructor
+     */
     public Account(String name, String email) {
         this.name = name;
         this.email = email;

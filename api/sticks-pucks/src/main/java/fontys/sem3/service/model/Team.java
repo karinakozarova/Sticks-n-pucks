@@ -15,6 +15,9 @@ public class Team {
     private List<Player> assistants;
     private List<Player> players;
 
+    /**
+     * Constructor
+     */
     public Team(int id, String name, String logoResourceLocation, String rinkLocation) {
         this.id = id;
         this.name = name;

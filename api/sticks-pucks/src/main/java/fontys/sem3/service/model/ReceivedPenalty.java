@@ -11,6 +11,9 @@ public class ReceivedPenalty {
     private Player player;
     private LocalDateTime receivedAt;
 
+    /**
+     * Constructor
+     */
     public ReceivedPenalty(Penalty penalty, Player player, LocalDateTime receivedAt) {
         this.penalty = penalty;
         this.player = player;
