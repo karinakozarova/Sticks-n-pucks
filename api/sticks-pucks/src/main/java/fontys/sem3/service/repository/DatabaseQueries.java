@@ -25,7 +25,7 @@ public class DatabaseQueries {
         List<Account> users = new ArrayList<>();
 
         try {
-            connection = DbUtil.getConnection();
+            connection = DbUtil.GetConnection();
             query = connection.prepareStatement("SELECT * FROM account" + whereClause);
             result = query.executeQuery();
             while (result.next()) {

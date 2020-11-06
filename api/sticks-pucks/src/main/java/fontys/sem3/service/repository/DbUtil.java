@@ -38,7 +38,6 @@ public class DbUtil {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
                 users.add(new Account(result.getInt("id"), result.getString("first_name") + result.getString("last_name"), result.getString("email"), date));
             }
-            return users;
             // System.out.println(users); // for debugging only
         } catch (Exception e) {
             System.err.println(e.toString());
@@ -53,5 +52,6 @@ public class DbUtil {
                 connection.close();
             } catch (Exception e) { /* ignored */ }
         }
+        return users;
     }
 }
