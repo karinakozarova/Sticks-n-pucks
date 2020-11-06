@@ -2,7 +2,6 @@ package fontys.sem3.service.resources;
 
 import fontys.sem3.service.model.Game;
 import fontys.sem3.service.model.Team;
-import fontys.sem3.service.model.Player;
 import fontys.sem3.service.repository.*;
 
 import javax.ws.rs.*;
@@ -39,28 +38,5 @@ public class GameResources {
         }
     }
 
-    @POST //POST at http://localhost:XXXX/team/
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response createTeam(Team team) {
-        if (!dataStore.add(team)) {
-            String entity = "Team with id " + team.getId() + " already exists.";
-            return Response.status(Response.Status.CONFLICT).entity(entity).build();
-        } else {
-            String url = uriInfo.getAbsolutePath() + "/" + team.getId();
-            URI uri = URI.create(url);
-            return Response.created(uri).build();
-        }
-    }
-
-    @PUT //PUT at http://localhost:XXXX/account/
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public Response updateTeam(Team team) {
-        if (dataStore.update(team)) {
-            return Response.noContent().build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).entity(Constants.VALID_ID_MESSAGE).build();
-        }
-    }
 }
 

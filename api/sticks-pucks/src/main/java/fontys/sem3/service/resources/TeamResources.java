@@ -130,7 +130,7 @@ public class TeamResources {
     @PUT //PUT at http://localhost:XXXX/account/
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response updateAccount(Team team) {
+    public Response updateTeam(Team team) {
         if (dataStore.update(team)) {
             return Response.noContent().build();
         } else {
