@@ -39,12 +39,12 @@ public class PlayersResources {
 
     @POST //POST at http://localhost:XXXX/account/player/
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createPlayerAccount(Player account) {
-        if (!dataStore.add(account)) {
-            String entity = "Account with id " + account.getAccountId() + " already exists.";
+    public Response createPlayerAccount(Player player) {
+        if (!dataStore.add(player)) {
+            String entity = "Player with id " + player.getAccountId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
         } else {
-            String url = uriInfo.getAbsolutePath() + "/" + account.getAccountId(); // url of the created account
+            String url = uriInfo.getAbsolutePath() + "/" + player.getAccountId(); // url of the created account
             URI uri = URI.create(url);
             return Response.created(uri).build();
         }
