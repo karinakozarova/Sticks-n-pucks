@@ -39,23 +39,9 @@ public class GameResources {
         }
     }
 
-
-    @GET //GET at http://localhost:XXXX/team
-    @Path("{id}/captain")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getCaptainPath(@PathParam("id") int id) {
-        Team team = dataStore.getTeam(id);
-        if (team == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
-        } else {
-            Player captain = team.getCaptain();
-            return Response.ok(captain).build();
-        }
-    }
-
     @POST //POST at http://localhost:XXXX/team/
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createAccount(Team team) {
+    public Response createTeam(Team team) {
         if (!dataStore.add(team)) {
             String entity = "Team with id " + team.getId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
@@ -69,7 +55,7 @@ public class GameResources {
     @PUT //PUT at http://localhost:XXXX/account/
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response updateAccount(Team team) {
+    public Response updateTeam(Team team) {
         if (dataStore.update(team)) {
             return Response.noContent().build();
         } else {

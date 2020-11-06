@@ -45,7 +45,7 @@ public class ManagersResources {
 
     @POST //POST at http://localhost:XXXX/account/manager/
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createAccount(Manager account) {
+    public Response createManagerAccount(Manager account) {
         if (!dataStore.add(account)){
             String entity =  "Account with id " + account.getAccountId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
@@ -59,7 +59,7 @@ public class ManagersResources {
     @PUT //PUT at http://localhost:XXXX/account/manager
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response updateAccount(Manager account) {
+    public Response updateManagerAccount(Manager account) {
         if (dataStore.update(account)) {
             return Response.noContent().build();
         } else {

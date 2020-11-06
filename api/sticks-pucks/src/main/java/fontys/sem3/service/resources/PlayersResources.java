@@ -39,7 +39,7 @@ public class PlayersResources {
 
     @POST //POST at http://localhost:XXXX/account/player/
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createAccount(Player account) {
+    public Response createPlayerAccount(Player account) {
         if (!dataStore.add(account)) {
             String entity = "Account with id " + account.getAccountId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
@@ -53,7 +53,7 @@ public class PlayersResources {
     @PUT //PUT at http://localhost:XXXX/account/player
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public Response updateAccount(Player account) {
+    public Response updatePlayerAccount(Player account) {
         if (dataStore.update(account)) {
             return Response.noContent().build();
         } else {

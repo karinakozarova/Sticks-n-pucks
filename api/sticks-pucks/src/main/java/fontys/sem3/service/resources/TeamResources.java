@@ -116,7 +116,7 @@ public class TeamResources {
 
     @POST //POST at http://localhost:XXXX/team/
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createAccount(Team team) {
+    public Response createTeam(Team team) {
         if (!dataStore.add(team)){
             String entity =  "Team with id " + team.getId() + " already exists.";
             return Response.status(Response.Status.CONFLICT).entity(entity).build();
