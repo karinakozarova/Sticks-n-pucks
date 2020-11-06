@@ -16,13 +16,8 @@ class Publisher {
     private static final URI BASE_URI = URI.create("http://localhost:9090/v1/");
 
     public static void main(String[] args) {
-        try {
-            CustomApplicationConfig customApplicationConfig = new CustomApplicationConfig();
-            // create and start a grizzly server
-            GrizzlyHttpServerFactory.createHttpServer(BASE_URI, customApplicationConfig, true);
-            // System.out.println("Hosting resources at " + BASE_URI.toURL());
-        } catch (IOException ex) {
-            Logger.getLogger(Publisher.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        CustomApplicationConfig customApplicationConfig = new CustomApplicationConfig();
+        // create and start a grizzly server
+        GrizzlyHttpServerFactory.createHttpServer(BASE_URI, customApplicationConfig, true);
     }
 }
