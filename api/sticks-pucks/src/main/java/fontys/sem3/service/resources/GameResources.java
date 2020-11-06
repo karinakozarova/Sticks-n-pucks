@@ -1,12 +1,10 @@
 package fontys.sem3.service.resources;
 
 import fontys.sem3.service.model.Game;
-import fontys.sem3.service.model.Team;
 import fontys.sem3.service.repository.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import java.net.URI;
 import java.util.List;
 
 @Path("/games")
