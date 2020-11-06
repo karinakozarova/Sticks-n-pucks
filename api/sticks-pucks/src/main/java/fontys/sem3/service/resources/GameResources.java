@@ -53,32 +53,6 @@ public class GameResources {
         }
     }
 
-    @GET //GET at http://localhost:XXXX/team
-    @Path("{id}/asistants")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAsistantsPath(@PathParam("id") int id) {
-        Team team = dataStore.getTeam(id);
-        if (team == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
-        } else {
-            List<Player> assistants = team.getAssistants();
-            return Response.ok(assistants).build();
-        }
-    }
-
-    @GET //GET at http://localhost:XXXX/team
-    @Path("{id}/roster")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getPlayersPath(@PathParam("id") int id) {
-        Team team = dataStore.getTeam(id);
-        if (team == null) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(Constants.VALID_ID_MESSAGE).build();
-        } else {
-            List<Player> players = team.getPlayers();
-            return Response.ok(players).build();
-        }
-    }
-
     @POST //POST at http://localhost:XXXX/team/
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(Team team) {
