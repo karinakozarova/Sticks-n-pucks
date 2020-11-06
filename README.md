@@ -3,6 +3,13 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Pipeline](https://git.fhict.nl/I426146/sticksnpucks/badges/master/pipeline.svg)](https://git.fhict.nl/I426146/sticksnpucks/badges/master/pipeline)
 
+### API status
+[![Quality gate](http://localhost:9000/api/project_badges/quality_gate?project=sticks-pucks)](http://localhost:9000/dashboard?id=sticks-pucks)
+
+### Web status
+[![Quality gate](http://localhost:9000/api/project_badges/quality_gate?project=com.sticksnpucks%3ASticks-n-pucks)](http://localhost:9000/dashboard?id=com.sticksnpucks%3ASticks-n-pucks)
+
+
 ## Idea
 Sticks’n’pucks is a project whose goal is to make hockey management easier for everyone but mostly for the team managers. Team managers can add their players, captains and team assistants to the application, keep track of what happened during the played games and check for free agents that they can sign to improve their team’s performance. Furthermore, players can see their progress over time, their goals, assists, team roles and penalties and fans can enjoy full statistics of the played games of their team and favourite players.
 
