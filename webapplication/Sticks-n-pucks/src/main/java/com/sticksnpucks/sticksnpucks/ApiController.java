@@ -1,4 +1,4 @@
-package com.sticksnpucks.Sticksnpucks;
+package com.sticksnpucks.sticksnpucks;
 
 import org.springframework.web.bind.annotation.*;
 

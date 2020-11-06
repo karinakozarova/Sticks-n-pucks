@@ -1,4 +1,4 @@
-package com.sticksnpucks.Sticksnpucks;
+package com.sticksnpucks.sticksnpucks;
 
 import org.junit.jupiter.api.*;
 import org.springframework.boot.test.autoconfigure.web.servlet.*;
@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest({TeamsController.class})
-public class TeamsControllerTests {
+class TeamsControllerTests {
     private MockMvc mockMvc;
 
     @BeforeEach

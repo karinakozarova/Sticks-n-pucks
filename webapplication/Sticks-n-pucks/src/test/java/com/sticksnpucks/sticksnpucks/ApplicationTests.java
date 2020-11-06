@@ -1,11 +1,11 @@
-package com.sticksnpucks.Sticksnpucks;
+package com.sticksnpucks.sticksnpucks;
 
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Test class added ONLY to cover main() invocation not covered by application tests.
-public class ApplicationTests {
+class ApplicationTests {
     @Test
     void main() {
         Application.main(new String[]{});

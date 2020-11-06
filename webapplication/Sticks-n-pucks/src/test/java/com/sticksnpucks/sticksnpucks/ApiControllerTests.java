@@ -1,4 +1,4 @@
-package com.sticksnpucks.Sticksnpucks;
+package com.sticksnpucks.sticksnpucks;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +15,7 @@ import java.net.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ApiControllerTests {
+class ApiControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
