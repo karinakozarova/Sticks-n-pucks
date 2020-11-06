@@ -36,9 +36,6 @@ public class DatabaseQueries {
         } catch (Exception e) {
             // Do nothing
         } finally {
-            if (result != null) try {
-                result.close();
-            } catch (Exception e) { /* ignored */ }
             if (query != null) try {
                 query.close();
             } catch (Exception e) { /* ignored */ }

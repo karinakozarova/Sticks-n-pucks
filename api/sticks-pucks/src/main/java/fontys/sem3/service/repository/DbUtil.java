@@ -38,17 +38,21 @@ public class DbUtil {
                 users.add(new Account(result.getInt("id"), result.getString("first_name") + result.getString("last_name"), result.getString("email"), date));
             }
         } catch (Exception e) {
-            // empty
+            // Nothing
         } finally {
-            if (result != null) try {
-                result.close();
-            } catch (Exception e) { /* ignored */ }
-            if (query != null) try {
-                query.close();
-            } catch (Exception e) { /* ignored */ }
-            if (connection != null) try {
-                connection.close();
-            } catch (Exception e) { /* ignored */ }
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (query != null) {
+                    query.close();
+                }
+                if (result != null) {
+                    result.close();
+                }
+            } catch (Exception e) {
+                // Nothing
+            }
         }
         return users;
     }
