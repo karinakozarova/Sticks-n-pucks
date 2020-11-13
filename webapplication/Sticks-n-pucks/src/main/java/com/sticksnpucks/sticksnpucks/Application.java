@@ -1,7 +1,8 @@
 package com.sticksnpucks.sticksnpucks;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.autoconfigure.web.servlet.error.*;
 
 /**
  * Class for starting the application
