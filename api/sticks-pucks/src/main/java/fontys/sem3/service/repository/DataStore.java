@@ -24,11 +24,11 @@ public class DataStore {
     public DataStore() {
         Date date = new Date(System.currentTimeMillis());
 
-        users.add(new Account(1, "Ron Berteling", "test@test.test", date));
-        users.add(new Account(2, "NiCo", "test1@test.test", date));
-        users.add(new Account(3, "Roger", "test2@test.test", date));
-        users.add(new Account(4, "Rebecca", "test3@test.test", date));
-        users.add(new Account(5, "Karina", "test4@test.test", date));
+//        users.add(new Account(1, "Ron Berteling", "test@test.test", date));
+//        users.add(new Account(2, "NiCo", "test1@test.test", date));
+//        users.add(new Account(3, "Roger", "test2@test.test", date));
+//        users.add(new Account(4, "Rebecca", "test3@test.test", date));
+//        users.add(new Account(5, "Karina", "test4@test.test", date));
 
         managers.add(new Manager(2, "Kemphanen Owner"));
         managers.add(new Manager(1, "Icehawks GM"));

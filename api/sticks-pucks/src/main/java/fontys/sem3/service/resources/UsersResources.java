@@ -1,5 +1,6 @@
 package fontys.sem3.service.resources;
 
+import javax.annotation.security.RolesAllowed;
 
 import fontys.sem3.service.model.Account;
 import fontys.sem3.service.repository.*;
@@ -32,6 +33,7 @@ public class UsersResources {
 
     @GET //GET at http://localhost:XXXX/account
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({ "MANAGER" })
     public Response getAllUsers() {
         List<Account> users = dataStore.getUsers();
         GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
@@ -62,8 +64,8 @@ public class UsersResources {
     @POST
     @Path("{name}/{email}")
     public Response updateUser(@PathParam("name") String name, @PathParam("email") String email) {
-        Account account = new Account(name, email);
-        dataStore.add(account);
+       // Account account = new Account(name, email);
+       // dataStore.add(account);
         return Response.noContent().build();
     }
 
@@ -71,12 +73,12 @@ public class UsersResources {
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}/{name}")
     public Response updateUser(@PathParam("id") int id,  @PathParam("name") String name) {
-        Account account = dataStore.getUser(id);
-        if (account == null){
-            return Response.status(Response.Status.NOT_FOUND).entity(DEFAULT_ERROR_MESSAGE).build();
-        }
+       // Account account = dataStore.getUser(id);
+//        if (account == null){
+//            return Response.status(Response.Status.NOT_FOUND).entity(DEFAULT_ERROR_MESSAGE).build();
+//        }
 
-        account.setName(name);
+        // account.setName(name);
         return Response.noContent().build();
     }
 }

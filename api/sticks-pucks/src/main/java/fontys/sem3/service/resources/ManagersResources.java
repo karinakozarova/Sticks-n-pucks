@@ -7,6 +7,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.net.URI;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
+import javax.annotation.security.PermitAll;
 
 @Path("/account/manager")
 public class ManagersResources {
@@ -18,6 +20,8 @@ public class ManagersResources {
 
     @GET //GET at http://localhost:XXXX/account/manager
     @Produces(MediaType.APPLICATION_JSON)
+    // @RolesAllowed({ "MANAGER" })
+    @PermitAll
     public Response getAllManagers() {
         List<Manager> managers = dataStore.getManagers();
         GenericEntity<List<Manager>> entity = new GenericEntity<>(managers) {  };

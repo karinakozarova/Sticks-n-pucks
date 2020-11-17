@@ -1,4 +1,4 @@
-package myrest;
+package fontys.sem3.service;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -16,26 +16,24 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 	@Context
 	private ResourceInfo resourceInfo;
-	
+
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
-		
 		String auth = requestContext.getHeaderString("Authorization");
-		
-		if( auth != null && !auth.isEmpty()) {
-			String[] parts = auth.split(" ");
+
+		if(auth != null && !auth.isEmpty()) {
+			// String[] parts = auth.split(" ");
+			String[] parts = new String[1];
+			parts[1] = auth;
 			String namepwd = new String(Base64.decode(parts[1].getBytes()));
 			String[] cred = namepwd.split(":");
-			
 			// fetch username / password & role from db
-			
-			if ("admin".equals(cred[0]) && "admin1234".equals(cred[1])) {
+
+			if ("username".equals(cred[0]) && "password".equals(cred[1])) {
 				// let the request through
-				
 				String userRole = "STUDENT";
-				
 				Method method = resourceInfo.getResourceMethod();
-				
+
 				if (method.isAnnotationPresent(RolesAllowed.class)) {
 					RolesAllowed annotation = method.getAnnotation(RolesAllowed.class);
 					String[] roles = annotation.value();
@@ -47,17 +45,10 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 						requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).entity("Access to object denied").build());
 					}
 				}
-				
-			  return;	
+			  return;
 			}
-			
 		}
-		
-		// in all other cases fail.
-		requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
-				.entity("Invalid credentials").build());
-		
-		
+		requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Invalid credentials").build());
 	}
 
 }

@@ -37,7 +37,7 @@ public class DatabaseQueries {
             while (result.next()) {
                 String dob = result.getString("date_of_birth");
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
-                users.add(new Account(result.getInt("id"), result.getString("first_name") + " " + result.getString("last_name"), result.getString("email"), date));
+               // users.add(new Account(result.getInt("id"), result.getString("first_name") + " " + result.getString("last_name"), result.getString("email"), date));
             }
         } catch (Exception e) {
             // Do nothing

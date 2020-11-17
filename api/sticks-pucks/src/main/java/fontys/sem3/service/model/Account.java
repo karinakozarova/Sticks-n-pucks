@@ -1,4 +1,5 @@
 package fontys.sem3.service.model;
+import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
@@ -6,7 +7,9 @@ import java.util.Date;
 
 @SuppressWarnings("WeakerAccess")
 @XmlRootElement
-public class Account {
+public class Account implements Serializable{
+    private static final long serialVersionUID = -5998367898242256562L;
+
     private int id;
     private String name;
     private String email;
@@ -19,24 +22,24 @@ public class Account {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    /**
-     * Constructor
-     */
-    public Account(int id, String name, String email, Date birtdate) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.birtdate = birtdate;
-    }
-
-    /**
-     * Constructor
-     */
-    public Account(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+//
+//    /**
+//     * Constructor
+//     */
+//    public Account(int id, String name, String email, Date birtdate) {
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//        this.birtdate = birtdate;
+//    }
+//
+//    /**
+//     * Constructor
+//     */
+//    public Account(String name, String email) {
+//        this.name = name;
+//        this.email = email;
+//    }
 
     public int getId() {
         return id;
