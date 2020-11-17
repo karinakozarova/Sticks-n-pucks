@@ -31,6 +31,10 @@
 </script>
 
 <style scoped>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    
     #sidebar {
         transition: ease-in-out all .3s;
         z-index: 9999;

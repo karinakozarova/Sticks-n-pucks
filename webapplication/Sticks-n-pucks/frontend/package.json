@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --dest dist/WeekChart --name WeekChart src/components/WeekChart.vue",
+    "build": "vue-cli-service build --target lib --dest dist/WeekChart --name WeekChart src/components/WeekChart.vue --dest dist/TeamCard --name TeamCard src/components/TeamCard.vue",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006 --no-dll",
     "build-storybook": "build-storybook --no-dll"
@@ -12,11 +12,13 @@
   "dependencies": {
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "tailwindcss": "^1.9.6",
     "vue": "^2.6.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-controls": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
     "@storybook/vue": "^6.0.28",

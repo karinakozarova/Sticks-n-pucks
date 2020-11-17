@@ -7,6 +7,9 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 export default {
   name: 'App',
