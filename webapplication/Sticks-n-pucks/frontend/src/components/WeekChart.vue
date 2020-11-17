@@ -1,3 +1,4 @@
+
 <template>
     <div class="chart-container">
         <canvas ref="chart"></canvas>

@@ -1,5 +1,4 @@
 import WeekChart from '../components/WeekChart.vue';
-
 export default {
     title: 'WeekChart',
     component: WeekChart,
