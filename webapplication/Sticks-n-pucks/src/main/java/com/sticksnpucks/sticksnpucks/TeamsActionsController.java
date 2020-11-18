@@ -7,13 +7,13 @@ import org.springframework.web.servlet.*;
 import java.util.*;
 
 @Controller
-class HelloVueController {
+class TeamsActionsController {
 
-    @GetMapping("/vuedemo")
-    ModelAndView showHelloPage() {
+    @GetMapping("/teamsListing")
+    ModelAndView listTeams() {
         Map<String, Object> model = new HashMap<>();
-        model.put("title", "Comes from controller!");
-        return new ModelAndView("hello-vue.html", model);
+        model.put("title", "Hello Vue!");
+        return new ModelAndView("teams-listing.html", model);
     }
 
 }

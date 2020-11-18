@@ -30,13 +30,5 @@
 </script>
 
 <style scoped>
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-
-    .chart-container {
-        position: relative;
-        height: 100%;
-        width: 100%;
-    }
+    @import "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css";
 </style>
