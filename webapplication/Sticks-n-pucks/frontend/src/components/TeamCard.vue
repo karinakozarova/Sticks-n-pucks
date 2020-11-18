@@ -6,7 +6,7 @@
         </div>
         <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div class="mb-8">
-                <div class="text-gray-900 font-bold text-xl mb-2">{{ name }}</div>
+                <div class="text-gray-900 font-bold text-xl mb-2">{{ teamname }}</div>
                 <p class="text-gray-700 text-base"> {{ description }} </p>
             </div>
         </div>
@@ -17,7 +17,7 @@
     export default {
         name: "TeamCard",
         props: {
-            name: {
+            teamname: {
                 type: String,
                 required: true,
             },
@@ -29,6 +29,6 @@
     };
 </script>
 
-<style scoped>
+<style>
     @import "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css";
 </style>

@@ -3,21 +3,24 @@
 <h1 th:text="${title}">This title will be replaced</h1>
 <p> Here comes a Vue component!</p>
 
-<div id="chart">
-    <chart chartData="[1,2,3,4,5,6,7]"></chart>
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <team-card v-bind:name="'Hawks'" v-bind:description="'Best team'"></team-card>
+    <team-card v-bind:name="'Hanen'" v-bind:description="'Okay team'"></team-card>
 </div>
 
-<script src="https://unpkg.com/vue"></script>
-<script th:src="@{/WeekChart/WeekChart.umd.min.js}"></script>
+<script th:src="@{/TeamCard/TeamCard.umd.min.js}"></script>
 <script>
     (function() {
         new Vue({
+            el: '#app',
             components: {
-                chart: WeekChart
+                teamCard: TeamCard
             }
-        }).$mount('#chart')
+        })
     })();
-</script>
 
+</script>
 </body>
 </html>

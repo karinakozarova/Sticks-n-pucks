@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --dest dist/WeekChart --name WeekChart src/components/WeekChart.vue",
+    "build": "vue-cli-service build --target lib --dest dist/TeamCard --name WeekChart src/components/TeamCard.vue",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006 --no-dll",
     "build-storybook": "build-storybook --no-dll"

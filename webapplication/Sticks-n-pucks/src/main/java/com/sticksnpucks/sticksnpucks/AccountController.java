@@ -16,13 +16,20 @@ class AccountController {
 
     @GetMapping("/register")
     ModelAndView register() {
-        // TODO
-        return new ModelAndView("login.html", (Map<String, ?>) null);
+        return new ModelAndView("chooseSignupType.html", (Map<String, ?>) null);
     }
 
+    @GetMapping("/manager/register")
+    ModelAndView registerManager() {
+        return new ModelAndView("managerRegistration.html", (Map<String, ?>) null);
+    }
+
+    @GetMapping("/player/register")
+    ModelAndView registerPlayer() {
+        return new ModelAndView("playerRegistration.html", (Map<String, ?>) null);
+    }
     @GetMapping("/loggedOut")
     ModelAndView loggedOut() {
-        // TODO
         return new ModelAndView("loggedOut.html", (Map<String, ?>) null);
     }
 }
