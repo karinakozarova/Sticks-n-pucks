@@ -28,6 +28,7 @@ class AccountController {
     ModelAndView registerPlayer() {
         return new ModelAndView("playerRegistration.html", (Map<String, ?>) null);
     }
+
     @GetMapping("/loggedOut")
     ModelAndView loggedOut() {
         return new ModelAndView("loggedOut.html", (Map<String, ?>) null);

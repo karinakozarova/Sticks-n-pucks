@@ -9,7 +9,7 @@ import java.util.*;
 @Controller
 public class InformationPagesController {
     @GetMapping("/")
-    ModelAndView listTeams() {
+    ModelAndView indexPage() {
         return new ModelAndView("index.html",  new HashMap<>());
     }
 }
