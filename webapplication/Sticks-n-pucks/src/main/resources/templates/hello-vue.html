@@ -1,16 +1,13 @@
 <html>
 <body>
 <h1 th:text="${title}">This title will be replaced</h1>
-<p> Here comes a Vue component!</p>
 
 <script src="https://unpkg.com/vue"></script>
+<script th:src="@{/TeamCard/TeamCard.umd.min.js}"></script>
 
 <div id="app">
-    <team-card v-bind:name="'Hawks'" v-bind:description="'Best team'"></team-card>
-    <team-card v-bind:name="'Hanen'" v-bind:description="'Okay team'"></team-card>
+    <team-card v-bind:teamname="'Hawks'" v-bind:description="'Best team'"></team-card>
 </div>
-
-<script th:src="@{/TeamCard/TeamCard.umd.min.js}"></script>
 <script>
     (function() {
         new Vue({
@@ -20,7 +17,6 @@
             }
         })
     })();
-
 </script>
 </body>
 </html>
