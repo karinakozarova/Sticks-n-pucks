@@ -1,40 +1,86 @@
 <template>
-    <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center fixed shadow">
-        <ul class="list-reset ">
-            <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
-                    <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Home</span>
-                </a>
-            </li>
-            <li class="my-2 md:my-0 ">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-mi ddle text-gray-600 no-underline hover:text-indigo-400">
-                    <i class="fas fa-tasks fa-fw mr-3"></i><span
-                        class="w-full inline-block pb-1 md:pb-0 text-sm">Roster</span>
-                </a>
-            </li>
-            <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
-                    <i class="fas fa-chart-area fa-fw mr-3 text-indigo-400"></i><span
-                        class="w-full inline-block pb-1 md:pb-0 text-sm">Analytics</span>
-                </a>
-            </li>
-        </ul>
+    <div>
+        <div id="sidebar" class="h-screen w-16 menu bg-white text-white px-4 flex items-center fixed shadow">
+            <ul class="list-reset ">
+                <li class="my-2 md:my-0">
+                    <a href="#"
+                       class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Home</span>
+                    </a>
+                </li>
+                <li class="my-2 md:my-0 ">
+                    <a href="#"
+                       class="block py-1 md:py-3 pl-1 align-mi ddle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-tasks fa-fw mr-3"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">Roster</span>
+                    </a>
+                </li>
+                <li class="my-2 md:my-0">
+                    <a href="#"
+                       class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-chart-area fa-fw mr-3 text-indigo-400"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">Analytics</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
+            <div class="h-40 lg:h-20 w-full flex flex-wrap">
+                <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
+                    <div class="flex h-full justify-between items-center">
+                        <div class="relative w-full max-w-3xl px-6">
+                            <div class="absolute h-10 mt-1 left-0 top-0 flex items-center pl-10">
+                                <svg class="h-4 w-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                                     viewBox="0 0 20 20">
+                                    <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+                                </svg>
+                            </div>
+                            <input id="search-toggle" type="search" placeholder="search"
+                                   class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow-md text-gray-700 font-bold rounded-full pl-12 pr-4 py-3"
+                                   onkeyup="updateSearchResults(this.value);">
+                        </div>
+                        <div class="flex relative inline-block pr-6">
+                            <div class="relative text-sm">
+                                <button id="userButton" class="flex items-center focus:outline-none mr-3">
+                                    <span class="hidden md:inline-block">Hi, User </span>
+                                </button>
+                                <div id="userMenu"
+                                     class="bg-white nunito rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible">
+                                    <ul class="list-reset">
+                                        <li><a href="#"
+                                               class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">My
+                                            account</a></li>
+                                        <li><a href="#"
+                                               class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">Notifications</a>
+                                        </li>
+                                        <li>
+                                            <hr class="border-t mx-2 border-gray-400">
+                                        </li>
+                                        <li><a href="#"
+                                               class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+        </div>
     </div>
 </template>
 
 <script>
     export default {
         name: "Navbar",
-        props: {
-        },
+        props: {},
     };
 </script>
 
 <style scoped>
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    
+    @import "https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css";
+
     #sidebar {
         transition: ease-in-out all .3s;
         z-index: 9999;

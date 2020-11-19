@@ -7,6 +7,8 @@ export default {
 
 export const DefaultState = () => ({
     components: {
-        chart: Navbar
+        navbar: Navbar
     },
+    template: `<navbar> </navbar>`
+
 });
