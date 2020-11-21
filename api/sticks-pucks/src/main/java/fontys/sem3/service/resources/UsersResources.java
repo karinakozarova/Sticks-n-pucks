@@ -5,6 +5,8 @@ import javax.annotation.security.RolesAllowed;
 import fontys.sem3.service.model.Account;
 import fontys.sem3.service.repository.*;
 
+import fontys.sem3.service.model.UserRoles;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.net.URI;
@@ -33,8 +35,28 @@ public class UsersResources {
 
     @GET //GET at http://localhost:XXXX/account
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({ "MANAGER" })
+    @RolesAllowed({ "MANAGER", "PLAYER" })
     public Response getAllUsers() {
+        List<Account> users = dataStore.getUsers();
+        GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
+        return Response.ok(entity).build();
+    }
+
+    @GET //GET at http://localhost:XXXX/account
+    @Path("testManager")
+    @RolesAllowed({ "MANAGER" })
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response testm() {
+        List<Account> users = dataStore.getUsers();
+        GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
+        return Response.ok(entity).build();
+    }
+
+    @GET //GET at http://localhost:XXXX/account
+    @Path("testFan")
+    @RolesAllowed({ "FAN" })
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response testf() {
         List<Account> users = dataStore.getUsers();
         GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
         return Response.ok(entity).build();

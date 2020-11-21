@@ -112,6 +112,7 @@ public class DataStore {
     public List<Game> getGames() { return games; }
     public List<Team> getTeams() { return teams; }
     public List<Penalty> getAllPenalties() { return penalties; }
+
     public List<Account> getUsers() {
         return DatabaseQueries.getUsers();
     }
