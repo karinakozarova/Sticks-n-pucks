@@ -12,6 +12,8 @@ import javax.ws.rs.core.*;
 import java.net.URI;
 import java.util.List;
 
+import java.util.Date;
+
 @Path("/account")
 public class UsersResources {
     private static final String DEFAULT_ERROR_MESSAGE = Constants.VALID_ID_MESSAGE;
@@ -48,8 +50,10 @@ public class UsersResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response testm() {
         List<Account> users = dataStore.getUsers();
+        Date date = new Date(System.currentTimeMillis());
+        users.add(new Account(1, "Ron Berteling", "test@test.test", date));
         GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
-        return Response.ok(entity).build();
+        return Response.ok(entity).header("Access-Control-Allow-Origin", "*").build();
     }
 
     @GET //GET at http://localhost:XXXX/account
