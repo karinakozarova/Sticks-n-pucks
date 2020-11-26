@@ -20,10 +20,10 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
-		String auth = requestContext.getHeaderString("Authorization");
-
+		String auth = requestContext.getHeaderString("authorization");
+		// String auth = requestContext.getSecurityContext().BASIC_AUTH;
+		//String auth = "Basic dGVzdDp0ZXN0";
 		if(auth != null && !auth.isEmpty()) {
-			// String[] parts = auth.split(" ");
 			String[] parts = auth.split(" ");
 			String namepwd = new String(Base64.decode(parts[1].getBytes()));
 			String[] cred = namepwd.split(":");
@@ -34,9 +34,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
  				Method method = resourceInfo.getResourceMethod();
 				String userRole = UserRoles.MANAGER.name();
 
-				if(userRole == UserRoles.FAN.name()){ // also add not logged in here
-					return; // fans should get access
-				}
 				if (method.isAnnotationPresent(RolesAllowed.class)) {
 					RolesAllowed annotation = method.getAnnotation(RolesAllowed.class);
 					String[] roles = annotation.value();
@@ -48,10 +45,9 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 						requestContext.abortWith(Response.status(Response.Status.FORBIDDEN).entity("Access to object denied").build());
 					}
 				}
-			  return;
 			}
 		} else {
-		//	requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Invalid credentials").build());
+			requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity("Invalid credentials").build());
 		}
 	}
 
