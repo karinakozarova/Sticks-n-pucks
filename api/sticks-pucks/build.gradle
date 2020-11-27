@@ -1,6 +1,8 @@
 plugins {
     id 'application'
     id "org.sonarqube" version "2.7"
+    id "java"
+    id 'eclipse'
 }
 
 sourceCompatibility = 1.11
@@ -14,9 +16,17 @@ application{
 }
 
 dependencies {
-     /*  Jersey for the service
-        We use the latest 2.x release because 2.x releases implement JAX-RS 2.1 API.
-        We do NOT use a Jersey 3.x release because 3.x releases implement Jakarta RESTful WebServices 3.0 API.*/
+    compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-grizzly2-http', version: '2.31'
+    compile group: 'com.sun.jersey', name: 'jersey-grizzly', version: '1.19.4'
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
+
+    compile group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.3'
+    compile group: 'org.glassfish.jersey.inject', name: 'jersey-hk2', version: '2.31'
+    compile group: 'org.glassfish.jersey.media', name: 'jersey-media-moxy', version: '2.31'
+    compile group: 'org.glassfish.jersey.bundles.repackaged', name: 'jersey-guava', version: '2.25.1'
+
     implementation group: 'org.glassfish.jersey.bundles', name: 'jaxrs-ri', version: '2.+'
     implementation group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.+'
 

@@ -1,13 +1,18 @@
 package fontys.sem3.service.resources;
 
+import javax.annotation.security.RolesAllowed;
 
 import fontys.sem3.service.model.Account;
 import fontys.sem3.service.repository.*;
+
+import fontys.sem3.service.model.UserRoles;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.net.URI;
 import java.util.List;
+
+import java.util.Date;
 
 @Path("/account")
 public class UsersResources {
@@ -32,7 +37,30 @@ public class UsersResources {
 
     @GET //GET at http://localhost:XXXX/account
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({ "MANAGER", "PLAYER" })
     public Response getAllUsers() {
+        List<Account> users = dataStore.getUsers();
+        GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
+        return Response.ok(entity).build();
+    }
+
+    @GET //GET at http://localhost:XXXX/account
+    @Path("testManager")
+    @RolesAllowed({ "MANAGER" })
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response testm() {
+        List<Account> users = dataStore.getUsers();
+        Date date = new Date(System.currentTimeMillis());
+        users.add(new Account(1, "Ron Berteling", "test@test.test", date));
+        GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
+        return Response.ok(entity).header("Access-Control-Allow-Origin", "*").build();
+    }
+
+    @GET //GET at http://localhost:XXXX/account
+    @Path("testFan")
+    @RolesAllowed({ "FAN" })
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response testf() {
         List<Account> users = dataStore.getUsers();
         GenericEntity<List<Account>> entity = new GenericEntity<>(users) {  };
         return Response.ok(entity).build();
@@ -62,8 +90,8 @@ public class UsersResources {
     @POST
     @Path("{name}/{email}")
     public Response updateUser(@PathParam("name") String name, @PathParam("email") String email) {
-        Account account = new Account(name, email);
-        dataStore.add(account);
+       // Account account = new Account(name, email);
+       // dataStore.add(account);
         return Response.noContent().build();
     }
 
@@ -71,12 +99,12 @@ public class UsersResources {
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Path("{id}/{name}")
     public Response updateUser(@PathParam("id") int id,  @PathParam("name") String name) {
-        Account account = dataStore.getUser(id);
-        if (account == null){
-            return Response.status(Response.Status.NOT_FOUND).entity(DEFAULT_ERROR_MESSAGE).build();
-        }
+       // Account account = dataStore.getUser(id);
+//        if (account == null){
+//            return Response.status(Response.Status.NOT_FOUND).entity(DEFAULT_ERROR_MESSAGE).build();
+//        }
 
-        account.setName(name);
+        // account.setName(name);
         return Response.noContent().build();
     }
 }
