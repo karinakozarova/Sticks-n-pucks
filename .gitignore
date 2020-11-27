@@ -204,3 +204,6 @@ build/reports*
 # gradle folders
 api/sticks-pucks/.gradle
 webapplication/Sticks-n-pucks/.gradle
+
+# cypress videos
+cypress/videos
