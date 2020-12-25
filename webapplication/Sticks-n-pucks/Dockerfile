@@ -38,4 +38,5 @@ RUN gradle tasks
 
 EXPOSE 8081
 
-RUN gradle bootrun
+# RUN gradle bootrun
+# CMD ["gradle", "bootrun"]
