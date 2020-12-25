@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM fabric8/java-alpine-openjdk11-jre
 COPY . /usr/app/
 WORKDIR /usr/app
 
@@ -7,7 +7,10 @@ RUN apk add curl
 RUN apk add tar
 RUN apk add bash
 RUN apk add procps
-RUN apk add nodejs
+RUN apk add nodejs npm
+
+RUN node -v
+RUN npm -v
 
 # Downloading and installing Gradle
 # 1- Define a constant with the version of gradle you want to install
@@ -32,5 +35,7 @@ ENV PATH $PATH:$GRADLE_HOME/bin
 VOLUME $GRADLE_USER_HOME
 
 RUN gradle tasks
+
+EXPOSE 8081
 
 RUN gradle bootrun
