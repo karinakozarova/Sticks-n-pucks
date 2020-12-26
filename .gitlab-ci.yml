@@ -55,7 +55,7 @@ testweb:
   stage: test
   script: 
     - cd webapplication/Sticks-n-pucks
-    - gradle test
+    - npm install && gradle test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
