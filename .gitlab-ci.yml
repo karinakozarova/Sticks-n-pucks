@@ -58,6 +58,7 @@ testweb:
     - cd frontend
     - npm install
     - cd ..
+    - gradle build
     - gradle test
   allow_failure: true
   cache:
