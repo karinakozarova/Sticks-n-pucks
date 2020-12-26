@@ -55,7 +55,9 @@ testweb:
   stage: test
   script: 
     - cd webapplication/Sticks-n-pucks
+    - cd frontend
     - npm install
+    - cd ..
     - gradle test
   allow_failure: true
   cache:
