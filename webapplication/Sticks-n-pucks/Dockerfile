@@ -1,7 +1,12 @@
-# Dockerfile for the Sticks-n-pucks Web application project 
-# To build use: docker build -t sticks-n-pucks .
-# To run use: docker run --rm -p 8888:8081 docker.io/library/sticks-n-pucks
-# Access at http://localhost:8888/ on your local PC
+################################################################################
+# Dockerfile for the Sticks-n-pucks Web application project                    #
+# Author: Karina K. Kozarova                                                   #
+# Date: 26.12.2020                                                             #
+#                                                                              #
+# To build use: docker build -t sticks-n-pucks .                               #
+# To run use: docker run --rm -p 8888:8081 docker.io/library/sticks-n-pucks    #
+# Access at http://localhost:8888/ on your local PC                            #
+################################################################################
 
 # using an Alpine, OpenJDK 11, JRE docker image
 FROM fabric8/java-alpine-openjdk11-jre 
