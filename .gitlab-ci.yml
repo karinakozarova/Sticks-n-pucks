@@ -5,11 +5,19 @@ before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
 
 stages:
+  - docker
   - setup
   - build
   - test
   - codequality
   - sonar
+
+build-docker:
+  stage: docker
+  script:
+    - docker build -t sticks-n-pucks .
+  allow_failure: true
+
 
 checkstyle:
   stage: codequality
