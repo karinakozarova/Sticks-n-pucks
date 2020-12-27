@@ -45,8 +45,8 @@ build-web:
   script:
     - cd webapplication/Sticks-n-pucks
     - npm install -g @vue/cli
-    - npm install -g @vue/cli-plugin-
     - npm install -g @vue/cli-plugin-eslint
+    - npm install -g @vue/cli-plugin-babel
     - npm install @vue/cli-service -g
     - gradle build --scan
   cache:
