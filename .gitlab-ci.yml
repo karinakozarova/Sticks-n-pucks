@@ -47,6 +47,7 @@ build-web:
     - npm cache clean --force
     - npm install -g @vue/cli
     - npm install -g @vue/cli-plugin-babel
+    - npm install -g @vue/cli-plugin-babel/preset
     - npm install -g @vue/cli-plugin-eslint
     - npm install @vue/cli-service -g
     - gradle build --scan
