@@ -49,6 +49,7 @@ build-web:
     - npm upgrade
     - npm install -g @vue/cli
     - npm install -g @vue/cli-plugin-babel
+    - npm install @vue/babel-preset-app -dev
     - npm install -g @vue/cli-plugin-eslint
     - npm install @vue/cli-service -g
     - gradle build --scan
