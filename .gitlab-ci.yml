@@ -29,15 +29,29 @@ javadocweb:
     - gradle javadoc
   allow_failure: true
 
-build:
+build-api:
   stage: build
-  script: gradle build
+  script:
+    - gradle build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
       - build
       - .gradle
+
+build-web:
+  stage: build
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle build
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+
 
 testapi:
   stage: test
@@ -54,11 +68,6 @@ testapi:
 testweb:
   stage: test
   script: 
-    - cd webapplication/Sticks-n-pucks
-    - cd frontend
-    - npm install
-    - cd ..
-    - gradle build
     - gradle test
   allow_failure: true
   cache:
