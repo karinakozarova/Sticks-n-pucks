@@ -44,16 +44,6 @@ build-web:
   stage: build
   script:
     - cd webapplication/Sticks-n-pucks
-    - npm cache clean --force
-    - npm update
-    - npm upgrade
-    - npm install -g @vue/cli
-    - npm install -g @vue/cli-plugin-babel
-    - npm install @vue/babel-preset-app -dev
-    - npm install -g @vue/cli-plugin-eslint
-    - npm install @vue/cli-service -g
-    - npm install --save-dev @babel/core @babel/cli @babel/preset-env
-    - npm install --save @babel/polyfill
     - gradle build --scan
   cache:
     key: "$CI_COMMIT_REF_NAME"
