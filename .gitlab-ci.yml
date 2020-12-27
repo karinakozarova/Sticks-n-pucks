@@ -3,6 +3,7 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
+
 stages:
   - setup
   - build
@@ -35,12 +36,7 @@ setup-web:
   script:
     - cd webapplication/Sticks-n-pucks/frontend
     - npm install
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle
+    - npm run serve
 
 build-api:
   stage: build
@@ -52,6 +48,7 @@ build-api:
     paths:
       - build
       - .gradle
+  allow_failure: true
 
 build-web:
   stage: build
