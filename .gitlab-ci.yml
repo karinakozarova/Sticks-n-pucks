@@ -58,19 +58,6 @@ build-api:
       - .gradle
   allow_failure: true
 
-build-web:
-  stage: build
-  script:
-    - cd webapplication/Sticks-n-pucks
-    - # gradle build --scan
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle
-
-
 testapi:
   stage: test
   script: 
