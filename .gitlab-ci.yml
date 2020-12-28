@@ -19,29 +19,6 @@ build-docker:
     - docker build -t sticks-n-pucks .
   allow_failure: true
 
-
-checkstyle:
-  stage: codequality
-  script:
-    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
-  allow_failure: true
-
-javadocapi:
-  when: manual
-  stage: codequality
-  script:
-    - cd api/sticks-pucks
-    - gradle javadoc
-  allow_failure: true
-
-javadocweb:
-  when: manual
-  stage: codequality
-  script:
-    - cd webapplication/Sticks-n-pucks
-    - gradle javadoc
-  allow_failure: true
-
 setup-web:
   stage: setup
   script:
@@ -92,6 +69,34 @@ testweb:
       - build
       - .gradle
 
+e2e-tests:
+  stage: test
+  script:
+    - cypress run --record --key e338d33c-c5d8-4a44-9d1b-86e34528af08
+  allow_failure: true
+
+checkstyle:
+  stage: codequality
+  script:
+    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
+  allow_failure: true
+
+javadocapi:
+  when: manual
+  stage: codequality
+  script:
+    - cd api/sticks-pucks
+    - gradle javadoc
+  allow_failure: true
+
+javadocweb:
+  when: manual
+  stage: codequality
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle javadoc
+  allow_failure: true
+  
 sonarqube-web:
   stage: sonar
   script:
