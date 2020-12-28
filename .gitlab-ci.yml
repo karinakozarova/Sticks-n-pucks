@@ -17,7 +17,6 @@ build-docker:
   script:
     - cd webapplication/Sticks-n-pucks
     - docker build -t sticks-n-pucks .
-  allow_failure: true
 
 setup-web:
   stage: setup
@@ -35,7 +34,6 @@ build-api:
     paths:
       - build
       - .gradle
-  allow_failure: true
 
 build-web:
   stage: build
@@ -96,7 +94,7 @@ javadocweb:
     - cd webapplication/Sticks-n-pucks
     - gradle javadoc
   allow_failure: true
-  
+
 sonarqube-web:
   stage: sonar
   script:
