@@ -207,3 +207,5 @@ webapplication/Sticks-n-pucks/.gradle
 
 # cypress videos
 cypress/videos
+
+node_modules

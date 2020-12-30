@@ -3,41 +3,44 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
+
 stages:
+  - docker
+  - setup
   - build
   - test
   - codequality
   - sonar
 
-checkstyle:
-  stage: codequality
-  script:
-    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
-  allow_failure: true
-
-javadocapi:
-  stage: codequality
-  script:
-    - cd api/sticks-pucks
-    - gradle javadoc
-  allow_failure: true
-
-javadocweb:
-  stage: codequality
+build-docker:
+  stage: docker
   script:
     - cd webapplication/Sticks-n-pucks
-    - gradle javadoc
-  allow_failure: true
+    - docker build -t sticks-n-pucks .
 
-build:
+setup-web:
+  stage: setup
+  script:
+    - cd webapplication/Sticks-n-pucks/frontend
+    - npm install
+
+build-api:
   stage: build
-  script: gradle build
+  script:
+    - gradle build
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
       - build
       - .gradle
+
+build-web:
+  stage: build
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle build --stacktrace
+  allow_failure: true
 
 testapi:
   stage: test
@@ -55,13 +58,42 @@ testweb:
   stage: test
   script: 
     - cd webapplication/Sticks-n-pucks
-    - gradle clean test
+    - gradle test
+  allow_failure: true
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
     paths:
       - build
       - .gradle
+
+e2e-tests:
+  stage: test
+  script:
+    - cypress run --record --key e338d33c-c5d8-4a44-9d1b-86e34528af08
+  allow_failure: true
+
+checkstyle:
+  stage: codequality
+  script:
+    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
+  allow_failure: true
+
+javadocapi:
+  when: manual
+  stage: codequality
+  script:
+    - cd api/sticks-pucks
+    - gradle javadoc
+  allow_failure: true
+
+javadocweb:
+  when: manual
+  stage: codequality
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle javadoc
+  allow_failure: true
 
 sonarqube-web:
   stage: sonar
@@ -76,6 +108,3 @@ sonarqube-api:
     - cd api/sticks-pucks
     - gradle sonarqube
   allow_failure: true
-
-after_script:
-  - echo "The pipeline ended"
