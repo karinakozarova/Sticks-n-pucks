@@ -3,7 +3,6 @@ package com.sticksnpucks.sticksnpucks;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.*;
 import org.springframework.web.servlet.*;
 
 import java.util.*;
