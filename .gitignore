@@ -209,3 +209,6 @@ webapplication/Sticks-n-pucks/.gradle
 cypress/videos
 
 node_modules
+
+# build folder
+api/sticks-pucks/build/
