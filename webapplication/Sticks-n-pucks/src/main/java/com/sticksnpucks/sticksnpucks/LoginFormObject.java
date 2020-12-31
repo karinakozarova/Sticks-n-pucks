@@ -1,7 +1,7 @@
 package com.sticksnpucks.sticksnpucks;
 
 public class LoginFormObject {
-    // TODO: the password shouold be encrypted and decripted here in next sprint
+    // TODO: the password should be encrypted and decrypted here in next sprint
     private String email;
     private String password;
 
