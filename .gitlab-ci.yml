@@ -105,6 +105,7 @@ sonarqube-web:
 sonarqube-api:
   stage: sonar
   script:
+    - git fetch --unshallow
     - cd api/sticks-pucks
     - gradle sonarqube
   allow_failure: true
