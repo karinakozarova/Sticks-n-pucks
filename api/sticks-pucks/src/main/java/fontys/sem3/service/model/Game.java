@@ -16,7 +16,7 @@ public class Game {
     private List<Player> homeRoster;
 
     private List<Goal> goals;
-    private List<Penalty> penalties;
+    private List<ReceivedPenalty> penalties;
 
     /**
      * Constructor
@@ -65,11 +65,11 @@ public class Game {
         this.goals = goals;
     }
 
-    public List<Penalty> getPenalties() {
+    public List<ReceivedPenalty> getPenalties() {
         return penalties;
     }
 
-    public void setPenalties(List<Penalty> penalties) {
+    public void setPenalties(List<ReceivedPenalty> penalties) {
         this.penalties = penalties;
     }
 

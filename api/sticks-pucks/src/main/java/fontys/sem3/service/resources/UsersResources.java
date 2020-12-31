@@ -91,7 +91,7 @@ public class UsersResources {
     @Path("{name}/{email}")
     public Response updateUser(@PathParam("name") String name, @PathParam("email") String email) {
        // Account account = new Account(name, email);
-       // dataStore.add(account);
+       // dataStoupdateUserre.add(account);
         return Response.noContent().build();
     }
 

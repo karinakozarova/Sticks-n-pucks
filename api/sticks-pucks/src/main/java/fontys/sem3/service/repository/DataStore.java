@@ -2,6 +2,7 @@ package fontys.sem3.service.repository;
 
 import fontys.sem3.service.model.Team;
 import fontys.sem3.service.model.Account;
+import fontys.sem3.service.model.ReceivedPenalty;
 import fontys.sem3.service.model.Penalty;
 import fontys.sem3.service.model.Manager;
 import fontys.sem3.service.model.Player;
@@ -41,7 +42,7 @@ public class DataStore {
         Position center = Player.Position.RW;
         Shoots left = Player.Shoots.L;
         Player player = new Player(1, 150, 55, center, left);
-        hawks.changeCaptain(player);
+        hawks.setCaptain(player);
         hawks.addAssistant(player);
         hawks.addPlayerToRoster(player);
         teams.add(hawks);

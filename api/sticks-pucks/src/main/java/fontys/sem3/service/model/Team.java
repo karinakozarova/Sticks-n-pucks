@@ -14,6 +14,7 @@ public class Team {
     private Player captain;
     private List<Player> assistants;
     private List<Player> players;
+    private Manager manager;
 
     /**
      * Constructor
@@ -25,6 +26,14 @@ public class Team {
         this.rinkLocation = rinkLocation;
         this.assistants = new ArrayList<>();
         this.players = new ArrayList<>();
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager){
+        this.manager = manager;
     }
 
     public List<Player> getPlayers() {
@@ -59,10 +68,6 @@ public class Team {
 
     public void deleteAssistants() {
         this.assistants.clear();
-    }
-
-    public void changeCaptain(Player player) {
-        this.captain = player;
     }
 
     public void addPlayerToRoster(Player player) {
