@@ -24,6 +24,7 @@ setup-web:
   script:
     - cd webapplication/Sticks-n-pucks/frontend
     - npm install
+    - npm run-script build
 
 build-api:
   stage: build
