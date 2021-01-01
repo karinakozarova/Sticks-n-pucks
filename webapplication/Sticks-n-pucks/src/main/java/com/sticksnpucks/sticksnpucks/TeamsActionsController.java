@@ -26,4 +26,10 @@ class TeamsActionsController {
         Map<String, Object> model = new HashMap<>();
         return new ModelAndView("view-team.html", model);
     }
+
+    @GetMapping("/teams/roster")
+    ModelAndView viewTeamRoster() {
+        Map<String, Object> model = new HashMap<>();
+        return new ModelAndView("view-team-roster.html", model);
+    }
 }
