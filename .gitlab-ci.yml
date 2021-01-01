@@ -25,6 +25,7 @@ setup-web:
     - cd webapplication/Sticks-n-pucks/frontend
     - npm install
     - npm install postcss
+    - npm install autoprefixer@9.0.0
     - npm run-script build
 
 build-api:
