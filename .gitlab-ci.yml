@@ -24,6 +24,7 @@ setup-web:
   script:
     - cd webapplication/Sticks-n-pucks/frontend
     - npm install
+    - npm install postcss
     - npm run-script build
 
 build-api:
