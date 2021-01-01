@@ -5,6 +5,14 @@ variables:
 before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
 
+cache: &global_cache
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - public/
+    - vendor/
+  policy: pull-push
+
 stages:
   - docker
   - setup
