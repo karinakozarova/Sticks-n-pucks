@@ -11,43 +11,7 @@
     <script src="https://unpkg.com/vue"></script>
     <script th:src="@{/PlayerCard/PlayerCard.umd.min.js}"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
-    <style>
-        html {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .border-b-1 {
-            border-bottom-width: 1px;
-        }
-
-        hover\:border-none:hover {
-            border-style: none;
-        }
-
-        #sidebar {
-            transition: ease-in-out all .3s;
-            z-index: 9999;
-        }
-
-        #sidebar span {
-            opacity: 0;
-            position: absolute;
-            transition: ease-in-out all .1s;
-        }
-
-        #sidebar:hover {
-            width: 150px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        #sidebar:hover span {
-            opacity: 1;
-        }
-
-        .gradient {
-            background: linear-gradient(90deg, #87d530 20%, #05aada 60%);
-        }
-    </style>
+    <link rel="stylesheet" href="/css/menu.css">
 </head>
 
 <body class="flex h-screen gradient">

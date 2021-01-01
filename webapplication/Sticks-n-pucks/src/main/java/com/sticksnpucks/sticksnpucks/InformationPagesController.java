@@ -12,4 +12,9 @@ public class InformationPagesController {
     ModelAndView indexPage() {
         return new ModelAndView("index.html",  new HashMap<>());
     }
+
+    @GetMapping("/dashboard")
+    ModelAndView dashboardPage() {
+        return new ModelAndView("dashboard.html",  new HashMap<>());
+    }
 }

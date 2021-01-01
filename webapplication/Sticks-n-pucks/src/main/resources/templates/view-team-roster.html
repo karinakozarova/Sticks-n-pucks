@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player profile</title>
+    <title>Team Roster</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/menu.css">
     <script src="https://unpkg.com/vue"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
-    <script th:src="@{/PlayerCard/PlayerCard.umd.min.js}"></script>
-
-    <link rel="stylesheet" href="/css/menu.css">
 </head>
 
 <body class="flex h-screen gradient">
 <div id="navigation">
     <navbar></navbar>
 </div>
-
 <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
     <div class="h-40 lg:h-20 w-full flex flex-wrap">
         <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
@@ -62,11 +59,76 @@
             </div>
         </nav>
     </div>
-    <div class="flex flex-wrap mb-4" id="app" style="margin: auto">
-        <player-card v-bind:playername="'Patrick Kane'" v-bind:height="'164'"  v-bind:weight="'64'" v-bind:shoots="'Left'" v-bind:position="'LW'"></player-card>
+    <br>
+    <div style="margin: auto">
+        <p class="text-3xl text-center">
+            <br>
+            Roster of the Eindhoven Icehawks
+            <br>
+        </p> <br> <br>
+        <table class="min-w-full table-auto">
+            <thead class="justify-between">
+                <tr class="bg-gray-800">
+                <th class="px-5 py-2">
+                    <span class="text-gray-300">#</span>
+                </th>
+                <th class="px-20 py-2">
+                    <span class="text-gray-300">Name</span>
+                </th>
+                <th class="px-16 py-2">
+                    <span class="text-gray-300">Date of birth</span>
+                </th>
+                <th class="px-4 py-2">
+                    <span class="text-gray-300">Height</span>
+                </th>
+
+                <th class="px-4 py-2">
+                    <span class="text-gray-300">Weight</span>
+                </th>
+
+                <th class="px-6 py-2">
+                    <span class="text-gray-300">Position</span>
+                </th>
+
+                <th class="px-6 py-2">
+                    <span class="text-gray-300">Shoots / Catches</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody class="bg-gray-200">
+                <tr class="bg-white border-4 border-gray-200">
+                    <td class="px-5 py-2">
+                    <span class="text-gray-300"># 4</span>
+                </td>
+
+                    <td class="px-20 py-2 flex flex-row items-center">
+                        <span class="text-center ml-2 font-semibold">Karina Kozarova</span>
+                    </td>
+
+                    <td class="px-16 py-2">
+                        06/10/2000
+                    </td>
+
+                    <td class="px-4 py-2">
+                        <span>164</span>
+                    </td>
+
+                    <td class="px-4 py-2">
+                        <span>100</span>
+                    </td>
+
+                    <td class="px-6 py-2">
+                        Left wing
+                    </td>
+
+                    <td class="px-6 py-2">
+                        Right
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-
 <script>
     var userMenuDiv = document.getElementById("userMenu");
     var userMenu = document.getElementById("userButton");
@@ -99,15 +161,6 @@
         }
         return false;
     }
-
-    (function () {
-        new Vue({
-            el: '#app',
-            components: {
-                playerCard: PlayerCard
-            }
-        })
-    })();
 
     (function () {
         new Vue({
