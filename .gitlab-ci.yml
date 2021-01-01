@@ -4,12 +4,24 @@ variables:
   GIT_DEPTH: 0
 before_script:
   - set GRADLE_USER_HOME=`pwd`/.gradle
+  - cd webapplication/Sticks-n-pucks/frontend
+  - npm install
+  - npm install postcss
+  - npm install autoprefixer@9.0.0
+  - npm run-script build
+  - cd ../../..
+
+
+cache: &global_cache
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - webapplication/Sticks-n-pucks/frontend/node_modules/
+  policy: pull-push
 
 stages:
-  - docker
-  - setup
   - build
   - test
+  - docker
   - codequality
   - sonar
 
@@ -18,12 +30,6 @@ build-docker:
   script:
     - cd webapplication/Sticks-n-pucks
     - docker build -t sticks-n-pucks .
-
-setup-web:
-  stage: setup
-  script:
-    - cd webapplication/Sticks-n-pucks/frontend
-    - npm install
 
 build-api:
   stage: build
