@@ -36,7 +36,9 @@ The web application consists of the standard structure for a Spring project - co
 * Java + Gradle  - used for the API
 * MySQL - used for the database
 * Vue.js - frontend framework
-* Tailwind - css library used in combination with Vue.js
+* Tailwind - CSS library used in combination with Vue.js
 * Thymeleaf - used as templating engine for Spring
-* SonarQube - for continuous  inspection of code quality
+* SonarQube - for continuous inspection of code quality
 * Checkstyle - for making sure that the code follows the Java language conventions
+* Cypress - for end to end testing
+* Storybook - tool for UI development
