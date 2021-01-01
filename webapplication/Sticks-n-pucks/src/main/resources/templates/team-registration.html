@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .gradient {
-            background: linear-gradient(90deg, #87d530 10%, #05aada 100%);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/menu.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
 <!-- component -->
+<div id="navigation">
+    <navbar></navbar>
+</div>
 <div class="bg-grey-lighter min-h-screen flex flex-col">
     <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center ">
         <br> <br>
@@ -41,4 +45,14 @@
     </div>
 </div>
 </body>
+<script>
+    (function () {
+        new Vue({
+            el: '#navigation',
+            components: {
+                navbar: Navbar
+            }
+        })
+    })();
+</script>
 </html>
