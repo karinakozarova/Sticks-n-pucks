@@ -1,11 +1,9 @@
 package com.sticksnpucks.sticksnpucks;
 
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
 import java.net.*;
-import java.util.*;
 
 /**
  * Base actions to the API

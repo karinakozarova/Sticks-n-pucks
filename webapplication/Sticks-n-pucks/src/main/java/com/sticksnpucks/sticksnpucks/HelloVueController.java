@@ -15,5 +15,4 @@ class HelloVueController {
         model.put("title", "Comes from controller!");
         return new ModelAndView("hello-vue.html", model);
     }
-
 }
