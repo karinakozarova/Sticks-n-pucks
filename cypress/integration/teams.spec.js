@@ -5,7 +5,7 @@ context('Teams listing', () => {
     cy.visit('http://localhost:8081/teams/all');
   })
 
-  it('Teams lisitng page has cards', () => {
+  it('Teams listing page has cards with the names of the teams', () => {
   	cy.title().should('include', 'View team');
   	cy.contains('Icehawks');
   	cy.contains('Kemphanen');
