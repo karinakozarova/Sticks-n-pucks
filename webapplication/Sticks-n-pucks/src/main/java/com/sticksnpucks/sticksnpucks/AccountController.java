@@ -7,7 +7,7 @@ import org.springframework.web.servlet.*;
 
 import java.util.*;
 
-@Controller
+@RestController
 class AccountController {
     @GetMapping("/login")
     public String greetingForm(Model model) {

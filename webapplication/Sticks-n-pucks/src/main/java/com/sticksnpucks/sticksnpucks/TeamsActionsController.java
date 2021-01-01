@@ -6,7 +6,7 @@ import org.springframework.web.servlet.*;
 
 import java.util.*;
 
-@Controller
+@RestController
 class TeamsActionsController {
 
     @GetMapping("/teams/all")

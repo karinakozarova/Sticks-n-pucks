@@ -34,4 +34,14 @@ class TeamsActionsControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+
+    @Test
+    void addNewTeam_shouldReturn200_whenNameIsValid() throws Exception {
+        mockMvc.perform(
+                get("/teams/register")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 }
