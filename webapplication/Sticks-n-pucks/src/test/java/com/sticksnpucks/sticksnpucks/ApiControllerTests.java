@@ -30,7 +30,7 @@ class ApiControllerTests {
     }
 
     @Test
-    void postAPIResult_ReturnsSuccess() throws IOException {
+    void postAPIResult_ReturnsSuccess() {
         String urlPath = "https://reqbin.com/sample/post/json";
 
         int result = ApiController.postToAPI(urlPath);
@@ -39,7 +39,7 @@ class ApiControllerTests {
     }
 
     @Test
-    void postAPIResult_ReturnsSuccessAmaNe() throws IOException {
+    void postAPIResult_ReturnsSuccessAmaNe() {
         String urlPath = "https://www.thecocktaildb.com/api/json/v1/1/search.php?i=vodka";
 
         int result = ApiController.postToAPI(urlPath);
@@ -48,7 +48,7 @@ class ApiControllerTests {
     }
 
     @Test
-    void putAPIResult_ReturnsSuccess() throws IOException {
+    void putAPIResult_ReturnsSuccess() {
         String urlPath = "https://reqbin.com/sample/put/json";
 
         int result = ApiController.putToAPI(urlPath);
@@ -57,11 +57,20 @@ class ApiControllerTests {
     }
 
     @Test
-    void deleteAPIResult_ReturnsSuccess() throws IOException {
+    void deleteAPIResult_ReturnsSuccess() {
         String urlPath = "https://reqbin.com/sample/delete/json";
 
         int result = ApiController.deleteFromAPI(urlPath);
 
         assertEquals(200, result);
+    }
+
+    @Test
+    void incorrectLink_Returns404() {
+        String urlPath = "unknowUrl";
+
+        int result = ApiController.deleteFromAPI(urlPath);
+
+        assertEquals(404, result);
     }
 }

@@ -47,15 +47,6 @@ class AccountControllerTests {
     }
 
     @Test
-    void login_shouldReturn200_inAllCases() throws Exception {
-        mockMvc.perform(
-                get("/login")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-    @Test
     void loginPost_shouldReturn200_withNoData() throws Exception {
         mockMvc.perform(
                 post("/login")

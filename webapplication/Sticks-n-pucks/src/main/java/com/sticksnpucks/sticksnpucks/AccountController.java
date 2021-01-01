@@ -7,13 +7,14 @@ import org.springframework.web.servlet.*;
 
 import java.util.*;
 
-@RestController
+@Controller
 class AccountController {
     @GetMapping("/login")
     public String greetingForm(Model model) {
         model.addAttribute("loginData", new LoginFormObject());
         return "login";
     }
+
 
     @PostMapping("/login")
     public String greetingSubmit(@ModelAttribute LoginFormObject loginFormObject, Model model) {
