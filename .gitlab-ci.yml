@@ -34,9 +34,9 @@ setup-web:
     - npm install autoprefixer@9.0.0
     - npm run-script build
   artifacts:
-  paths:
-    - webapplication/Sticks-n-pucks/frontend/node_modules/
-  expire_in: 1 week
+    paths:
+      - webapplication/Sticks-n-pucks/frontend/node_modules/
+    expire_in: 1 week
 
 build-api:
   stage: build
