@@ -17,4 +17,9 @@ public class InformationPagesController {
     ModelAndView dashboardPage() {
         return new ModelAndView("dashboard.html",  new HashMap<>());
     }
+
+    @GetMapping("/chat")
+    ModelAndView chatPage() {
+        return new ModelAndView("chat.html",  new HashMap<>());
+    }
 }
