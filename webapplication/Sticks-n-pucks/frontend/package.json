@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --dest dist/Navbar --name Navbar src/components/Navbar.vue && vue-cli-service build --target lib --dest dist/TeamCard --name TeamCard src/components/TeamCard.vue && vue-cli-service build --target lib --dest dist/PlayerCard --name PlayerCard src/components/PlayerCard.vue",
+    "build": "vue-cli-service build --target lib --dest dist/Navbar --name Navbar src/components/Navbar.vue && vue-cli-service build --target lib --dest dist/TeamCard --name TeamCard src/components/TeamCard.vue && vue-cli-service build --target lib --dest dist/PlayerCard --name PlayerCard src/components/PlayerCard.vue && vue-cli-service build --target lib --dest dist/GameCard --name GameCard src/components/GameCard.vue",
     "lint": "vue-cli-service li nt",
     "storybook": "start-storybook -p 6006 --no-dll",
     "build-storybook": "build-storybook --no-dll"
