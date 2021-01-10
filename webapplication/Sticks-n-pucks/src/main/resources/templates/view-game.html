@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/menu.css">
     <script src="https://unpkg.com/vue"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
+    <script th:src="@{/GameCard/GameCard.umd.min.js}"></script>
     <link rel="stylesheet" href="/css/game.css">
 </head>
 <body class="flex h-screen gradient">
@@ -60,31 +61,8 @@
             </div>
         </nav>
     </div>
-    <div style="background-color:white;margin: auto;">
-        <div class="main-wrapper" style="background-image: url('/pics/puck-drop.jpg')">
-            <div class="schedule">
-                <div class="cellcontainer left-team">
-                    <div class="team-info">
-                        <div class="team-title">Belgium</div>
-                        <div class="team-color" style="background-color: rgb(21, 149, 211);"></div>
-                    </div>
-                    <div class="team-score"> 6 </div>
-                </div>
-                <div class="cellcontainer cellcontainer--scoring">
-                    <div class="versus">VS</div>
-                    <div class="game-date">15 JAN 2019</div>
-                </div>
-                <div class="cellcontainer right-team">
-                    <div class="team-score"><span>0</span></div>
-                    <div class="team-info">
-                        <div class="team-title">Bulgaria </div>
-                        <div class="team-color" style="background-color: rgb(206, 33, 31);"></div>
-                    </div>
-                </div>
-            </div>
-            <div>
-            </div>
-        </div>
+    <div style="background-color:white;margin: 1rem auto auto;" id="app">
+        <game-card v-bind:hostname="'Hawks'" v-bind:hostscore="'1'" v-bind:guestname="'Bulgaria'" v-bind:guestscore="'2'" v-bind:gamedate="'2020-12-2'" style="margin-top: -1rem; !important;"> </game-card> <br>
         <div id="play-by-play" >
             <div class="periods">
                 <div class="period-filters">
@@ -141,6 +119,15 @@
             el: '#navigation',
             components: {
                 navbar: Navbar
+            }
+        })
+    })();
+
+    (function () {
+        new Vue({
+            el: '#app',
+            components: {
+                gameCard: GameCard
             }
         })
     })();
