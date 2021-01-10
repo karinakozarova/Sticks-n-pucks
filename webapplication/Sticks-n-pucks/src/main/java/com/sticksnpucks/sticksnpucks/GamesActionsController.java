@@ -12,9 +12,7 @@ import java.util.*;
 @RestController
 public class GamesActionsController {
     /**
-     * Get all the Games that are already in the database
-     * @return json data as string
-     * @throws IOException when the data could not be received
+     * @return html page listing all the games
      */
     @GetMapping("/games/all")
     ModelAndView getAllGames() {
@@ -22,12 +20,18 @@ public class GamesActionsController {
         return new ModelAndView("games-listing.html", model);
     }
 
+    /**
+     * @return html page for adding a new game
+     */
     @GetMapping("/games/add")
     ModelAndView addNewGame() {
         Map<String, Object> model = new HashMap<>();
         return new ModelAndView("add-game.html", model);
     }
 
+    /**
+     * @return html page visualising a single games
+     */
     @GetMapping("/games/view")
     ModelAndView viewGame() {
         Map<String, Object> model = new HashMap<>();
