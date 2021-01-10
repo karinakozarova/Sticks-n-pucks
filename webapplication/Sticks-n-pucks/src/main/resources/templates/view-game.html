@@ -34,35 +34,35 @@
             height: 100%;
             background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5)), linear-gradient(270deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.1)), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
         }
-        .main-wrapper .s-schedule-container {
+        .main-wrapper .schedule {
             position: relative;
             z-index: 1;
             -ms-flex-pack: center;
             justify-content: center;
             padding-top: 80px;
         }
-        .main-wrapper .s-schedule-container,
-        .main-wrapper .s-schedule-container .s-cell {
+        .main-wrapper .schedule,
+        .main-wrapper .schedule .cellcontainer {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-align: center;
             align-items: center;
         }
-        .main-wrapper .s-schedule-container .s-cell.left-team {
+        .main-wrapper .schedule .cellcontainer.left-team {
             text-align: right;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
             -ms-flex-pack: end;
             justify-content: flex-end;
         }
-        .main-wrapper .s-schedule-container .s-cell.s-cell--right {
+        .main-wrapper .schedule .cellcontainer.right-team {
             text-align: left;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
             -ms-flex-pack: start;
             justify-content: flex-start;
         }
-        .main-wrapper .s-schedule-container .s-cell.s-cell--scoring {
+        .main-wrapper .schedule .cellcontainer.cellcontainer--scoring {
             color: #fff;
             text-transform: uppercase;
             text-align: center;
@@ -70,10 +70,10 @@
             flex-direction: column;
             margin: 0 20px;
         }
-        .main-wrapper .s-schedule-container .s-team-info {
+        .main-wrapper .schedule .team-info {
             line-height: 0;
         }
-        .main-wrapper .s-schedule-container .s-team-info .s-title {
+        .main-wrapper .schedule .team-info .s-title {
             text-transform: uppercase;
             color: #fff;
             font-size: 36px;
@@ -87,19 +87,19 @@
             width: 90%;
             height: 4px;
         }
-        .main-wrapper .s-schedule-container .s-team-score {
+        .main-wrapper .schedule .team-score {
             color: #fff;
             text-align: center;
             font-size: 80px;
             width: 85px;
         }
-        .main-wrapper .s-schedule-container .s-status-title {
+        .main-wrapper .schedule .s-status-title {
             font-size: 32px;
             line-height: 50px;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
         }
-        .main-wrapper .s-schedule-container .s-date {
+        .main-wrapper .schedule .s-date {
             line-height: 24px;
             font-size: 16px;
         }
@@ -209,21 +209,21 @@
     </div>
     <div style="background-color:white;margin: auto;">
             <div class="main-wrapper" style="background-image: url(&quot;https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/1_global/hero%20banner/wm_banners/010117105.jpg?ext=.jpg&quot;)">
-                <div class="s-schedule-container">
-                    <div class="s-cell left-team">
-                        <div class="s-team-info">
+                <div class="schedule">
+                    <div class="cellcontainer left-team">
+                        <div class="team-info">
                             <div class="s-title">Belgium</div>
                             <div class="s-team-color" style="background-color: rgb(21, 149, 211);"></div>
                         </div>
-                        <div class="s-team-score"> 6 </div>
+                        <div class="team-score"> 6 </div>
                     </div>
-                    <div class="s-cell s-cell--scoring">
+                    <div class="cellcontainer cellcontainer--scoring">
                         <div class="s-status-title">VS</div>
                         <div class="s-date">15 JAN 2019</div>
                     </div>
-                    <div class="s-cell">
-                        <div class="s-team-score"><span>0</span></div>
-                        <div class="s-team-info">
+                    <div class="cellcontainer right-team">
+                        <div class="team-score"><span>0</span></div>
+                        <div class="team-info">
                             <div class="s-title">Bulgaria </div>
                             <div class="s-team-color" style="background-color: rgb(206, 33, 31);"></div>
                         </div>
