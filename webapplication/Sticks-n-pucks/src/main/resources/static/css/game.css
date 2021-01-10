@@ -23,7 +23,6 @@ html {
 .main-wrapper .schedule {
     position: relative;
     z-index: 1;
-    -ms-flex-pack: center;
     justify-content: center;
     padding-top: 80px;
 }
@@ -31,28 +30,22 @@ html {
 .main-wrapper .schedule .cellcontainer {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
     align-items: center;
 }
 .main-wrapper .schedule .cellcontainer.left-team {
     text-align: right;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -ms-flex-pack: end;
     justify-content: flex-end;
 }
 .main-wrapper .schedule .cellcontainer.right-team {
     text-align: left;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -ms-flex-pack: start;
     justify-content: flex-start;
 }
 .main-wrapper .schedule .cellcontainer.cellcontainer--scoring {
     color: #fff;
     text-transform: uppercase;
     text-align: center;
-    -ms-flex-direction: column;
     flex-direction: column;
     margin: 0 20px;
 }
@@ -82,7 +75,6 @@ html {
 .main-wrapper .schedule .versus {
     font-size: 32px;
     line-height: 50px;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
 }
 .main-wrapper .schedule .game-date {
@@ -115,7 +107,6 @@ html {
 .periods .period-filters .filter-wrapper {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: start;
     justify-content: flex-start;
 }
 .periods .period-filters .filter-item {
@@ -125,7 +116,6 @@ html {
     cursor: pointer;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: center;
     align-items: center;
     transition: all 0.25s ease;
     background: 0 0;
