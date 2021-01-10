@@ -73,7 +73,7 @@
         .main-wrapper .schedule .team-info {
             line-height: 0;
         }
-        .main-wrapper .schedule .team-info .s-title {
+        .main-wrapper .schedule .team-info .team-title {
             text-transform: uppercase;
             color: #fff;
             font-size: 36px;
@@ -82,7 +82,7 @@
             padding-left: 40px;
             padding-right: 40px;
         }
-        .s-team-color {
+        .team-color {
             display: inline-block;
             width: 90%;
             height: 4px;
@@ -93,24 +93,24 @@
             font-size: 80px;
             width: 85px;
         }
-        .main-wrapper .schedule .s-status-title {
+        .main-wrapper .schedule .versus {
             font-size: 32px;
             line-height: 50px;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
         }
-        .main-wrapper .schedule .s-date {
+        .main-wrapper .schedule .game-date {
             line-height: 24px;
             font-size: 16px;
         }
-        .m-hero .s-title {
+        .m-hero .team-title {
             position: relative;
             padding-bottom: 22px;
             text-transform: uppercase;
             font-size: 55px;
             z-index: 10;
         }
-        .m-hero .s-title:after {
+        .m-hero .team-title:after {
             position: absolute;
             bottom: 0;
             left: 50%;
@@ -208,75 +208,75 @@
         </nav>
     </div>
     <div style="background-color:white;margin: auto;">
-            <div class="main-wrapper" style="background-image: url(&quot;https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/1_global/hero%20banner/wm_banners/010117105.jpg?ext=.jpg&quot;)">
-                <div class="schedule">
-                    <div class="cellcontainer left-team">
-                        <div class="team-info">
-                            <div class="s-title">Belgium</div>
-                            <div class="s-team-color" style="background-color: rgb(21, 149, 211);"></div>
-                        </div>
-                        <div class="team-score"> 6 </div>
+        <div class="main-wrapper" style="background-image: url(&quot;https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/1_global/hero%20banner/wm_banners/010117105.jpg?ext=.jpg&quot;)">
+            <div class="schedule">
+                <div class="cellcontainer left-team">
+                    <div class="team-info">
+                        <div class="team-title">Belgium</div>
+                        <div class="team-color" style="background-color: rgb(21, 149, 211);"></div>
                     </div>
-                    <div class="cellcontainer cellcontainer--scoring">
-                        <div class="s-status-title">VS</div>
-                        <div class="s-date">15 JAN 2019</div>
-                    </div>
-                    <div class="cellcontainer right-team">
-                        <div class="team-score"><span>0</span></div>
-                        <div class="team-info">
-                            <div class="s-title">Bulgaria </div>
-                            <div class="s-team-color" style="background-color: rgb(206, 33, 31);"></div>
-                        </div>
-                    </div>
+                    <div class="team-score"> 6 </div>
                 </div>
-                <div>
+                <div class="cellcontainer cellcontainer--scoring">
+                    <div class="versus">VS</div>
+                    <div class="game-date">15 JAN 2019</div>
                 </div>
-            </div>
-            <div id="play-by-play" >
-                <div class="periods">
-                    <div class="period-filters">
-                        <div class="filter-wrapper">
-                            <div class="filter-item">
-                                Period 1
-                            </div>
-                            <div class="filter-item">
-                                Period 2
-                            </div>
-                            <div class="filter-item">
-                                Period 3
-                            </div>
-                        </div>
-                    </div>
-                    <div class="s-content">
-                        <table class="min-w-full table-auto">
-                            <tbody class="bg-gray-200">
-                            <tr class="bg-white">
-                                <td class="px-4 py-1">
-                                    <span class="text-gray-300 font-semibold">23:34 (Period 1)</span>
-                                </td>
-                                <td class="px-4 py-1 flex flex-row items-center">
-                                    <span class="text-center ml-2 font-semibold">#4 Karina KOZAROVA</span>
-                                </td>
-                                <td class="px-16 py-1">
-                                    Goal for team Bulgaria
-                                </td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-4 py-1">
-                                    <span class="text-gray-300 font-semibold">23:34 (Period 1)</span>
-                                </td>
-                                <td class="px-4 py-1 flex flex-row items-center">
-                                    <span class="text-center ml-2 font-semibold">#4 Karina KOZAROVA</span>
-                                </td>
-                                <td class="px-16 py-1">
-                                    Goal for team Bulgaria
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <div class="cellcontainer right-team">
+                    <div class="team-score"><span>0</span></div>
+                    <div class="team-info">
+                        <div class="team-title">Bulgaria </div>
+                        <div class="team-color" style="background-color: rgb(206, 33, 31);"></div>
                     </div>
                 </div>
             </div>
+            <div>
+            </div>
+        </div>
+        <div id="play-by-play" >
+            <div class="periods">
+                <div class="period-filters">
+                    <div class="filter-wrapper">
+                        <div class="filter-item">
+                            Period 1
+                        </div>
+                        <div class="filter-item">
+                            Period 2
+                        </div>
+                        <div class="filter-item">
+                            Period 3
+                        </div>
+                    </div>
+                </div>
+                <div class="s-content">
+                    <table class="min-w-full table-auto">
+                        <tbody class="bg-gray-200">
+                        <tr class="bg-white">
+                            <td class="px-4 py-1">
+                                <span class="text-gray-300 font-semibold">23:34 (Period 1)</span>
+                            </td>
+                            <td class="px-4 py-1 flex flex-row items-center">
+                                <span class="text-center ml-2 font-semibold">#4 Karina KOZAROVA</span>
+                            </td>
+                            <td class="px-16 py-1">
+                                Goal for team Bulgaria
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-4 py-1">
+                                <span class="text-gray-300 font-semibold">23:34 (Period 1)</span>
+                            </td>
+                            <td class="px-4 py-1 flex flex-row items-center">
+                                <span class="text-center ml-2 font-semibold">#4 Karina KOZAROVA</span>
+                            </td>
+                            <td class="px-16 py-1">
+                                Goal for team Bulgaria
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
     </main>
 </div>
