@@ -12,6 +12,8 @@
     <script th:src="@{/TeamCard/TeamCard.umd.min.js}"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
     <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/game.css">
+
 </head>
 
 <body class="flex h-screen gradient">
@@ -60,22 +62,31 @@
             </div>
         </nav>
     </div>
-    <div class="flex flex-wrap -mb-4" id="app">
-        <team-card v-bind:teamname="'Icehawks'" v-bind:description="'Best team'"></team-card>
-        <team-card v-bind:teamname="'Kemphanen'" v-bind:description="'Some long description here'"></team-card>
-        <team-card v-bind:teamname="'Bulgaria'" v-bind:description="'Best team'"></team-card>
-        <team-card v-bind:teamname="'Chicago Blackhawks'" v-bind:description="'Best team'"></team-card>
-        <team-card v-bind:teamname="'Washington Capitals'" v-bind:description="'Some long description here'"></team-card>
-        <script>
-            (function () {
-                new Vue({
-                    el: '#app',
-                    components: {
-                        teamCard: TeamCard
-                    }
-                })
-            })();
-        </script>
+    <div class="flex flex-wrap mb-4" id="app" style="padding-left: 25%">
+        <div class="main-wrapper" style="background-image: url('/pics/puck-drop.jpg');max-height: 15rem;" >
+            <div class="schedule">
+                <div class="cellcontainer left-team">
+                    <div class="team-info">
+                        <div class="team-title">Belgium</div>
+                        <div class="team-color" style="background-color: rgb(21, 149, 211);"></div>
+                    </div>
+                    <div class="team-score"> 6 </div>
+                </div>
+                <div class="cellcontainer cellcontainer--scoring">
+                    <div class="versus">VS</div>
+                    <div class="game-date">15 JAN 2019</div>
+                </div>
+                <div class="cellcontainer right-team">
+                    <div class="team-score"><span>0</span></div>
+                    <div class="team-info">
+                        <div class="team-title">Bulgaria </div>
+                        <div class="team-color" style="background-color: rgb(206, 33, 31);"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
     </div>
 </div>
 
