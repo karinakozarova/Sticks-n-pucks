@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View team</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/menu.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        .m-hero-game-center {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top;
+            position: relative;
+        }
+        .m-hero-game-center:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5)), linear-gradient(270deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.1)), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        }
+        .m-hero-game-center .s-schedule-container {
+            position: relative;
+            z-index: 1;
+            -ms-flex-pack: center;
+            justify-content: center;
+            padding-top: 80px;
+        }
+        .m-hero-game-center .s-schedule-container,
+        .m-hero-game-center .s-schedule-container .s-cell {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .m-hero-game-center .s-schedule-container .s-cell.s-cell--left {
+            text-align: right;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+        }
+        .m-hero-game-center .s-schedule-container .s-cell.s-cell--right {
+            text-align: left;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+        .m-hero-game-center .s-schedule-container .s-cell.s-cell--scoring {
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            margin: 0 20px;
+        }
+        .m-hero-game-center .s-schedule-container .s-team-info {
+            line-height: 0;
+        }
+        .m-hero-game-center .s-schedule-container .s-team-info .s-title {
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 36px;
+            line-height: 1;
+            letter-spacing: 1px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .m-hero-game-center .s-schedule-container .s-team-info .s-team-color {
+            display: inline-block;
+            width: 90%;
+            height: 4px;
+        }
+        .m-hero-game-center .s-schedule-container .s-team-score {
+            color: #fff;
+            text-align: center;
+            font-size: 80px;
+            width: 85px;
+        }
+        .m-hero-game-center .s-schedule-container .s-status-title {
+            font-size: 32px;
+            line-height: 50px;
+            letter-spacing: 1.3px;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+        }
+        .m-hero-game-center .s-schedule-container .s-date {
+            line-height: 24px;
+            font-size: 16px;
+            letter-spacing: 0.8px;
+        }
+        .m-hero .s-title {
+            position: relative;
+            padding-bottom: 22px;
+            text-transform: uppercase;
+            font-family: SourceSansPro-Black;
+            font-size: 55px;
+            z-index: 10;
+        }
+        .m-hero .s-title:after {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 60px;
+            height: 2px;
+            background-color: #fff;
+            transform: translateX(-50%);
+            content: "";
+        }
+        .m-play-by-play .s-filters {
+            border-width: 0 0 4px;
+            border-style: solid;
+            border-color: #d6d6d6;
+            position: relative;
+        }
+        .m-play-by-play .s-filters .s-filters-wrapper {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+        .m-play-by-play .s-filters .s-filter-item {
+            text-transform: uppercase;
+            position: relative;
+            color: #4a4a4a;
+            cursor: pointer;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            transition: all 0.25s ease;
+            background: 0 0;
+            height: 90px;
+            padding: 0 40px;
+        }
+        .m-play-by-play .s-filters .s-filter-item:before {
+            content: "";
+            display: block;
+            position: absolute;
+            background: #000;
+            opacity: 0.1;
+            left: 0;
+            width: 1px;
+            height: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body class="flex h-screen gradient">
+<div id="navigation">
+    <navbar></navbar>
+</div>
+<div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
+    <div class="h-40 lg:h-20 w-full flex flex-wrap">
+        <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
+            <div class="flex h-full justify-between items-center">
+                <div class="relative w-full max-w-3xl px-6">
+                    <div class="absolute h-10 mt-1 left-0 top-0 flex items-center pl-10">
+                        <svg class="h-4 w-4 fill-current text-gray-600" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20">
+                            <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path>
+                        </svg>
+                    </div>
+                    <input id="search-toggle" type="search" placeholder="search"
+                           class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow-md text-gray-700 font-bold rounded-full pl-12 pr-4 py-3"
+                           onkeyup="updateSearchResults(this.value);">
+                </div>
+                <div class="flex relative inline-block pr-6">
+                    <div class="relative text-sm">
+                        <button id="userButton" class="flex items-center focus:outline-none mr-3">
+                            <span class="hidden md:inline-block">Hi, User </span>
+                        </button>
+                        <div id="userMenu"
+                             class="bg-white nunito rounded shadow-md mt-2 absolute mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible">
+                            <ul class="list-reset">
+                                <li><a href="#"
+                                       class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">My
+                                    account</a>
+                                </li>
+                                <li><a href="#"
+                                       class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">Notifications</a>
+                                </li>
+                                <li>
+                                    <hr class="border-t mx-2 border-gray-400">
+                                </li>
+                                <li><a href="#"
+                                       class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div style="background-color:white;margin: auto;">
+            <div class="hero-game-center m-hero-game-center" style="background-image: url(&quot;https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/1_global/hero%20banner/wm_banners/010117105.jpg?ext=.jpg&quot;)">
+                <div class="s-schedule-container">
+                    <div class="s-cell s-cell--left">
+                        <div class="s-team-info">
+                            <div class="s-title">Belgium</div>
+                            <div class="s-team-color" style="background-color: rgb(21, 149, 211);"></div>
+                        </div>
+                        <div class="s-team-score"> 6 </div>
+                    </div>
+                    <div class="s-cell s-cell--scoring">
+                        <div class="s-status-title">VS</div>
+                        <div class="s-date">15 JAN 2019</div>
+                    </div>
+                    <div class="s-cell s-cell--right">
+                        <div class="s-team-score"><span>0</span></div>
+                        <div class="s-team-info">
+                            <div class="s-title">Bulgaria </div>
+                            <div class="s-team-color" style="background-color: rgb(206, 33, 31);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div id="play-by-play" >
+                <div class="m-play-by-play">
+                    <div class="s-filters js-filters">
+                        <div class="s-filters-wrapper">
+                            <div class="s-filter-item">
+                                Period 1
+                            </div>
+                            <div class="s-filter-item">
+                                Period 2
+                            </div>
+                            <div class="s-filter-item">
+                                Period 3
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s-content">
+                        <table class="min-w-full table-auto">
+                            <tbody class="bg-gray-200">
+                            <tr class="bg-white">
+                                <td class="px-4 py-1">
+                                    <span class="text-gray-300 font-semibold">23:34 (Period 1)</span>
+                                </td>
+                                <td class="px-4 py-1 flex flex-row items-center">
+                                    <span class="text-center ml-2 font-semibold">#4 Karina KOZAROVA</span>
+                                </td>
+                                <td class="px-16 py-1">
+                                    Goal for team Bulgaria
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-4 py-1">
+                                    <span class="text-gray-300 font-semibold">23:34 (Period 1)</span>
+                                </td>
+                                <td class="px-4 py-1 flex flex-row items-center">
+                                    <span class="text-center ml-2 font-semibold">#4 Karina KOZAROVA</span>
+                                </td>
+                                <td class="px-16 py-1">
+                                    Goal for team Bulgaria
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </main>
+</div>
+</div>
+<script src="js/menu.js"> </script>
+<script>
+    (function () {
+        new Vue({
+            el: '#navigation',
+            components: {
+                navbar: Navbar
+            }
+        })
+    })();
+</script>
+</body>
+</html>
