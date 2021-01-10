@@ -19,13 +19,13 @@
             margin: 0;
             border: none;
         }
-        .m-hero-game-center {
+        .main-wrapper {
             background-repeat: no-repeat;
             background-size: cover;
             background-position: top;
             position: relative;
         }
-        .m-hero-game-center:after {
+        .main-wrapper:after {
             content: "";
             position: absolute;
             left: 0;
@@ -34,35 +34,35 @@
             height: 100%;
             background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5)), linear-gradient(270deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.1)), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
         }
-        .m-hero-game-center .s-schedule-container {
+        .main-wrapper .s-schedule-container {
             position: relative;
             z-index: 1;
             -ms-flex-pack: center;
             justify-content: center;
             padding-top: 80px;
         }
-        .m-hero-game-center .s-schedule-container,
-        .m-hero-game-center .s-schedule-container .s-cell {
+        .main-wrapper .s-schedule-container,
+        .main-wrapper .s-schedule-container .s-cell {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-align: center;
             align-items: center;
         }
-        .m-hero-game-center .s-schedule-container .s-cell.s-cell--left {
+        .main-wrapper .s-schedule-container .s-cell.left-team {
             text-align: right;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
             -ms-flex-pack: end;
             justify-content: flex-end;
         }
-        .m-hero-game-center .s-schedule-container .s-cell.s-cell--right {
+        .main-wrapper .s-schedule-container .s-cell.s-cell--right {
             text-align: left;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
             -ms-flex-pack: start;
             justify-content: flex-start;
         }
-        .m-hero-game-center .s-schedule-container .s-cell.s-cell--scoring {
+        .main-wrapper .s-schedule-container .s-cell.s-cell--scoring {
             color: #fff;
             text-transform: uppercase;
             text-align: center;
@@ -70,10 +70,10 @@
             flex-direction: column;
             margin: 0 20px;
         }
-        .m-hero-game-center .s-schedule-container .s-team-info {
+        .main-wrapper .s-schedule-container .s-team-info {
             line-height: 0;
         }
-        .m-hero-game-center .s-schedule-container .s-team-info .s-title {
+        .main-wrapper .s-schedule-container .s-team-info .s-title {
             text-transform: uppercase;
             color: #fff;
             font-size: 36px;
@@ -82,34 +82,31 @@
             padding-left: 40px;
             padding-right: 40px;
         }
-        .m-hero-game-center .s-schedule-container .s-team-info .s-team-color {
+        .s-team-color {
             display: inline-block;
             width: 90%;
             height: 4px;
         }
-        .m-hero-game-center .s-schedule-container .s-team-score {
+        .main-wrapper .s-schedule-container .s-team-score {
             color: #fff;
             text-align: center;
             font-size: 80px;
             width: 85px;
         }
-        .m-hero-game-center .s-schedule-container .s-status-title {
+        .main-wrapper .s-schedule-container .s-status-title {
             font-size: 32px;
             line-height: 50px;
-            letter-spacing: 1.3px;
             -ms-flex-wrap: nowrap;
             flex-wrap: nowrap;
         }
-        .m-hero-game-center .s-schedule-container .s-date {
+        .main-wrapper .s-schedule-container .s-date {
             line-height: 24px;
             font-size: 16px;
-            letter-spacing: 0.8px;
         }
         .m-hero .s-title {
             position: relative;
             padding-bottom: 22px;
             text-transform: uppercase;
-            font-family: SourceSansPro-Black;
             font-size: 55px;
             z-index: 10;
         }
@@ -123,19 +120,19 @@
             transform: translateX(-50%);
             content: "";
         }
-        .m-play-by-play .s-filters {
+        .periods .period-filters {
             border-width: 0 0 4px;
             border-style: solid;
             border-color: #d6d6d6;
             position: relative;
         }
-        .m-play-by-play .s-filters .s-filters-wrapper {
+        .periods .period-filters .filter-wrapper {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-pack: start;
             justify-content: flex-start;
         }
-        .m-play-by-play .s-filters .s-filter-item {
+        .periods .period-filters .filter-item {
             text-transform: uppercase;
             position: relative;
             color: #4a4a4a;
@@ -149,7 +146,7 @@
             height: 90px;
             padding: 0 40px;
         }
-        .m-play-by-play .s-filters .s-filter-item:before {
+        .periods .period-filters .filter-item:before {
             content: "";
             display: block;
             position: absolute;
@@ -211,9 +208,9 @@
         </nav>
     </div>
     <div style="background-color:white;margin: auto;">
-            <div class="hero-game-center m-hero-game-center" style="background-image: url(&quot;https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/1_global/hero%20banner/wm_banners/010117105.jpg?ext=.jpg&quot;)">
+            <div class="main-wrapper" style="background-image: url(&quot;https://blob.iihf.com/iihf-media/iihfmvc/media/contentimages/1_global/hero%20banner/wm_banners/010117105.jpg?ext=.jpg&quot;)">
                 <div class="s-schedule-container">
-                    <div class="s-cell s-cell--left">
+                    <div class="s-cell left-team">
                         <div class="s-team-info">
                             <div class="s-title">Belgium</div>
                             <div class="s-team-color" style="background-color: rgb(21, 149, 211);"></div>
@@ -224,7 +221,7 @@
                         <div class="s-status-title">VS</div>
                         <div class="s-date">15 JAN 2019</div>
                     </div>
-                    <div class="s-cell s-cell--right">
+                    <div class="s-cell">
                         <div class="s-team-score"><span>0</span></div>
                         <div class="s-team-info">
                             <div class="s-title">Bulgaria </div>
@@ -236,16 +233,16 @@
                 </div>
             </div>
             <div id="play-by-play" >
-                <div class="m-play-by-play">
-                    <div class="s-filters js-filters">
-                        <div class="s-filters-wrapper">
-                            <div class="s-filter-item">
+                <div class="periods">
+                    <div class="period-filters">
+                        <div class="filter-wrapper">
+                            <div class="filter-item">
                                 Period 1
                             </div>
-                            <div class="s-filter-item">
+                            <div class="filter-item">
                                 Period 2
                             </div>
-                            <div class="s-filter-item">
+                            <div class="filter-item">
                                 Period 3
                             </div>
                         </div>
