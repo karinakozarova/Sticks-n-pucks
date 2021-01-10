@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View players</title>
+    <title>Chat</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -12,6 +12,14 @@
     <script th:src="@{/PlayerCard/PlayerCard.umd.min.js}"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
     <link rel="stylesheet" href="/css/menu.css">
+    <style>
+        .chat{
+            width: 80%;
+            background-color: white;
+            padding: 5rem;
+            margin: 2rem auto auto;
+        }
+    </style>
 </head>
 
 <body class="flex h-screen gradient">
@@ -60,25 +68,26 @@
             </div>
         </nav>
     </div>
-    <div class="mb-8">
-        <div class="text-gray-900 font-bold text-4xl mb-2">Chat with us!</div>
-        <p class="text-gray-700 text-base"> Here you can instantly reach the team of Sticks'n'pucks. </p>
-    </div>
 <br>
     <div class="chat">
+        <div class="mb-8">
+            <div class="text-gray-900 font-bold text-4xl mb-2">Chat with us!</div>
+            <p class="text-gray-700 text-base"> Here you can instantly reach the team of Sticks'n'pucks. </p>
+        </div>
+
         <div class="messages">
             <div class="messages-content" id="output">
             </div>
         </div>
         <div class="message-box">
-            <textarea class="text-grey-darkest flex-1 p-2 m-1" id="userInput" style="width: 100%"></textarea>
+            <textarea placeholder="Message..." class="text-grey-darkest flex-1 p-2 m-1 border border-gray-300 bg-gray-200 resize-none" id="userInput" style="width: 100%"></textarea>
             <br>
             <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full" onclick="sendMessageViaSocket()" style="width: 100%">
                 Send
             </button>
             <br>
-            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full" onclick="exitChat()" style="width: 100%">
-                Exit
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full" onclick="exitChat()" style="width: 100%; margin-top: 5px;">
+                Exit chat
             </button>
         </div>
     </div>
@@ -127,6 +136,7 @@
 
     function onClose(evt) {
        // writeToScreen("Chat closed SUCCESFULLY!");
+        document.getElementById("userInput").style.visibility = "hidden";
     }
 
     async function onMessage(evt) {
@@ -159,7 +169,7 @@
 
     function exitChat() {
         websocket.close();
-        writeToScreen("Socket is closed SUCCESFULLY!");
+        // writeToScreen("Socket is closed SUCCESFULLY!");
     }
 
     window.addEventListener("load", init, false);
