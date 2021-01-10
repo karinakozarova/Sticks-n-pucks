@@ -10,6 +10,8 @@ html {
     background-size: cover;
     background-position: top;
     position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .main-wrapper:after {
     content: "";

@@ -3,19 +3,19 @@
         <div class="schedule">
             <div class="cellcontainer left-team">
                 <div class="team-info">
-                    <div class="team-title">{{ hostName }}</div>
+                    <div class="team-title">{{ hostname }}</div>
                     <div class="team-color" style="background-color: rgb(21, 149, 211);"></div>
                 </div>
-                <div class="team-score"> {{ hostScore }} </div>
+                <div class="team-score"> {{ hostscore }} </div>
             </div>
             <div class="cellcontainer cellcontainer--scoring">
                 <div class="versus">VS</div>
-                <div class="game-date">{{ gameDate }}</div>
+                <div class="game-date">{{ gamedate }}</div>
             </div>
             <div class="cellcontainer right-team">
-                <div class="team-score"><span>{{ guestScore }}</span></div>
+                <div class="team-score"><span>{{ guestscore }}</span></div>
                 <div class="team-info">
-                    <div class="team-title">{{ guestName }} </div>
+                    <div class="team-title">{{ guestname }} </div>
                     <div class="team-color" style="background-color: rgb(206, 33, 31);"></div>
                 </div>
             </div>
@@ -29,23 +29,23 @@
     export default {
         name: "GameCard",
         props: {
-            hostName: {
+            hostname: {
                 type: String,
                 required: true,
             },
-            hostScore: {
+            hostscore: {
                 type: String,
                 required: false,
             },
-            guestName: {
+            guestname: {
                 type: String,
                 required: true,
             },
-            guestScore: {
+            guestscore: {
                 type: String,
                 required: false,
             },
-            gameDate: {
+            gamedate: {
                 type: String,
                 required: false,
             },
