@@ -23,7 +23,7 @@ function testWebSocket() {
 }
 
 function onOpen(evt) {
-    // writeToScreen("The websocket is OPEN!");
+    writeToScreen("The websocket is OPEN!");
 }
 
 function onClose(evt) {
