@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Roster</title>
+    <title>Penalties in ice hockey</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -65,80 +65,40 @@
             <br>
             Penalties
             <br>
-        <p th:text="${penalties}"></p>
-
-        </p> <br> <br>
+        </p>
+        <p style="padding: 1.5rem">
+            There are many different types of hockey penalties, and several different hockey referee signals to indicate
+            exactly what a player has done to deserve his or her time in the penalty box. Some penalties carry
+            the option of being either a two-minute minor or five-minute major depending on any perceived intent to injure.
+            There may also be league- and age-specific guidelines that make certain penalties more severe.
+        </p>
         <table class="min-w-full table-auto">
             <thead class="justify-between">
                 <tr class="bg-gray-800">
-                <th class="px-5 py-2">
-                    <span class="text-gray-300">#</span>
-                </th>
-                <th class="px-20 py-2">
-                    <span class="text-gray-300">Name</span>
-                </th>
-                <th class="px-16 py-2">
-                    <span class="text-gray-300">Date of birth</span>
-                </th>
-                <th class="px-4 py-2">
-                    <span class="text-gray-300">Height</span>
-                </th>
-
-                <th class="px-4 py-2">
-                    <span class="text-gray-300">Weight</span>
-                </th>
-
-                <th class="px-6 py-2">
-                    <span class="text-gray-300">Position</span>
-                </th>
-
-                <th class="px-6 py-2">
-                    <span class="text-gray-300">Shoots / Catches</span>
-                </th>
-            </tr>
-            </thead>
-            <tbody class="bg-gray-200">
-                <tr class="bg-white border-4 border-gray-200">
-                    <td class="px-5 py-2">
-                    <span class="text-gray-300"># 4</span>
-                </td>
-
-                    <td class="px-20 py-2 flex flex-row items-center">
-                        <span class="text-center ml-2 font-semibold">Karina Kozarova</span>
-                    </td>
-
-                    <td class="px-16 py-2">
-                        06/10/2000
-                    </td>
-
-                    <td class="px-4 py-2">
-                        <span>164</span>
-                    </td>
-
-                    <td class="px-4 py-2">
-                        <span>100</span>
-                    </td>
-
-                    <td class="px-6 py-2">
-                        Left wing
-                    </td>
-
-                    <td class="px-6 py-2">
-                        Right
-                    </td>
+                    <th class="px-4 py-2">
+                        <span class="text-gray-300">Name</span>
+                    </th>
+                    <th class="px-18 py-2">
+                        <span class="text-gray-300">Description</span>
+                    </th>
                 </tr>
+            </thead>
+            <tbody class="bg-gray-200 penaltiesbody" id="penaltiesbody">
             </tbody>
         </table>
     </div>
 </div>
-<script>
-    // const json = th:text="${penalties}";
-    // const obj = JSON.parse(json);
-</script>
 <script th:inline="javascript">
     var penalties = [[${penalties}]]; // parse the penalties from the controller
-    const obj = JSON.parse(penalties);
-    console.log(obj);
+    const penaltiesArray = JSON.parse(penalties);
+    console.log(penaltiesArray);
+    var arrayLength = penaltiesArray.length;
+    for (var i = 0; i < arrayLength; i++) {
+        console.log(penaltiesArray[i].description);
+        var penaltyRow = "<th class=\"px-6 py-2\"> <span>" + penaltiesArray[i].name + "</span></th><th class=\"px-20 py-2\"> <span>" + penaltiesArray[i].description + "</span> </th>";
+        document.getElementById('penaltiesbody').innerHTML += penaltyRow;
+    }
+
 </script>
 <script>
     var userMenuDiv = document.getElementById("userMenu");
