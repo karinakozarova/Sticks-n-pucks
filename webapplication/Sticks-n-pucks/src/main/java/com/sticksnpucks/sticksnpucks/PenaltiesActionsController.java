@@ -1,12 +1,10 @@
 package com.sticksnpucks.sticksnpucks;
 
-import com.fasterxml.jackson.databind.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 import java.io.*;
-import java.util.*;
 
 /**
  * Requests to the API related to the Games
@@ -14,7 +12,7 @@ import java.util.*;
 @RestController
 public class PenaltiesActionsController {
     /**
-     * @return html page listing all the games
+     * @return html page listing all the penalties
      */
     @GetMapping("/penalties/all")
     ModelAndView getAllPenalties(ModelMap model) throws IOException {
