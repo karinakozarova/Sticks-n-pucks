@@ -30,16 +30,16 @@ class UsersControllerTests {
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
-    @Test
-	void getUser_shouldReturn200_WhenIdIsValid() throws Exception {
-        mockMvc.perform(
-                get("/users")
-                        .param("id", "1")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-    }
+//    @Test
+//	void getUser_shouldReturn200_WhenIdIsValid() throws Exception {
+//        mockMvc.perform(
+//                get("/users")
+//                        .param("id", "1")
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+//    }
 
     @Test
 	void deleteUser_ShouldReturn200_WhenIdIsValid() throws Exception {
