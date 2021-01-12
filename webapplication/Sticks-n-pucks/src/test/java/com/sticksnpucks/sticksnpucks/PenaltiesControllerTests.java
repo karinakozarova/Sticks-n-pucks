@@ -21,7 +21,7 @@ class PenaltiesControllerTests {
     }
 
     @Test
-    void getGreeting_shouldReturn200_whenNameIsValid() throws Exception {
+    void getPenalty_shouldReturn200_whenNameIsValid() throws Exception {
         mockMvc.perform(
                 get("/penalties")
                         .param("name", "Roughing")
@@ -29,11 +29,21 @@ class PenaltiesControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.*", hasSize(3)));
+                .andExpect(jsonPath("$.*", hasSize(2)));
     }
 
     @Test
-    void getAllGreetings_shouldReturn200() throws Exception {
+    void getAllPenaltiesAPI_shouldReturn200() throws Exception {
+        mockMvc.perform(
+                get("/penalties")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void getAllPenalties_shouldReturn200() throws Exception {
         mockMvc.perform(
                 get("/penalties")
                         .accept(MediaType.APPLICATION_JSON))

@@ -34,7 +34,7 @@ class UsersControllerTests {
 	void getUser_shouldReturn200_WhenIdIsValid() throws Exception {
         mockMvc.perform(
                 get("/users")
-                        .param("id", "2")
+                        .param("id", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
