@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fontys.sem3.service.model.Account;
+import fontys.sem3.service.model.Penalty;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,6 +55,38 @@ public class DatabaseQueries {
             } catch (Exception e) { /* ignored */ }
         }
         return users;
+    }
+
+    /***
+     *  Get all registered users
+     * @return list of users
+     */
+    public static List<Penalty> getPenalties() {
+        ResultSet result = null;
+        Connection connection = null;
+        PreparedStatement query = null;
+        List<Penalty> penalties = new ArrayList<>();
+
+        try {
+            connection = DbUtil.getConnection();
+            query = connection.prepareStatement("SELECT * FROM penalties");
+            result = query.executeQuery();
+            while (result.next()) {
+                String name = result.getString("name");
+                String description = result.getString("description");
+                penalties.add(new Penalty(name, description));
+            }
+        } catch (Exception e) {
+            // Do nothing
+        } finally {
+            if (query != null) try {
+                query.close();
+            } catch (Exception e) { /* ignored */ }
+            if (connection != null) try {
+                connection.close();
+            } catch (Exception e) { /* ignored */ }
+        }
+        return penalties;
     }
 
     /***

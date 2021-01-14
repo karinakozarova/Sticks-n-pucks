@@ -26,10 +26,19 @@
                 <li class="my-2 md:my-0">
                     <a href="#"
                        class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
-                        <i class="fas fa-chart-area fa-fw mr-3 text-indigo-400"></i><span
+                        <i class="fas fa-chart-area fa-fw mr-3"></i><span
                             class="w-full inline-block pb-1 md:pb-0 text-sm">My analytics</span>
                     </a>
                 </li>
+
+                <li class="my-2 md:my-0">
+                    <a href="#"
+                       class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-exclamation-triangle fa-fw mr-3"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">Penalties</span>
+                    </a>
+                </li>
+
                 <li class="my-2 md:my-0">
                     <a href="/chat"
                        class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">

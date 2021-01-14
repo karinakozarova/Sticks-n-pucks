@@ -27,6 +27,12 @@ public class Penalty {
         this.length = length;
     }
 
+    public Penalty(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.length = length;
+    }
+
     public String getName() {
         return name;
     }

@@ -20,7 +20,6 @@ public class DataStore {
     private final List<Account> users = new ArrayList<>();
     private final List<Manager> managers = new ArrayList<>();
     private final List<Player> players = new ArrayList<>();
-    private final List<Penalty> penalties = new ArrayList<>();
 
     public DataStore() {
         Date date = new Date(System.currentTimeMillis());
@@ -33,9 +32,6 @@ public class DataStore {
 
         managers.add(new Manager(2, "Kemphanen Owner"));
         managers.add(new Manager(1, "Icehawks GM"));
-
-        penalties.add(new Penalty( "Roughing", "Roughing shall be considered any act where a player uses unnecessary force to push or shove an opponent or makes avoidable physical contact with an opponent after the whistle.", Penalty.Length.TENMINUTES));
-        penalties.add(new Penalty( "Fighting", "The player started a fight on the ice", Penalty.Length.FIVEMINUTES));
 
         Team hawks = new Team(1, "Icehawks", "server/pics/1", "IJssportcentrum Eindhoven");
         Team hanen = new Team(2, "Kemphanen", "server/pics/2", "IJssportcentrum Eindhoven");
@@ -94,7 +90,7 @@ public class DataStore {
     }
 
     public Penalty getPenalty(String name) {
-        for (Penalty penalty : penalties) {
+        for (Penalty penalty : getAllPenalties()) {
             if (penalty.getName().equals(name))
                 return penalty;
         }
@@ -112,7 +108,7 @@ public class DataStore {
 
     public List<Game> getGames() { return games; }
     public List<Team> getTeams() { return teams; }
-    public List<Penalty> getAllPenalties() { return penalties; }
+    public List<Penalty> getAllPenalties() { return DatabaseQueries.getPenalties(); }
 
     public List<Account> getUsers() {
         return DatabaseQueries.getUsers();
