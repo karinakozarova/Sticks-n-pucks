@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View players</title>
+    <title>Dashboard</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://unpkg.com/vue"></script>
     <script th:src="@{/PlayerCard/PlayerCard.umd.min.js}"></script>
+    <script th:src="@{/GameCard/GameCard.umd.min.js}"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
-    <link rel="stylesheet" href="/css/menu.css">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/game.css">
+    <style>
+        .chart-container {
+            position: relative;
+            min-width: 50%;
+            margin: 4rem auto auto;
+            background-color: black;
+        }
+    </style>
+</head>
 <body class="flex h-screen gradient">
 <div id="navigation">
     <navbar></navbar>
@@ -43,7 +54,8 @@
                             <ul class="list-reset">
                                 <li><a href="#"
                                        class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">My
-                                    account</a></li>
+                                    account</a>
+                                </li>
                                 <li><a href="#"
                                        class="px-4 py-2 block text-gray-900 hover:bg-indigo-400 hover:text-white no-underline hover:no-underline">Notifications</a>
                                 </li>
@@ -60,16 +72,87 @@
             </div>
         </nav>
     </div>
-    <div class="flex flex-wrap mb-4" id="app">
+    <div class="flex flex-wrap mb-4" id="app" style="padding: 50px">
+
+        <div class="grid grid-cols-1 lg:grid-cols-4">
+            <div class="col-span-2">
+                <p class="text-gray-1200 font-bold text-4xl mb-2 text-center"> Your last game </p>
+                <game-card v-bind:hostname="'Hawks'" v-bind:hostscore="'1'" v-bind:guestname="'Best team'" v-bind:guestscore="'2'" v-bind:gamedate="'2020-12-2'" style="margin-left: 5rem; margin-right: 5rem"> </game-card> <br>
+            </div>
+
+            <div class="m-8 max-w-sm rounded overflow-hidden shadow-lg" style="max-width: 20rem">
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                    <div class="mb-8 text-center content-center">
+                        <div class="text-gray-1200 font-bold text-xl mb-2">Your data</div>
+                        <p class="text-gray-700 text-base">
+                            <b> Height: </b> 160 <br>
+                            <b> Weight: </b> 60 <br>
+                            <b> Position: </b> Left wing<br>
+                            <b> Shoots: </b>  Left
+                        </p>
+                    </div>
+                    <div class="flex items-center text-center content-center flex-wrap">
+                        <div class="text-sm flex-1">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                View your full player statistics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-8 max-w-sm rounded overflow-hidden shadow-lg" style="max-width: 20rem">
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                    <div class="mb-8 text-center content-center">
+                        <div class="text-gray-1200 font-bold text-xl mb-2">Your team</div>
+                        <p class="text-gray-700 text-base">
+                            <b> Height: </b> 160 <br>
+                            <b> Weight: </b> 60 <br>
+                            <b> Position: </b> Left wing<br>
+                            <b> Shoots: </b>  Left
+                        </p>
+                    </div>
+                    <div class="flex items-center text-center content-center flex-wrap">
+                        <div class="text-sm flex-1">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                View your full player statistics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap mt-2 mx-2" style="width: 90%;margin-left: 4rem;">
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
+                <div>
+                    <a href="" class="flex bg-blue-500 font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                        My team
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
+                <div>
+                    <a href="" class="flex bg-blue-500 font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                        My statistics
+                    </a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 my-2">
+                <div>
+                    <a href="" class="flex bg-blue-500 font-bold text-white px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                        Account details (WIP)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="chart-container">
+            <canvas id="chart_0"></canvas>
+        </div>
+
         <script>
-            (function () {
-                new Vue({
-                    el: '#app',
-                    components: {
-                        playerCard: PlayerCard
-                    }
-                })
-            })();
             (function () {
                 new Vue({
                     el: '#navigation',
@@ -78,10 +161,18 @@
                     }
                 })
             })();
+
+            (function () {
+                new Vue({
+                    el: '#app',
+                    components: {
+                        gameCard: GameCard
+                    }
+                })
+            })();
         </script>
     </div>
 </div>
-
 <script>
     var userMenuDiv = document.getElementById("userMenu");
     var userMenu = document.getElementById("userButton");
@@ -114,6 +205,46 @@
         }
         return false;
     }
+</script>
+<script>
+    var data = {
+        labels: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
+        datasets: [{
+            label: "Goals",
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 20, 81, 56, 55, 40],
+        }]
+    };
+
+    var option = {
+        scales: {
+            yAxes: [{
+                stacked: true,
+                gridLines: {
+                    display: true,
+                    color: "rgba(255,99,132,0.2)"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false
+                }
+            }]
+        },
+        title: {
+            display: true,
+            text: 'Goals per month'
+        }
+    };
+
+    Chart.Bar('chart_0', {
+        options: option,
+        data: data
+    });
 </script>
 </body>
 </html>
