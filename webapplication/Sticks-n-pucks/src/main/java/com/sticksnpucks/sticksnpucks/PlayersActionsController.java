@@ -14,6 +14,12 @@ class PlayersActionsController {
         return new ModelAndView("players-listing.html", model);
     }
 
+    @GetMapping("/players/free-agents/all")
+    ModelAndView listFreeAgents() {
+        Map<String, Object> model = new HashMap<>();
+        return new ModelAndView("free-agents-listing.html", model);
+    }
+
     @GetMapping("/players/view")
     ModelAndView viewPlayer() {
         Map<String, Object> model = new HashMap<>();

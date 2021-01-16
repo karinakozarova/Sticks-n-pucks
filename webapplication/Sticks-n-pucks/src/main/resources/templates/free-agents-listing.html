@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penalties in ice hockey</title>
+    <title>View players</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/menu.css">
     <script src="https://unpkg.com/vue"></script>
+    <script th:src="@{/PlayerCard/PlayerCard.umd.min.js}"></script>
     <script th:src="@{/Navbar/Navbar.umd.min.js}"></script>
+    <link rel="stylesheet" href="/css/menu.css">
 </head>
 
 <body class="flex h-screen gradient">
@@ -59,47 +60,34 @@
             </div>
         </nav>
     </div>
-    <br>
-    <div style="margin: auto">
-        <p class="text-3xl text-center">
-            <br>
-            Penalties
-            <br>
-        </p>
-        <p style="padding: 1.5rem">
-            There are many different types of hockey penalties, and several different hockey referee signals to indicate
-            exactly what a player has done to deserve his or her time in the penalty box. Some penalties carry
-            the option of being either a two-minute minor or five-minute major depending on any perceived intent to injure.
-            There may also be league- and age-specific guidelines that make certain penalties more severe.
-        </p>
-        <table style="margin: 1.5rem">
-            <thead class="justify-between">
-                <tr class="bg-gray-800">
-                    <th class="px-4 py-2">
-                        <span class="text-gray-300">Name</span>
-                    </th>
-                    <th class="px-18 py-2">
-                        <span class="text-gray-300">Description</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="bg-gray-200 penaltiesbody" id="penaltiesbody">
-            </tbody>
-        </table>
+    <p class="text-3xl text-center" style="padding-left: 2rem;padding-top: 2rem">
+        Free agents list
+    </p>
+    <div class="flex flex-wrap mb-4" id="app">
+        <player-card v-bind:playername="'Patrick Kane'" v-bind:height="'164'"  v-bind:weight="'64'" v-bind:shoots="'Left'" v-bind:position="'LW'"></player-card>
+        <player-card v-bind:playername="'Alex Ovechkin'" v-bind:height="'190'"  v-bind:weight="'80'" v-bind:shoots="'Right'" v-bind:position="'C'"></player-card>
+        <player-card v-bind:playername="'Sidney Crosby'" v-bind:height="'175'"  v-bind:weight="'80'" v-bind:shoots="'Right'" v-bind:position="'C'"></player-card>
+        <script>
+            (function () {
+                new Vue({
+                    el: '#app',
+                    components: {
+                        playerCard: PlayerCard
+                    }
+                })
+            })();
+            (function () {
+                new Vue({
+                    el: '#navigation',
+                    components: {
+                        navbar: Navbar
+                    }
+                })
+            })();
+        </script>
     </div>
 </div>
-<script th:inline="javascript">
-    var penalties = [[${penalties}]]; // parse the penalties from the controller
-    const penaltiesArray = JSON.parse(penalties);
-    console.log(penaltiesArray);
-    var arrayLength = penaltiesArray.length;
-    for (var i = 0; i < arrayLength; i++) {
-        console.log(penaltiesArray[i].description);
-        var penaltyRow = "<th class=\"px-6 py-2\"> <span>" + penaltiesArray[i].name + "</span></th><th class=\"px-20 py-2\"> <span>" + penaltiesArray[i].description + "</span> </th>";
-        document.getElementById('penaltiesbody').innerHTML += penaltyRow;
-    }
 
-</script>
 <script>
     var userMenuDiv = document.getElementById("userMenu");
     var userMenu = document.getElementById("userButton");
@@ -132,15 +120,6 @@
         }
         return false;
     }
-
-    (function () {
-        new Vue({
-            el: '#navigation',
-            components: {
-                navbar: Navbar
-            }
-        })
-    })();
 </script>
 </body>
 </html>
