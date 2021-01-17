@@ -14,7 +14,7 @@ public class PenaltiesActionsController {
     /**
      * @return html page listing all the penalties
      */
-    @GetMapping("/penalties/all")
+    @GetMapping("/hockey/penalties")
     ModelAndView getAllPenalties(ModelMap model) throws IOException {
         String penalties = ApiController.getAPIResult(ApiController.getBaseAPICallUrl() + "/penalty");
         model.addAttribute("penalties", penalties);
