@@ -25,4 +25,10 @@ class PlayersActionsController {
         Map<String, Object> model = new HashMap<>();
         return new ModelAndView("view-player.html", model);
     }
+
+    @GetMapping("/statistics")
+    ModelAndView viewPlayerStatistics() {
+        Map<String, Object> model = new HashMap<>();
+        return new ModelAndView("view-player-statistics.html", model);
+    }
 }
