@@ -8,6 +8,7 @@
                         <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Home</span>
                     </a>
                 </li>
+
                 <li class="my-2 md:my-0 ">
                     <a href="/teams/roster"
                        class="block py-1 md:py-3 pl-1 align-mi ddle text-gray-600 no-underline hover:text-indigo-400">
@@ -15,11 +16,20 @@
                             class="w-full inline-block pb-1 md:pb-0 text-sm">Roster</span>
                     </a>
                 </li>
+
                 <li class="my-2 md:my-0">
                     <a href="/games/all"
                        class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
                         <i class="fas fa-poll fa-fw mr-3"></i><span
                             class="w-full inline-block pb-1 md:pb-0 text-sm">Games</span>
+                    </a>
+                </li>
+
+                <li class="my-2 md:my-0">
+                    <a href="/teams/all"
+                       class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-users fa-fw mr-3"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">Teams</span>
                     </a>
                 </li>
 
@@ -31,6 +41,23 @@
                     </a>
                 </li>
 
+
+                <li class="my-2 md:my-0">
+                    <a href="/players/free-agents/all"
+                       class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-user fa-fw mr-3"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">Free agents</span>
+                    </a>
+                </li>
+
+                <li class="my-2 md:my-0">
+                    <a href="/players/all"
+                       class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                        <i class="fas fa-user-friends fa-fw mr-3"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">All players</span>
+                    </a>
+                </li>
+                
                 <li class="my-2 md:my-0">
                     <a href="/penalties/all"
                        class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
@@ -40,17 +67,17 @@
                 </li>
 
                 <li class="my-2 md:my-0">
-                    <a href="/players/free-agents/all"
+                    <a href="/hockey/rules"
                        class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
-                        <i class="fas fa-user-friends fa-fw mr-3"></i><span
-                            class="w-full inline-block pb-1 md:pb-0 text-sm">Free agents</span>
+                        <i class="fas fa-book fa-fw mr-3"></i><span
+                            class="w-full inline-block pb-1 md:pb-0 text-sm">Rules</span>
                     </a>
                 </li>
 
                 <li class="my-2 md:my-0">
                     <a href="/chat"
                        class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
-                        <i class="far fa-comments fa-fw mr-3"></i><span
+                        <i class="fas fa-comments fa-fw mr-3"></i><span
                             class="w-full inline-block pb-1 md:pb-0 text-sm">Chat</span>
                     </a>
                 </li>
