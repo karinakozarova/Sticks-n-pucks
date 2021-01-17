@@ -22,4 +22,9 @@ public class InformationPagesController {
     ModelAndView chatPage() {
         return new ModelAndView("chat.html",  new HashMap<>());
     }
+
+    @GetMapping("/rules")
+    ModelAndView rulesPage() {
+        return new ModelAndView("rules.html",  new HashMap<>());
+    }
 }
