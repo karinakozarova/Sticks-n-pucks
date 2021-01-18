@@ -21,9 +21,36 @@ class InformationPagesControllerTests {
     }
 
     @Test
-	void indexPage_shouldReturn200_whenNameIsValid() throws Exception {
+	void indexPage_shouldReturn200_inAllCases() throws Exception {
         mockMvc.perform(
                 get("/")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+	void dashboardPage_shouldReturn200_inAllCases() throws Exception {
+        mockMvc.perform(
+                get("/dashboard")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+	void chat_shouldReturn200_inAllCases() throws Exception {
+        mockMvc.perform(
+                get("/chat")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+	void rulesPage_shouldReturn200_inAllCases() throws Exception {
+        mockMvc.perform(
+                get("/hockey/rules")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
