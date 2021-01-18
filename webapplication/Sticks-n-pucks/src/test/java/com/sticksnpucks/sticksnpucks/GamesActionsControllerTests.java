@@ -11,43 +11,36 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest({UsersController.class})
-class TeamsActionsControllerTests {
+class GamesActionsControllerTests {
     private MockMvc mockMvc;
 
     @BeforeEach
     void setup() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(new TeamsActionsController()).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(new GamesActionsController()).build();
     }
 
     @Test
-	void getAllTeams_shouldReturn200_inAllConditions() throws Exception {
+	void getAllGames_shouldReturn200_inAllConditions() throws Exception {
         mockMvc.perform(
-                get("/teams/all"))
+                get("/games/all")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    void getSpecificTeam_shouldReturn200_whenNameIsValid() throws Exception {
+	void addNewGame_shouldReturn200_inAllConditions() throws Exception {
         mockMvc.perform(
-                get("/teams/view"))
+                get("/games/add")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
-    void getRoster_shouldReturn200_whenNameIsValid() throws Exception {
+    void getSpecificGame_shouldReturn200_whenNameIsValid() throws Exception {
         mockMvc.perform(
-                get("/teams/roster"))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-
-    @Test
-    void addNewTeam_shouldReturn200_whenNameIsValid() throws Exception {
-        mockMvc.perform(
-                get("/teams/register")
+                get("/games/view")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());

@@ -29,9 +29,27 @@ class PlayersActionsControllerTests {
     }
 
     @Test
+	void getAllFreeAgents_shouldReturn200_inAllConditions() throws Exception {
+        mockMvc.perform(
+                get("/players/free-agents/all")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
     void getSpecificPlayer_shouldReturn200_whenNameIsValid() throws Exception {
         mockMvc.perform(
                 get("/players/view")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void getStatisticsPage_shouldReturn200_inAllConditions() throws Exception {
+        mockMvc.perform(
+                get("/statistics")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
