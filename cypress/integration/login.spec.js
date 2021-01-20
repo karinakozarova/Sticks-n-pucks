@@ -7,8 +7,8 @@ context('Index page', () => {
 
   it('User can get to the login page from the index page', () => {
   	cy.title().should('include', 'Sticks');
-  	cy.contains('Subscribe');
-  	cy.contains('Subscribe').click();
-  	cy.contains("Login");
+  	cy.contains('Login');
+  	cy.contains('Register').click();
+  	cy.contains("register");
   })
 })
