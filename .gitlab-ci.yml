@@ -1,0 +1,109 @@
+image: gradle:alpine
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  GIT_DEPTH: 0
+before_script:
+  - set GRADLE_USER_HOME=`pwd`/.gradle
+  - cd webapplication/Sticks-n-pucks/frontend
+  - npm install
+  - npm install postcss
+  - npm install autoprefixer@9.0.0
+  - npm run-script build
+  - cd ../../..
+
+stages:
+  - build
+  - test
+  - docker
+  - codequality
+  - sonar
+
+build-docker:
+  stage: docker
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - docker build -t sticks-n-pucks .
+
+build-api:
+  stage: build
+  script:
+    - gradle build
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
+
+build-web:
+  stage: build
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle build --stacktrace
+
+testapi:
+  stage: test
+  script: 
+    - cd api/sticks-pucks
+    - gradle clean test
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+testweb:
+  stage: test
+  script: 
+    - cd webapplication/Sticks-n-pucks
+    - gradle test
+  allow_failure: true
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - build
+      - .gradle
+
+e2e-tests:
+  stage: test
+  script:
+    - cypress run --record --key e338d33c-c5d8-4a44-9d1b-86e34528af08
+  allow_failure: true
+
+checkstyle:
+  stage: codequality
+  script:
+    -  java -jar checkstyle-8.36.2-all.jar -c google_checks.xml .
+  allow_failure: true
+
+javadocapi:
+  when: manual
+  stage: codequality
+  script:
+    - cd api/sticks-pucks
+    - gradle javadoc
+  allow_failure: true
+
+javadocweb:
+  when: manual
+  stage: codequality
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle javadoc
+  allow_failure: true
+
+sonarqube-api:
+  stage: sonar
+  script:
+    - cd api/sticks-pucks
+    - gradle sonarqube
+  allow_failure: true
+  
+sonarqube-web:
+  stage: sonar
+  script:
+    - cd webapplication/Sticks-n-pucks
+    - gradle sonarqube
+  allow_failure: true

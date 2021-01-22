@@ -1,0 +1,4 @@
+rootProject.name = 'Sticks-n-pucks'
+
+include 'frontend'
+include 'src'
